@@ -1,11 +1,17 @@
 # NetWiz – Hệ thống hỗ trợ giảng dạy và học tập môn Mạng máy tính
 
-**NetWiz** là hệ thống hỗ trợ giảng dạy và học tập môn **Mạng máy tính**, hướng đến hai đối tượng chính: **giảng viên** và **sinh viên**.
+**NetWiz (Project: Superhero)** là hệ thống hỗ trợ giảng dạy và học tập môn **Mạng máy tính**, kết hợp quản lý học liệu phân tầng với Gamification chiến thuật cho 4 nhóm người dùng: **Guest, Student, Lecturer, Admin**.
 
-- **Đối với giảng viên:** Hỗ trợ xây dựng học liệu trực quan, bao gồm bài giảng phân tầng, bộ bài tập về cổng và giao thức, cùng các sơ đồ tô pô mạng mẫu.
-- **Đối với sinh viên:** Hỗ trợ học tập và hiểu sâu kiến thức thông qua:
-  - Vẽ và xây dựng sơ đồ tô pô mạng.
-  - Mô phỏng luồng gói tin khi truyền dữ liệu qua các lớp mạng.
-  - Thực hành các bài tập tính toán về subnet, cổng và địa chỉ IP.
+## Phiên bản Demo V1 (`Design/demo-v1/`)
 
-Sản phẩm tập trung vào phát triển **frontend đa trang (multi-page), hỗ trợ nhiều vai trò người dùng (multi-role)**, với dữ liệu được cung cấp thông qua **Mock API**.
+Toàn bộ giao diện tương tác Demo V1 được đặt trong thư mục [`Design/demo-v1/`](./Design/demo-v1) sử dụng **React + TypeScript + Tailwind CSS** với Mock Data đầy đủ và lưu trạng thái vào `localStorage`.
+
+### Chạy nhanh Demo V1
+
+```bash
+cd Design/demo-v1
+npm.cmd install
+npm.cmd run dev
+```
+
+Xem chi tiết kiến trúc và kịch bản kiểm thử cả 4 vai trò tại [`Design/demo-v1/README.md`](./Design/demo-v1/README.md).
