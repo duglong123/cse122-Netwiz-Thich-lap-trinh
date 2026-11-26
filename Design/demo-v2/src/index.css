@@ -1,0 +1,94 @@
+@import "tailwindcss";
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --bg-canvas: #F6F4EE;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #ECE9E0;
+  --bg-muted: #E2DDD2;
+  --border-subtle: #D5D0C4;
+  --border-strong: #ABA494;
+  --text-primary: #161614;
+  --text-secondary: #3E3D38;
+  --text-muted: #5C5A52;
+  --accent-primary: #1D4ED8;
+  --accent-primary-hover: #1E40AF;
+  --accent-primary-text: #FFFFFF;
+  --accent-primary-soft: #DBEAFE;
+  --accent-primary-fg: #1E3A8A;
+  --accent-success: #047857;
+  --accent-success-text: #FFFFFF;
+  --accent-success-soft: #D1FAE5;
+  --accent-success-fg: #065F46;
+  --accent-warning: #B45309;
+  --accent-warning-soft: #FEF3C7;
+  --accent-warning-fg: #78350F;
+  --accent-danger: #BE123C;
+  --accent-danger-text: #FFFFFF;
+  --accent-danger-soft: #FFE4E6;
+  --accent-danger-fg: #881337;
+  --shadow-card: 0 1px 2px rgba(22, 22, 20, 0.05), 0 4px 14px rgba(22, 22, 20, 0.04);
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-canvas: #161614;
+  --bg-surface: #1F1F1C;
+  --bg-subtle: #282824;
+  --bg-muted: #32322D;
+  --border-subtle: #3D3C36;
+  --border-strong: #5B5950;
+  --text-primary: #F5F3EC;
+  --text-secondary: #CFCCC1;
+  --text-muted: #A39F93;
+  --accent-primary: #60A5FA;
+  --accent-primary-hover: #93C5FD;
+  --accent-primary-text: #0F172A;
+  --accent-primary-soft: rgba(59, 130, 246, 0.2);
+  --accent-primary-fg: #BFDBFE;
+  --accent-success: #34D399;
+  --accent-success-text: #052E16;
+  --accent-success-soft: rgba(16, 185, 129, 0.2);
+  --accent-success-fg: #A7F3D0;
+  --accent-warning: #FBBF24;
+  --accent-warning-soft: rgba(245, 158, 11, 0.2);
+  --accent-warning-fg: #FDE68A;
+  --accent-danger: #FB7185;
+  --accent-danger-text: #4C0519;
+  --accent-danger-soft: rgba(244, 63, 94, 0.2);
+  --accent-danger-fg: #FECDD3;
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.35), 0 8px 24px rgba(0, 0, 0, 0.22);
+}
+
+@layer base {
+  body {
+    font-family: 'Be Vietnam Pro', system-ui, sans-serif;
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    transition: background-color 180ms ease, color 180ms ease;
+  }
+
+  h1, h2, .font-editorial {
+    font-family: 'Lora', 'Be Vietnam Pro', Georgia, serif;
+    letter-spacing: -0.01em;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-canvas);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+}
