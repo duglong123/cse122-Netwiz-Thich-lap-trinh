@@ -84,7 +84,7 @@ export const MissionPanel: React.FC<{ mission: InteractiveMission; onGoToBoss: (
   };
 
   return (
-    <Panel accent="#f4d35e">
+    <Panel accent="var(--yellow)">
       <PanelContent className="p-6 sm:p-8 space-y-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div className="space-y-1.5">
@@ -92,11 +92,11 @@ export const MissionPanel: React.FC<{ mission: InteractiveMission; onGoToBoss: (
               <Badge tone="yellow" icon={<Sparkles className="w-3 h-3" />}>Nhiệm vụ giữa chương</Badge>
               {isCompleted && <Badge tone="green" icon={<CheckCircle2 className="w-3 h-3" />}>Đã xong</Badge>}
             </div>
-            <h2 className="display-font text-3xl font-extrabold text-[#f3f6fc]">{mission.title}</h2>
-            <p className="text-sm text-[#98a7bd]">{mission.description}</p>
+            <h2 className="display-font text-3xl font-extrabold text-[var(--text)]">{mission.title}</h2>
+            <p className="text-sm text-[var(--muted)]">{mission.description}</p>
           </div>
           {rewardItem && (
-            <div className="px-3.5 py-2.5 rounded-xl bg-[#f4d35e]/10 border border-[#f4d35e]/35 text-xs text-[#f4d35e] font-bold flex items-center gap-2">
+            <div className="px-3.5 py-2.5 rounded-xl bg-[var(--yellow-soft)] border border-[var(--yellow-border)] text-xs text-[var(--yellow-fg)] font-bold flex items-center gap-2">
               <Gift className="w-4 h-4" /> Thưởng: {rewardItem.name}
             </div>
           )}
@@ -112,14 +112,14 @@ export const MissionPanel: React.FC<{ mission: InteractiveMission; onGoToBoss: (
                   onClick={() => setSelectedLeftId(pair.id)}
                   className={`w-full p-3.5 rounded-xl border text-left cursor-pointer transition-colors ${
                     selectedLeftId === pair.id
-                      ? 'border-[#f4d35e] bg-[#f4d35e]/15'
+                      ? 'border-[var(--yellow)] bg-[var(--yellow-soft)]'
                       : matchSelections[pair.id]
-                        ? 'border-[#45d483] bg-[#45d483]/10'
-                        : 'border-[#26334a] bg-[#0a111e]'
+                        ? 'border-[var(--green)] bg-[var(--green-soft)]'
+                        : 'border-[var(--line)] bg-[var(--panel-deep)]'
                   }`}
                 >
-                  <div className="text-sm font-bold text-[#f3f6fc]">{pair.left}</div>
-                  <div className="text-xs text-[#98a7bd] mt-1">{matchSelections[pair.id] ? `→ ${matchSelections[pair.id]}` : 'Chọn để ghép'}</div>
+                  <div className="text-sm font-bold text-[var(--text)]">{pair.left}</div>
+                  <div className="text-xs text-[var(--muted)] mt-1">{matchSelections[pair.id] ? `→ ${matchSelections[pair.id]}` : 'Chọn để ghép'}</div>
                 </button>
               ))}
             </div>
@@ -136,8 +136,8 @@ export const MissionPanel: React.FC<{ mission: InteractiveMission; onGoToBoss: (
                   }}
                   className={`w-full p-3.5 rounded-xl border text-left text-sm ${
                     selectedLeftId
-                      ? 'border-[#f4d35e]/45 bg-[#0e1523] hover:bg-[#162136] text-[#f3f6fc] cursor-pointer'
-                      : 'border-[#26334a] bg-[#0a111e]/60 text-[#6f819b] cursor-not-allowed'
+                      ? 'border-[var(--yellow-border)] bg-[var(--panel)] hover:bg-[var(--panel-2)] text-[var(--text)] cursor-pointer'
+                      : 'border-[var(--line)] bg-[var(--panel-deep)] text-[var(--muted)] cursor-not-allowed'
                   }`}
                 >
                   {item.right}
@@ -150,14 +150,14 @@ export const MissionPanel: React.FC<{ mission: InteractiveMission; onGoToBoss: (
         {mission.type === 'order' && (
           <div className="space-y-2.5">
             {orderList.map((item, idx) => (
-              <div key={item.id} className="p-3.5 rounded-xl bg-[#0a111e] border border-[#26334a] flex items-center justify-between gap-3">
+              <div key={item.id} className="p-3.5 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)] flex items-center justify-between gap-3">
                 <div className="flex items-center gap-3 min-w-0">
-                  <span className="w-7 h-7 rounded bg-[#f4d35e]/15 border border-[#f4d35e]/35 text-[#f4d35e] mono text-xs font-extrabold flex items-center justify-center shrink-0">
+                  <span className="w-7 h-7 rounded bg-[var(--yellow-soft)] border border-[var(--yellow-border)] text-[var(--yellow-fg)] mono text-xs font-extrabold flex items-center justify-center shrink-0">
                     #{idx + 1}
                   </span>
                   <div className="min-w-0">
-                    <div className="text-sm font-bold text-[#f3f6fc]">{item.label}</div>
-                    <div className="text-xs text-[#98a7bd]">{item.detail}</div>
+                    <div className="text-sm font-bold text-[var(--text)]">{item.label}</div>
+                    <div className="text-xs text-[var(--muted)]">{item.detail}</div>
                   </div>
                 </div>
                 <div className="flex gap-1 shrink-0">
@@ -172,8 +172,8 @@ export const MissionPanel: React.FC<{ mission: InteractiveMission; onGoToBoss: (
         {mission.type === 'scenario' && mission.scenarioItems && (
           <div className="space-y-4">
             {mission.scenarioItems.map((sc, idx) => (
-              <div key={sc.id} className="p-4 rounded-xl bg-[#0a111e] border border-[#26334a] space-y-3">
-                <div className="text-sm font-bold text-[#f3f6fc]">Tình huống {idx + 1}: {sc.prompt}</div>
+              <div key={sc.id} className="p-4 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)] space-y-3">
+                <div className="text-sm font-bold text-[var(--text)]">Tình huống {idx + 1}: {sc.prompt}</div>
                 <div className="flex flex-wrap gap-2">
                   {sc.options.map((opt) => (
                     <button
@@ -182,8 +182,8 @@ export const MissionPanel: React.FC<{ mission: InteractiveMission; onGoToBoss: (
                       onClick={() => setScenarioAnswers((p) => ({ ...p, [sc.id]: opt }))}
                       className={`px-3.5 py-2 rounded-lg text-xs font-bold border cursor-pointer ${
                         scenarioAnswers[sc.id] === opt
-                          ? 'bg-[#f4d35e] text-[#080c16] border-[#f4d35e]'
-                          : 'bg-[#0e1523] text-[#c5d1e2] border-[#2b3951]'
+                          ? 'bg-[var(--yellow)] text-[var(--yellow-on)] border-[var(--yellow)]'
+                          : 'bg-[var(--panel)] text-[var(--text-body)] border-[var(--line)]'
                       }`}
                     >
                       {opt}
@@ -196,12 +196,12 @@ export const MissionPanel: React.FC<{ mission: InteractiveMission; onGoToBoss: (
         )}
 
         {feedback && (
-          <div className={`p-4 rounded-xl border text-sm ${feedback.ok ? 'bg-[#45d483]/10 border-[#45d483]/40 text-[#65e09a]' : 'bg-[#ef4444]/10 border-[#ef4444]/40 text-[#ff7b7b]'}`}>
+          <div className={`p-4 rounded-xl border text-sm ${feedback.ok ? 'bg-[var(--green-soft)] border-[var(--green-border)] text-[var(--green-fg)]' : 'bg-[var(--red-soft)] border-[var(--red-border)] text-[var(--red-fg)]'}`}>
             {feedback.text}
           </div>
         )}
 
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[#26334a]">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-[var(--line)]">
           <Button variant="ghost" size="sm" leftIcon={<RotateCcw className="w-3.5 h-3.5" />} onClick={() => { setMatchSelections({}); setScenarioAnswers({}); setFeedback(null); }}>
             Làm lại
           </Button>
@@ -226,9 +226,9 @@ export const MissionPanel: React.FC<{ mission: InteractiveMission; onGoToBoss: (
       >
         {rewardItem && (
           <div className="text-center space-y-3">
-            <div className="w-12 h-12 mx-auto rounded-xl bg-[#f4d35e]/15 text-[#f4d35e] flex items-center justify-center"><Gift className="w-6 h-6" /></div>
-            <div className="display-font text-2xl font-extrabold text-[#f3f6fc]">{rewardItem.name}</div>
-            <p className="text-sm text-[#98a7bd]">{rewardItem.description}</p>
+            <div className="w-12 h-12 mx-auto rounded-xl bg-[var(--yellow-soft)] text-[var(--yellow-fg)] flex items-center justify-center"><Gift className="w-6 h-6" /></div>
+            <div className="display-font text-2xl font-extrabold text-[var(--text)]">{rewardItem.name}</div>
+            <p className="text-sm text-[var(--muted)]">{rewardItem.description}</p>
           </div>
         )}
       </Modal>

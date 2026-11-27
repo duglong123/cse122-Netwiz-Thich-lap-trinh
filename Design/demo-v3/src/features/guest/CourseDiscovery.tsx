@@ -26,7 +26,7 @@ export const CourseDiscovery: React.FC = () => {
     <div className="space-y-6">
       <div>
         <Eyebrow>Public Catalog</Eyebrow>
-        <h1 className="display-font text-4xl font-extrabold text-[#f3f6fc] mt-2">Khám phá khóa học</h1>
+        <h1 className="display-font text-4xl font-extrabold text-[var(--text)] mt-2">Khám phá khóa học</h1>
       </div>
 
       <Panel>
@@ -38,7 +38,7 @@ export const CourseDiscovery: React.FC = () => {
               onChange={(e) => setQuery(e.target.value)}
               className="pl-10"
             />
-            <Search className="w-4 h-4 text-[#98a7bd] absolute left-3.5 top-3 pointer-events-none" />
+            <Search className="w-4 h-4 text-[var(--muted)] absolute left-3.5 top-3 pointer-events-none" />
           </div>
           <div className="sm:col-span-4">
             <Select value={levelFilter} onChange={(e) => setLevelFilter(e.target.value)}>
@@ -72,13 +72,13 @@ export const CourseDiscovery: React.FC = () => {
                       {course.level}
                     </Badge>
                   </div>
-                  <h2 className="display-font text-2xl font-extrabold text-[#f3f6fc]">{course.title}</h2>
-                  <p className="text-xs text-[#98a7bd] leading-relaxed">{course.subtitle}</p>
-                  <div className="flex items-center justify-between text-xs text-[#c5d1e2] pt-2 border-t border-[#26334a]">
-                    <span className="inline-flex items-center gap-1"><Layers className="w-3.5 h-3.5 text-[#f4d35e]" /> {course.chapters.length} ch · {totalLessons} bài</span>
-                    <span className="inline-flex items-center gap-1"><Users className="w-3.5 h-3.5 text-[#45d483]" /> {course.enrolledCount} SV</span>
+                  <h2 className="display-font text-2xl font-extrabold text-[var(--text)]">{course.title}</h2>
+                  <p className="text-xs text-[var(--muted)] leading-relaxed">{course.subtitle}</p>
+                  <div className="flex items-center justify-between text-xs text-[var(--text-body)] pt-2 border-t border-[var(--line)]">
+                    <span className="inline-flex items-center gap-1"><Layers className="w-3.5 h-3.5 text-[var(--yellow-fg)]" /> {course.chapters.length} ch · {totalLessons} bài</span>
+                    <span className="inline-flex items-center gap-1"><Users className="w-3.5 h-3.5 text-[var(--green-fg)]" /> {course.enrolledCount} SV</span>
                   </div>
-                  <div className="text-[11px] text-[#98a7bd]">GV: {lecturers.map((l) => l.name).join(', ')}</div>
+                  <div className="text-[11px] text-[var(--muted)]">GV: {lecturers.map((l) => l.name).join(', ')}</div>
                   <Button size="sm" className="w-full" onClick={() => navigate('course-preview', { courseId: course.id })}>
                     Xem chi tiết
                   </Button>

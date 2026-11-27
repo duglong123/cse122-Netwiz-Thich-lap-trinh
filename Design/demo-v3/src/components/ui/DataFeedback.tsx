@@ -26,29 +26,29 @@ export function DataTable<T>({
 }: DataTableProps<T>) {
   if (data.length === 0 && emptyState) return <>{emptyState}</>;
   return (
-    <div className="w-full overflow-x-auto rounded-2xl border border-[#26334a] bg-[#0e1523]">
+    <div className="w-full overflow-x-auto rounded-2xl border border-[var(--line)] bg-[var(--panel)]">
       <table className="w-full text-left border-collapse">
         <thead>
-          <tr className="border-b border-[#26334a] bg-[#0a111e]">
+          <tr className="border-b border-[var(--line)] bg-[var(--panel-deep)]">
             {columns.map((col) => (
               <th
                 key={col.key}
-                className={`px-4 py-3 text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#98a7bd] ${col.className ?? ''}`}
+                className={`px-4 py-3 text-[10px] font-extrabold uppercase tracking-[0.12em] text-[var(--muted)] ${col.className ?? ''}`}
               >
                 {col.header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-[#26334a]/70">
+        <tbody className="divide-y divide-[var(--line)]">
           {data.map((row) => (
             <tr
               key={keyExtractor(row)}
               onClick={onRowClick ? () => onRowClick(row) : undefined}
-              className={`transition-colors ${onRowClick ? 'hover:bg-[#121c2d] cursor-pointer' : 'hover:bg-[#0a111e]/60'}`}
+              className={`transition-colors ${onRowClick ? 'hover:bg-[var(--panel-2)] cursor-pointer' : 'hover:bg-[var(--panel-deep)]'}`}
             >
               {columns.map((col) => (
-                <td key={col.key} className={`px-4 py-3.5 text-sm text-[#f3f6fc] align-middle ${col.className ?? ''}`}>
+                <td key={col.key} className={`px-4 py-3.5 text-sm text-[var(--text)] align-middle ${col.className ?? ''}`}>
                   {col.render(row)}
                 </td>
               ))}
@@ -68,10 +68,10 @@ interface EmptyStateProps {
 }
 
 export const EmptyState: React.FC<EmptyStateProps> = ({ icon, title, description, action }) => (
-  <div className="flex flex-col items-center justify-center text-center py-12 px-6 rounded-2xl border border-dashed border-[#34435b] bg-[#0a111e]">
-    <div className="p-3 rounded-xl bg-[#121c2d] text-[#f4d35e] mb-3">{icon}</div>
-    <h4 className="display-font text-xl font-bold text-[#f3f6fc]">{title}</h4>
-    <p className="text-sm text-[#98a7bd] mt-1 max-w-md">{description}</p>
+  <div className="flex flex-col items-center justify-center text-center py-12 px-6 rounded-2xl border border-dashed border-[var(--line-strong)] bg-[var(--panel-deep)]">
+    <div className="p-3 rounded-xl bg-[var(--panel-2)] text-[var(--yellow-fg)] mb-3">{icon}</div>
+    <h4 className="display-font text-xl font-bold text-[var(--text)]">{title}</h4>
+    <p className="text-sm text-[var(--muted)] mt-1 max-w-md">{description}</p>
     {action && <div className="mt-4">{action}</div>}
   </div>
 );
@@ -82,13 +82,13 @@ export const ToastContainer: React.FC<{ toasts: ToastItem[]; onDismiss: (id: str
 }) => {
   if (toasts.length === 0) return null;
   const styles = {
-    info: 'bg-[#0e1523] border-[#4da3ff]/50 text-[#f3f6fc]',
-    success: 'bg-[#45d483] border-[#45d483] text-[#07110b]',
-    warning: 'bg-[#f4d35e] border-[#f4d35e] text-[#080c16]',
-    error: 'bg-[#ef4444] border-[#ef4444] text-white',
+    info: 'bg-[var(--panel)] border-[var(--blue-border)] text-[var(--text)]',
+    success: 'bg-[var(--green)] border-[var(--green)] text-[var(--green-on)]',
+    warning: 'bg-[var(--yellow)] border-[var(--yellow)] text-[var(--yellow-on)]',
+    error: 'bg-[var(--red)] border-[var(--red)] text-white',
   };
   const icons = {
-    info: <Info className="w-4 h-4 text-[#4da3ff] shrink-0 mt-0.5" />,
+    info: <Info className="w-4 h-4 text-[var(--blue-fg)] shrink-0 mt-0.5" />,
     success: <CheckCircle2 className="w-4 h-4 shrink-0 mt-0.5" />,
     warning: <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />,
     error: <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />,
@@ -99,7 +99,7 @@ export const ToastContainer: React.FC<{ toasts: ToastItem[]; onDismiss: (id: str
       {toasts.map((t) => (
         <div
           key={t.id}
-          className={`pointer-events-auto rounded-lg border px-4 py-3 shadow-[0_12px_36px_rgba(0,0,0,0.4)] flex items-start gap-3 ${styles[t.type]}`}
+          className={`pointer-events-auto rounded-lg border px-4 py-3 shadow-[0_12px_36px_rgba(0,0,0,0.3)] flex items-start gap-3 ${styles[t.type]}`}
         >
           {icons[t.type]}
           <div className="flex-1 min-w-0">

@@ -1,22 +1,134 @@
 @import "tailwindcss";
 
-:root {
-  --bg: #080c16;
-  --panel: #0e1523;
-  --panel-2: #121c2d;
-  --panel-deep: #0a111e;
-  --line: #26334a;
-  --line-strong: #3b4962;
-  --text: #f3f6fc;
-  --text-body: #c5d1e2;
-  --muted: #98a7bd;
-  --yellow: #f4d35e;
-  --yellow-shadow: #6e5c1e;
-  --red: #ef4444;
-  --blue: #4da3ff;
-  --green: #45d483;
+/* Soft Slate Midnight (Default Dark Mode — gentler contrast for long reading) */
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #111824;
+  --panel: #172030;
+  --panel-2: #1f2b3e;
+  --panel-deep: #131b29;
+  --reading-bg: #151e2c;
+  --header-bg: rgba(17, 24, 36, 0.9);
+  --footer-bg: #0e1520;
+  --stage-bg: #101724;
+  --stage-node: #172235;
+  --code-bg: #0e1522;
+  --code-text: #d6e2f2;
+  --backdrop: rgba(8, 12, 20, 0.78);
+  --line: #2a374d;
+  --line-strong: #3b4c68;
+  --track: #253047;
+  --text: #e4eaf4;
+  --text-body: #c7d2e2;
+  --muted: #94a4ba;
+  --placeholder: #72829a;
+
+  --yellow: #e8c65a;
+  --yellow-fg: #f0d372;
+  --yellow-on: #111824;
+  --yellow-soft: rgba(232, 198, 90, 0.13);
+  --yellow-border: rgba(232, 198, 90, 0.36);
+  --yellow-shadow: #756122;
+
+  --blue: #58a6ff;
+  --blue-fg: #7cc0ff;
+  --blue-on: #09182c;
+  --blue-soft: rgba(88, 166, 255, 0.13);
+  --blue-border: rgba(88, 166, 255, 0.36);
+
+  --green: #3ecf8e;
+  --green-fg: #66dfa8;
+  --green-on: #092216;
+  --green-soft: rgba(62, 207, 142, 0.13);
+  --green-border: rgba(62, 207, 142, 0.36);
+  --green-shadow: #175c3a;
+
+  --red: #e55353;
+  --red-fg: #ff8b8b;
+  --red-on: #ffffff;
+  --red-soft: rgba(229, 83, 83, 0.14);
+  --red-border: rgba(229, 83, 83, 0.4);
+  --red-shadow: #752020;
+
+  --ch-1: #e8c65a;
+  --ch-1-rgb: 232, 198, 90;
+  --ch-2: #58a6ff;
+  --ch-2-rgb: 88, 166, 255;
+  --ch-3: #3fd0b8;
+  --ch-3-rgb: 63, 208, 184;
+  --ch-4: #f06868;
+  --ch-4-rgb: 240, 104, 104;
+  --ch-5: #42ce7d;
+  --ch-5-rgb: 66, 206, 125;
+
+  --shadow-panel: 0 18px 42px rgba(0, 0, 0, 0.24);
   --header-h: 78px;
   --radius: 16px;
+}
+
+/* Daylight Academy Paper (Light Mode — warm paper + deep navy ink) */
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f2efe9;
+  --panel: #faf8f4;
+  --panel-2: #ebe6dc;
+  --panel-deep: #ece7dd;
+  --reading-bg: #fdfbf7;
+  --header-bg: rgba(242, 239, 233, 0.92);
+  --footer-bg: #e6e0d5;
+  --stage-bg: #f5f2eb;
+  --stage-node: #ffffff;
+  --code-bg: #182234;
+  --code-text: #dce6f5;
+  --backdrop: rgba(26, 34, 50, 0.55);
+  --line: #d6cfc2;
+  --line-strong: #b4aa98;
+  --track: #dcd6ca;
+  --text: #1a2232;
+  --text-body: #2d394d;
+  --muted: #596579;
+  --placeholder: #7c8799;
+
+  --yellow: #eab938;
+  --yellow-fg: #946500;
+  --yellow-on: #1a2232;
+  --yellow-soft: rgba(234, 185, 56, 0.18);
+  --yellow-border: rgba(181, 127, 0, 0.36);
+  --yellow-shadow: #9c7615;
+
+  --blue: #2563eb;
+  --blue-fg: #1d4ed8;
+  --blue-on: #ffffff;
+  --blue-soft: rgba(37, 99, 235, 0.1);
+  --blue-border: rgba(37, 99, 235, 0.32);
+
+  --green: #169959;
+  --green-fg: #117a46;
+  --green-on: #ffffff;
+  --green-soft: rgba(22, 153, 89, 0.11);
+  --green-border: rgba(22, 153, 89, 0.34);
+  --green-shadow: #0f5c35;
+
+  --red: #dc2626;
+  --red-fg: #b91c1c;
+  --red-on: #ffffff;
+  --red-soft: rgba(220, 38, 38, 0.1);
+  --red-border: rgba(220, 38, 38, 0.32);
+  --red-shadow: #881c1c;
+
+  --ch-1: #b57f00;
+  --ch-1-rgb: 181, 127, 0;
+  --ch-2: #1d64d8;
+  --ch-2-rgb: 29, 100, 216;
+  --ch-3: #0f8776;
+  --ch-3-rgb: 15, 135, 118;
+  --ch-4: #cc3434;
+  --ch-4-rgb: 204, 52, 52;
+  --ch-5: #168449;
+  --ch-5-rgb: 22, 132, 73;
+
+  --shadow-panel: 0 2px 6px rgba(26, 34, 50, 0.05), 0 12px 28px rgba(26, 34, 50, 0.06);
 }
 
 * {
@@ -32,26 +144,31 @@ body {
   margin: 0;
   color: var(--text);
   background:
-    radial-gradient(circle at 12% 8%, rgba(244, 211, 94, 0.08), transparent 28rem),
-    radial-gradient(circle at 88% 32%, rgba(77, 163, 255, 0.08), transparent 32rem),
+    radial-gradient(circle at 12% 8%, rgba(var(--ch-1-rgb), 0.07), transparent 28rem),
+    radial-gradient(circle at 88% 32%, rgba(var(--ch-2-rgb), 0.07), transparent 32rem),
     var(--bg);
   font-family: "Be Vietnam Pro", "Segoe UI", sans-serif;
   line-height: 1.65;
   overflow-x: hidden;
+  transition: background-color 180ms ease, color 180ms ease;
 }
 
-/* Subtle film-grain overlay extracted from css-dc-academy.html */
+/* Subtle film-grain overlay (Dark mode only, disabled in Calm Mode & Light Mode) */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 200;
-  opacity: 0.048;
+  opacity: 0.036;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.7'/%3E%3C/svg%3E");
 }
 
-/* Long-session Calm Mode overrides */
+[data-theme="light"] body::before {
+  content: none;
+}
+
+/* Long-session Calm Mode overrides (both Dark and Light) */
 [data-calm="true"] body::before {
   content: none !important;
 }
@@ -61,14 +178,23 @@ body::before {
 }
 
 [data-calm="true"] body {
-  background: #0c121e;
-  --text: #e6ecf5;
-  --text-body: #c5d1e2;
+  background: var(--bg);
+}
+
+[data-theme="dark"][data-calm="true"] body {
+  background: #131b29;
+  --text: #dce3ee;
+  --text-body: #c0ccdd;
+}
+
+[data-theme="light"][data-calm="true"] body {
+  background: #f2efe9;
 }
 
 [data-calm="true"] .ticker-track,
 [data-calm="true"] .poster-float,
 [data-calm="true"] .live-dot,
+[data-calm="true"] .net-flow-dash,
 [data-calm="true"] .boss-arena.shake,
 [data-calm="true"] .boss-portrait-hit,
 [data-calm="true"] .boss-portrait-attack,
@@ -94,7 +220,7 @@ body::before {
 }
 
 ::selection {
-  color: #080c16;
+  color: var(--yellow-on);
   background: var(--yellow);
 }
 
@@ -104,7 +230,7 @@ input:focus-visible,
 textarea:focus-visible,
 select:focus-visible,
 [role="button"]:focus-visible {
-  outline: 3px solid var(--yellow);
+  outline: 3px solid var(--yellow-fg);
   outline-offset: 3px;
 }
 
@@ -128,7 +254,7 @@ select:focus-visible,
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--yellow);
+  color: var(--yellow-fg);
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.18em;
@@ -149,7 +275,7 @@ select:focus-visible,
 
 /* Hard-offset comic buttons */
 .btn-comic-primary {
-  color: #080c16;
+  color: var(--yellow-on);
   background: var(--yellow);
   border: 2px solid var(--yellow);
   box-shadow: 5px 5px 0 var(--yellow-shadow);
@@ -166,15 +292,15 @@ select:focus-visible,
   box-shadow: 3px 3px 0 var(--yellow-shadow);
 }
 
-/* Tilted Hero Poster */
+/* Tilted Hero Poster (keeps collectible dark poster aesthetic in both themes) */
 .hero-poster {
   position: relative;
   overflow: hidden;
   border: 2px solid var(--yellow);
   background:
-    radial-gradient(circle at 50% 30%, rgba(244, 211, 94, 0.28), transparent 44%),
-    linear-gradient(150deg, #111827 0%, #080c16 74%);
-  box-shadow: 16px 16px 0 rgba(244, 211, 94, 0.09), 0 32px 72px rgba(0, 0, 0, 0.45);
+    radial-gradient(circle at 50% 30%, rgba(232, 198, 90, 0.24), transparent 44%),
+    linear-gradient(150deg, #162032 0%, #0e1523 74%);
+  box-shadow: 16px 16px 0 rgba(var(--ch-1-rgb), 0.12), 0 24px 56px rgba(0, 0, 0, 0.3);
   transform: rotate(1.5deg);
 }
 
@@ -183,7 +309,7 @@ select:focus-visible,
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: radial-gradient(rgba(244, 211, 94, 0.22) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(232, 198, 90, 0.2) 1px, transparent 1px);
   background-size: 10px 10px;
   mask-image: linear-gradient(to bottom, black, transparent 78%);
 }
@@ -194,18 +320,18 @@ select:focus-visible,
 
 .code-float {
   padding: 9px 13px;
-  color: #cdd9ed;
-  background: #0b1220;
-  border: 1px solid #33415a;
-  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.38);
+  color: #dce6f5;
+  background: #131c2c;
+  border: 1px solid #354662;
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.28);
   font-size: 11px;
 }
 
 /* Marquee Ticker */
 .ticker {
   overflow: hidden;
-  border-block: 1px solid rgba(244, 211, 94, 0.2);
-  background: rgba(244, 211, 94, 0.045);
+  border-block: 1px solid var(--yellow-border);
+  background: var(--yellow-soft);
 }
 
 .ticker-track {
@@ -220,7 +346,7 @@ select:focus-visible,
   align-items: center;
   gap: 24px;
   padding-right: 24px;
-  color: #d6c47b;
+  color: var(--yellow-fg);
   font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.18em;
@@ -232,7 +358,7 @@ select:focus-visible,
   content: "";
   width: 5px;
   height: 5px;
-  background: var(--yellow);
+  background: var(--yellow-fg);
   transform: rotate(45deg);
 }
 
@@ -242,15 +368,15 @@ select:focus-visible,
   overflow: hidden;
   border: 1px solid rgba(var(--hero-rgb), 0.34);
   background:
-    radial-gradient(circle at 85% 10%, rgba(var(--hero-rgb), 0.16), transparent 44%),
-    linear-gradient(145deg, rgba(var(--hero-rgb), 0.07), #0d1421 72%);
+    radial-gradient(circle at 85% 10%, rgba(var(--hero-rgb), 0.14), transparent 44%),
+    linear-gradient(145deg, rgba(var(--hero-rgb), 0.06), var(--panel) 72%);
   transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
 }
 
 .mission-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-4px);
   border-color: var(--hero);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  box-shadow: var(--shadow-panel);
 }
 
 .mission-card::after {
@@ -260,65 +386,89 @@ select:focus-visible,
   height: 120px;
   right: -46px;
   bottom: -48px;
-  border: 20px solid rgba(var(--hero-rgb), 0.07);
+  border: 20px solid rgba(var(--hero-rgb), 0.08);
   border-radius: 50%;
   pointer-events: none;
 }
 
-/* Inspector Grid & Nested Boxes */
+/* Networking Visualizer Stage & Schematics */
 .inspector-stage {
-  background-color: #070c15;
+  background-color: var(--stage-bg);
   background-image:
-    linear-gradient(rgba(88, 110, 145, 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(88, 110, 145, 0.06) 1px, transparent 1px);
+    linear-gradient(rgba(110, 130, 160, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(110, 130, 160, 0.08) 1px, transparent 1px);
   background-size: 24px 24px;
 }
 
-.inspect-layer {
-  position: relative;
-  padding: 36px 16px 16px;
-  border: 2px solid var(--layer);
-  border-radius: 6px;
-  background: color-mix(in srgb, var(--layer) 5%, transparent);
-  transition: background 0.18s, box-shadow 0.18s;
+.net-stage-btn {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  transition: border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
 }
 
-.inspect-layer.is-active,
-.inspect-layer:hover {
-  background: color-mix(in srgb, var(--layer) 12%, transparent);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--layer) 22%, transparent);
+.net-stage-btn:hover {
+  border-color: rgba(var(--hero-rgb), 0.65);
+  background: color-mix(in srgb, var(--hero, var(--yellow)) 8%, var(--panel));
+}
+
+.net-stage-btn.is-active {
+  border-color: var(--hero, var(--yellow));
+  background: color-mix(in srgb, var(--hero, var(--yellow)) 13%, var(--panel));
+  box-shadow: 0 0 0 2px rgba(var(--hero-rgb), 0.24);
+}
+
+.net-wire-seg {
+  border: 1px solid var(--line-strong);
+  background: var(--panel-deep);
+  transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+}
+
+.net-wire-seg.is-active {
+  border-color: var(--hero, var(--yellow));
+  background: color-mix(in srgb, var(--hero, var(--yellow)) 18%, var(--panel-deep));
+  transform: translateY(-2px);
+}
+
+.net-flow-dash {
+  stroke-dasharray: 6 5;
+  animation: netFlowDash 1.4s linear infinite;
+}
+
+@keyframes netFlowDash {
+  to { stroke-dashoffset: -22; }
 }
 
 .live-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--hero, var(--yellow));
-  box-shadow: 0 0 0 5px rgba(var(--hero-rgb, 244, 211, 94), 0.12);
+  background: var(--hero, var(--yellow-fg));
+  box-shadow: 0 0 0 5px rgba(var(--hero-rgb, var(--ch-1-rgb)), 0.14);
   animation: livePulse 2s ease-in-out infinite;
 }
 
-/* Boss Arena */
+/* Boss Arena (outer shell adapts to theme; .boss-side stays dramatic dark stage) */
 .boss-arena {
   position: relative;
   overflow: hidden;
-  border: 1px solid rgba(239, 68, 68, 0.34);
+  border: 1px solid var(--red-border);
   border-radius: 18px;
-  background: rgba(8, 12, 22, 0.92);
-  box-shadow: 0 32px 84px rgba(0, 0, 0, 0.45);
+  background: var(--panel);
+  box-shadow: var(--shadow-panel);
 }
 
 .boss-side {
   position: relative;
+  color: #f3f6fc;
   background:
     radial-gradient(circle at 50% 30%, rgba(239, 68, 68, 0.18), transparent 55%),
-    linear-gradient(180deg, #18101b, #0a0d16);
+    linear-gradient(180deg, #1b1322, #101521);
 }
 
 .boss-side.is-enraged {
   background:
-    radial-gradient(circle at 50% 30%, rgba(239, 68, 68, 0.32), transparent 58%),
-    linear-gradient(180deg, #24101d, #0a0d16);
+    radial-gradient(circle at 50% 30%, rgba(239, 68, 68, 0.34), transparent 58%),
+    linear-gradient(180deg, #291322, #101521);
 }
 
 .boss-health {
@@ -492,5 +642,5 @@ select:focus-visible,
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--yellow);
+  background: var(--yellow-fg);
 }

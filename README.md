@@ -54,7 +54,7 @@ Chi tiết đầy đủ và các câu hỏi mở xem tại [`docs/technical-know
 |---|---|---|---|
 | **Demo V1** | [`Design/demo-v1/`](./Design/demo-v1) | *Dark Command Cobalt* — Sidebar cố định, TopNav, Breadcrumbs, dashboard đa khối | `5173` |
 | **Demo V2** | [`Design/demo-v2/`](./Design/demo-v2) | *Focus Studio* — Tối giản widget, dùng `SlideDrawer`, hỗ trợ Sáng (*Warm Paper*) / Tối (*Warm Charcoal*) | `5174` |
-| **Demo V3** | [`Design/demo-v3/`](./Design/demo-v3) | *Cyber Academy* — Trích xuất từ [`Design/css-dc-academy.html`](./Design/css-dc-academy.html), có Network Inspector 4 lớp, Boss Arena và chế độ **Dịu mắt** | `5175` |
+| **Demo V3** | [`Design/demo-v3/`](./Design/demo-v3) | *Cyber Academy* — Trích xuất từ [`Design/css-dc-academy.html`](./Design/css-dc-academy.html), có Network Lab trực quan theo từng chương, Boss Arena, chuyển đổi **Sáng / Tối** và chế độ **Dịu mắt** | `5175` |
 
 ---
 

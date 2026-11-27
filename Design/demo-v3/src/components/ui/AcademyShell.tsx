@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Eye, LogIn, LogOut, Menu, RotateCcw, Shield, Sparkles, X } from 'lucide-react';
+import { Eye, LogIn, LogOut, Menu, Moon, RotateCcw, Shield, Sparkles, Sun, X } from 'lucide-react';
 import { useApp } from '../../store/AppContext';
 import { Role, RoutePage } from '../../types';
 import { Badge } from './Badge';
@@ -23,6 +23,8 @@ const ROLE_META: Record<Role, { label: string; tone: 'muted' | 'yellow' | 'green
 export const AcademyShell: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const {
     state,
+    theme,
+    toggleTheme,
     calmMode,
     toggleCalmMode,
     page,
@@ -92,20 +94,20 @@ export const AcademyShell: React.FC<{ children: React.ReactNode }> = ({ children
   return (
     <div className="min-h-screen flex flex-col">
       {/* Sticky 78px blurred header matching css-dc-academy.html */}
-      <header className="sticky top-0 z-[100] h-[78px] border-b border-[#98a7bd]/15 bg-[#080c16]/88 backdrop-blur-lg">
-        <div className="w-[min(1240px,calc(100%-32px))] sm:w-[min(1240px,calc(100%-48px))] h-full mx-auto flex items-center gap-4 sm:gap-6">
+      <header className="sticky top-0 z-[100] h-[78px] border-b border-[var(--line)] bg-[var(--header-bg)] backdrop-blur-lg transition-colors">
+        <div className="w-[min(1240px,calc(100%-32px))] sm:w-[min(1240px,calc(100%-48px))] h-full mx-auto flex items-center gap-3 sm:gap-5">
           {/* Slanted Brand Mark */}
           <button
             type="button"
             onClick={() => handleNav(activeNav[0].id)}
             className="inline-flex items-center gap-3 shrink-0 cursor-pointer text-left"
           >
-            <span className="w-10 h-10 bg-[#f4d35e] text-[#080c16] brand-mark-slanted grid place-items-center">
+            <span className="w-10 h-10 bg-[var(--yellow)] text-[var(--yellow-on)] brand-mark-slanted grid place-items-center">
               <Shield className="w-5 h-5" />
             </span>
-            <span className="font-extrabold leading-none tracking-[0.08em] text-[15px] sm:text-[17px] text-[#f3f6fc]">
-              NETWIZ<span className="text-[#f4d35e]">//</span>HERO
-              <small className="block mt-1.5 text-[#98a7bd] text-[8px] sm:text-[9px] tracking-[0.28em] font-bold">
+            <span className="font-extrabold leading-none tracking-[0.08em] text-[15px] sm:text-[17px] text-[var(--text)]">
+              NETWIZ<span className="text-[var(--yellow-fg)]">//</span>HERO
+              <small className="block mt-1.5 text-[var(--muted)] text-[8px] sm:text-[9px] tracking-[0.28em] font-bold">
                 ACADEMY V3
               </small>
             </span>
@@ -122,13 +124,13 @@ export const AcademyShell: React.FC<{ children: React.ReactNode }> = ({ children
                   onClick={() => handleNav(item.id)}
                   className={`px-3.5 py-2.5 rounded-lg text-[13px] font-bold transition-colors inline-flex items-center gap-1.5 cursor-pointer ${
                     active
-                      ? 'text-[#f4d35e] bg-[#f4d35e]/[0.09]'
-                      : 'text-[#c8d2e2] hover:text-[#f4d35e] hover:bg-[#f4d35e]/[0.06]'
+                      ? 'text-[var(--yellow-fg)] bg-[var(--yellow-soft)]'
+                      : 'text-[var(--text-body)] hover:text-[var(--yellow-fg)] hover:bg-[var(--yellow-soft)]'
                   }`}
                 >
                   <span>{item.label}</span>
                   {item.badge !== undefined && (
-                    <span className="px-1.5 py-0.5 text-[10px] mono rounded-full bg-[#ef4444] text-white">
+                    <span className="px-1.5 py-0.5 text-[10px] mono rounded-full bg-[var(--red)] text-white">
                       {item.badge}
                     </span>
                   )}
@@ -138,41 +140,52 @@ export const AcademyShell: React.FC<{ children: React.ReactNode }> = ({ children
           </nav>
 
           {/* Header Course Progress Meter */}
-          <div className="hidden sm:block w-[124px] shrink-0 lg:ml-0 ml-auto" aria-label="Tiến độ Boss">
-            <div className="flex justify-between mb-1.5 text-[#98a7bd] text-[10px] font-extrabold tracking-[0.1em] uppercase">
+          <div className="hidden sm:block w-[116px] shrink-0 lg:ml-0 ml-auto" aria-label="Tiến độ Boss">
+            <div className="flex justify-between mb-1.5 text-[var(--muted)] text-[10px] font-extrabold tracking-[0.1em] uppercase">
               <span>Boss</span>
-              <strong className="text-[#f3f6fc] mono">
+              <strong className="text-[var(--text)] mono">
                 {defeatedCount} / {totalChapters}
               </strong>
             </div>
-            <div className="h-[5px] overflow-hidden rounded-full bg-[#253047]">
+            <div className="h-[5px] overflow-hidden rounded-full bg-[var(--track)]">
               <div
-                className="h-full rounded-full bg-[#f4d35e] transition-all duration-500"
+                className="h-full rounded-full bg-[var(--yellow)] transition-all duration-500"
                 style={{ width: `${headerPct}%` }}
               />
             </div>
           </div>
 
-          {/* Right Controls: Calm Mode + Role Switch + Auth */}
+          {/* Right Controls: Theme + Calm Mode + Role Switch + Auth */}
           <div className="flex items-center gap-2 shrink-0 ml-auto sm:ml-0">
+            <button
+              type="button"
+              onClick={toggleTheme}
+              title={theme === 'dark' ? 'Chuyển sang Giao diện Sáng' : 'Chuyển sang Giao diện Tối'}
+              aria-label={theme === 'dark' ? 'Chuyển sang Giao diện Sáng' : 'Chuyển sang Giao diện Tối'}
+              className="h-9 px-2.5 rounded-lg border border-[var(--line)] bg-[var(--panel)] text-[var(--text-body)] hover:border-[var(--yellow-fg)] hover:text-[var(--yellow-fg)] text-[11px] font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors"
+            >
+              {theme === 'dark' ? <Sun className="w-3.5 h-3.5 text-[var(--yellow-fg)]" /> : <Moon className="w-3.5 h-3.5 text-[var(--blue-fg)]" />}
+              <span className="hidden xl:inline">{theme === 'dark' ? 'Sáng' : 'Tối'}</span>
+            </button>
+
             <button
               type="button"
               onClick={toggleCalmMode}
               title="Giảm hiệu ứng động & film grain cho đọc lâu"
               className={`h-9 px-2.5 rounded-lg border text-[11px] font-bold inline-flex items-center gap-1.5 cursor-pointer transition-colors ${
                 calmMode
-                  ? 'border-[#45d483]/50 bg-[#45d483]/12 text-[#65e09a]'
-                  : 'border-[#26334a] bg-[#0e1523] text-[#c8d2e2] hover:border-[#f4d35e]'
+                  ? 'border-[var(--green-border)] bg-[var(--green-soft)] text-[var(--green-fg)]'
+                  : 'border-[var(--line)] bg-[var(--panel)] text-[var(--text-body)] hover:border-[var(--yellow-fg)]'
               }`}
             >
-              {calmMode ? <Eye className="w-3.5 h-3.5" /> : <Sparkles className="w-3.5 h-3.5 text-[#f4d35e]" />}
+              {calmMode ? <Eye className="w-3.5 h-3.5" /> : <Sparkles className="w-3.5 h-3.5 text-[var(--yellow-fg)]" />}
               <span className="hidden sm:inline">{calmMode ? 'Dịu mắt' : 'Hiệu ứng'}</span>
             </button>
 
             {state.role === 'lecturer' && (
               <Dropdown
                 trigger={
-                  <span className="hidden sm:inline-flex px-2.5 py-1.5 rounded-lg border border-[#45d483]/40 bg-[#45d483]/10 text-[#65e09a] text-[11px] font-bold">
+                  <span className="hidden sm:inline-flex px-2.5 py-1.5 rounded-lg border border-[var(--green-border)] bg-[var(--green-soft)] text-[var(--green-fg)] text-[11px] font-bold">
                     {currentUser?.name.split(' ').slice(-2).join(' ')}
                   </span>
                 }
@@ -187,7 +200,7 @@ export const AcademyShell: React.FC<{ children: React.ReactNode }> = ({ children
 
             <Dropdown
               trigger={
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[#26334a] bg-[#0e1523] text-[11px] font-bold text-[#f3f6fc] hover:border-[#f4d35e]">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-[var(--line)] bg-[var(--panel)] text-[11px] font-bold text-[var(--text)] hover:border-[var(--yellow-fg)]">
                   <Badge tone={ROLE_META[state.role].tone}>{ROLE_META[state.role].label}</Badge>
                 </span>
               }
@@ -213,7 +226,7 @@ export const AcademyShell: React.FC<{ children: React.ReactNode }> = ({ children
             <button
               type="button"
               onClick={() => setMobileMenuOpen((v) => !v)}
-              className="lg:hidden p-2 rounded-lg text-[#c8d2e2] hover:text-[#f4d35e] cursor-pointer"
+              className="lg:hidden p-2 rounded-lg text-[var(--text-body)] hover:text-[var(--yellow-fg)] cursor-pointer"
               aria-label="Mở menu"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -223,14 +236,14 @@ export const AcademyShell: React.FC<{ children: React.ReactNode }> = ({ children
 
         {/* Mobile Nav */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-[#0e1523] border-b border-[#26334a] px-4 py-3 space-y-1 shadow-2xl">
+          <div className="lg:hidden bg-[var(--panel)] border-b border-[var(--line)] px-4 py-3 space-y-1 shadow-2xl">
             {activeNav.map((item) => (
               <button
                 key={item.id}
                 type="button"
                 onClick={() => handleNav(item.id)}
                 className={`w-full px-3.5 py-2.5 rounded-lg text-left text-xs font-extrabold uppercase tracking-wider flex items-center justify-between cursor-pointer ${
-                  page === item.id ? 'bg-[#f4d35e] text-[#080c16]' : 'text-[#c8d2e2] hover:bg-[#121c2d]'
+                  page === item.id ? 'bg-[var(--yellow)] text-[var(--yellow-on)]' : 'text-[var(--text-body)] hover:bg-[var(--panel-2)]'
                 }`}
               >
                 <span>{item.label}</span>
@@ -247,13 +260,13 @@ export const AcademyShell: React.FC<{ children: React.ReactNode }> = ({ children
       </main>
 
       {/* Footer matching css-dc-academy.html */}
-      <footer className="py-7 border-t border-[#222d41] bg-[#070b13]">
+      <footer className="py-7 border-t border-[var(--line)] bg-[var(--footer-bg)] transition-colors">
         <div className="w-[min(1240px,calc(100%-48px))] mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <div className="text-xs font-extrabold tracking-[0.1em]">
-            NETWIZ<span className="text-[#f4d35e]">//</span>SUPERHERO ACADEMY · DEMO V3
+            NETWIZ<span className="text-[var(--yellow-fg)]">//</span>SUPERHERO ACADEMY · DEMO V3
           </div>
-          <p className="m-0 text-[#98a7bd] text-xs">
-            Phong cách trích xuất từ css-dc-academy.html · Chủ đề Computer Networking (5 Chương, 5 Boss).
+          <p className="m-0 text-[var(--muted)] text-xs">
+            Phong cách Cyber Academy · Chủ đề Computer Networking (5 Chương, 5 Boss) · Hỗ trợ Sáng/Tối & Dịu mắt.
           </p>
         </div>
       </footer>

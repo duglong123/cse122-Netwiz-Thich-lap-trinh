@@ -35,15 +35,15 @@ export const ClassroomManagement: React.FC = () => {
       header: 'Sinh viên',
       render: (s) => (
         <div>
-          <div className="font-bold text-[#f3f6fc]">{s.name}</div>
-          <div className="text-xs mono text-[#98a7bd]">{s.studentCode} · {s.email}</div>
+          <div className="font-bold text-[var(--text)]">{s.name}</div>
+          <div className="text-xs mono text-[var(--muted)]">{s.studentCode} · {s.email}</div>
         </div>
       ),
     },
     {
       key: 'progress',
       header: 'Tiến độ',
-      render: (s) => <div className="w-36"><ProgressBar value={s.progressPercent} size="sm" color={s.progressPercent >= 80 ? '#45d483' : '#f4d35e'} /></div>,
+      render: (s) => <div className="w-36"><ProgressBar value={s.progressPercent} size="sm" color={s.progressPercent >= 80 ? 'var(--green)' : 'var(--yellow)'} /></div>,
     },
     {
       key: 'boss',
@@ -67,8 +67,8 @@ export const ClassroomManagement: React.FC = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <Eyebrow color="#45d483">Classroom Ops</Eyebrow>
-          <h1 className="display-font text-4xl font-extrabold text-[#f3f6fc] mt-2">Quản lý lớp học</h1>
+          <Eyebrow color="var(--green-fg)">Classroom Ops</Eyebrow>
+          <h1 className="display-font text-4xl font-extrabold text-[var(--text)] mt-2">Quản lý lớp học</h1>
         </div>
         <Button
           leftIcon={<Plus className="w-4 h-4" />}
@@ -82,17 +82,17 @@ export const ClassroomManagement: React.FC = () => {
         {state.classrooms.map((cls) => (
           <Panel
             key={cls.id}
-            accent={activeClass?.id === cls.id ? '#f4d35e' : undefined}
+            accent={activeClass?.id === cls.id ? 'var(--yellow)' : undefined}
             onClick={() => setSelectedClassId(cls.id)}
             className="cursor-pointer"
           >
             <PanelContent className="p-5 space-y-2.5">
               <div className="flex items-center justify-between">
                 <Badge tone="yellow">{cls.code}</Badge>
-                <span className="text-xs mono text-[#45d483]">Mã: {cls.joinCode}</span>
+                <span className="text-xs mono text-[var(--green-fg)]">Mã: {cls.joinCode}</span>
               </div>
-              <div className="font-bold text-[#f3f6fc]">{cls.name}</div>
-              <div className="flex items-center justify-between text-xs text-[#98a7bd] pt-2 border-t border-[#26334a]">
+              <div className="font-bold text-[var(--text)]">{cls.name}</div>
+              <div className="flex items-center justify-between text-xs text-[var(--muted)] pt-2 border-t border-[var(--line)]">
                 <span>{cls.students.length} sinh viên</span>
                 <button
                   type="button"
@@ -104,7 +104,7 @@ export const ClassroomManagement: React.FC = () => {
                     setClsSemester(cls.semester);
                     setClassModalOpen(true);
                   }}
-                  className="text-[#f4d35e] inline-flex items-center gap-1 cursor-pointer"
+                  className="text-[var(--yellow-fg)] inline-flex items-center gap-1 cursor-pointer"
                 >
                   <Edit3 className="w-3 h-3" /> Sửa
                 </button>
@@ -119,12 +119,12 @@ export const ClassroomManagement: React.FC = () => {
           <PanelHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
               <PanelTitle>{activeClass.name}</PanelTitle>
-              <div className="text-xs text-[#98a7bd] mt-1 flex items-center gap-3">
-                <span>Mã tham gia: <strong className="mono text-[#45d483]">{activeClass.joinCode}</strong></span>
+              <div className="text-xs text-[var(--muted)] mt-1 flex items-center gap-3">
+                <span>Mã tham gia: <strong className="mono text-[var(--green-fg)]">{activeClass.joinCode}</strong></span>
                 <button
                   type="button"
                   onClick={() => { navigator.clipboard?.writeText(activeClass.joinCode).catch(() => {}); addToast({ type: 'success', title: `Đã sao chép ${activeClass.joinCode}` }); }}
-                  className="text-[#f4d35e] inline-flex items-center gap-1 cursor-pointer"
+                  className="text-[var(--yellow-fg)] inline-flex items-center gap-1 cursor-pointer"
                 >
                   <Copy className="w-3 h-3" /> Copy
                 </button>
@@ -191,19 +191,19 @@ export const ClassroomManagement: React.FC = () => {
         {detailStudent && (
           <div className="space-y-4">
             <div className="grid grid-cols-3 gap-3 text-center">
-              <div className="p-3 rounded-xl bg-[#0a111e] border border-[#26334a]"><div className="text-xs text-[#98a7bd]">Tiến độ</div><div className="display-font text-2xl text-[#f4d35e]">{detailStudent.progressPercent}%</div></div>
-              <div className="p-3 rounded-xl bg-[#0a111e] border border-[#26334a]"><div className="text-xs text-[#98a7bd]">Boss</div><div className="display-font text-2xl text-[#45d483]">{detailStudent.bossesDefeated}/5</div></div>
-              <div className="p-3 rounded-xl bg-[#0a111e] border border-[#26334a]"><div className="text-xs text-[#98a7bd]">Độ chính xác</div><div className="display-font text-2xl text-[#4da3ff]">{detailStudent.accuracyRate}%</div></div>
+              <div className="p-3 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)]"><div className="text-xs text-[var(--muted)]">Tiến độ</div><div className="display-font text-2xl text-[var(--yellow-fg)]">{detailStudent.progressPercent}%</div></div>
+              <div className="p-3 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)]"><div className="text-xs text-[var(--muted)]">Boss</div><div className="display-font text-2xl text-[var(--green-fg)]">{detailStudent.bossesDefeated}/5</div></div>
+              <div className="p-3 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)]"><div className="text-xs text-[var(--muted)]">Độ chính xác</div><div className="display-font text-2xl text-[var(--blue-fg)]">{detailStudent.accuracyRate}%</div></div>
             </div>
             <div className="space-y-2">
               {detailStudent.learningHistory.map((h) => (
-                <div key={h.id} className="p-3 rounded-lg bg-[#0a111e] border border-[#26334a] flex justify-between text-xs">
-                  <div><strong className="text-[#f3f6fc]">{h.action}</strong><div className="text-[#98a7bd]">{h.detail}</div></div>
-                  <span className="mono text-[#98a7bd]">{h.timestamp}</span>
+                <div key={h.id} className="p-3 rounded-lg bg-[var(--panel-deep)] border border-[var(--line)] flex justify-between text-xs">
+                  <div><strong className="text-[var(--text)]">{h.action}</strong><div className="text-[var(--muted)]">{h.detail}</div></div>
+                  <span className="mono text-[var(--muted)]">{h.timestamp}</span>
                 </div>
               ))}
             </div>
-            <div className="p-3 rounded-lg bg-[#45d483]/10 border border-[#45d483]/30 text-xs text-[#65e09a] flex items-center gap-2">
+            <div className="p-3 rounded-lg bg-[var(--green-soft)] border border-[var(--green-border)] text-xs text-[var(--green-fg)] flex items-center gap-2">
               <ShieldCheck className="w-4 h-4" /> Ghi chú cá nhân của sinh viên được bảo mật, giảng viên không thể xem.
             </div>
           </div>

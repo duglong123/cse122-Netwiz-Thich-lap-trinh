@@ -41,32 +41,32 @@ export const Modal: React.FC<ModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#04070d]/80 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[var(--backdrop)] backdrop-blur-sm"
       role="dialog"
       aria-modal="true"
       onClick={onClose}
     >
       <div
-        className={`w-full ${modalSizes[size]} rounded-2xl bg-[#0e1523] border-2 border-[#3b4962] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]`}
+        className={`w-full ${modalSizes[size]} rounded-2xl bg-[var(--panel)] border-2 border-[var(--line-strong)] shadow-2xl overflow-hidden flex flex-col max-h-[90vh]`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex items-start justify-between gap-4 px-6 py-4 border-b border-[#26334a] bg-[#101929]">
+        <div className="flex items-start justify-between gap-4 px-6 py-4 border-b border-[var(--line)] bg-[var(--panel-deep)]">
           <div>
-            <h2 className="display-font text-xl font-extrabold text-[#f3f6fc]">{title}</h2>
-            {description && <p className="text-xs text-[#98a7bd] mt-1">{description}</p>}
+            <h2 className="display-font text-xl font-extrabold text-[var(--text)]">{title}</h2>
+            {description && <p className="text-xs text-[var(--muted)] mt-1">{description}</p>}
           </div>
           <button
             type="button"
             onClick={onClose}
             aria-label="Đóng hộp thoại"
-            className="p-1.5 rounded-lg text-[#98a7bd] hover:text-[#f4d35e] hover:bg-[#1a2538] cursor-pointer"
+            className="p-1.5 rounded-lg text-[var(--muted)] hover:text-[var(--yellow-fg)] hover:bg-[var(--panel-2)] cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
         <div className="p-6 overflow-y-auto">{children}</div>
         {footer && (
-          <div className="px-6 py-4 border-t border-[#26334a] bg-[#0a111e] flex items-center justify-end gap-3">
+          <div className="px-6 py-4 border-t border-[var(--line)] bg-[var(--panel-deep)] flex items-center justify-end gap-3">
             {footer}
           </div>
         )}
@@ -121,12 +121,12 @@ export const ConfirmDialog: React.FC<ConfirmDialogProps> = ({
     <div className="flex items-start gap-3">
       <div
         className={`p-2 rounded-lg shrink-0 ${
-          tone === 'danger' ? 'bg-[#ef4444]/15 text-[#ff7b7b]' : 'bg-[#f4d35e]/15 text-[#f4d35e]'
+          tone === 'danger' ? 'bg-[var(--red-soft)] text-[var(--red-fg)]' : 'bg-[var(--yellow-soft)] text-[var(--yellow-fg)]'
         }`}
       >
         <AlertTriangle className="w-5 h-5" />
       </div>
-      <p className="text-sm text-[#c5d1e2] leading-relaxed">{message}</p>
+      <p className="text-sm text-[var(--text-body)] leading-relaxed">{message}</p>
     </div>
   </Modal>
 );

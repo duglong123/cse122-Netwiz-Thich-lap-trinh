@@ -308,10 +308,10 @@ export const BossBattle: React.FC = () => {
   const runAccuracy = totalAnswered > 0 ? Math.round((passedIdsThisRun.length / totalAnswered) * 100) : 0;
   const rankInfo =
     runAccuracy === 100 && heroHp >= state.hero.maxHp * 0.75
-      ? { label: 'Hạng S // Hoàn hảo', tone: '#f4d35e' }
+      ? { label: 'Hạng S // Hoàn hảo', tone: 'var(--yellow-fg)' }
       : runAccuracy >= 75
-        ? { label: 'Hạng A // Anh hùng', tone: '#4da3ff' }
-        : { label: 'Hạng B // Sinh tồn', tone: '#45d483' };
+        ? { label: 'Hạng A // Anh hùng', tone: 'var(--blue-fg)' }
+        : { label: 'Hạng B // Sinh tồn', tone: 'var(--green-fg)' };
 
   return (
     <div className="space-y-8">
@@ -320,7 +320,7 @@ export const BossBattle: React.FC = () => {
           <Eyebrow color={isFinalBoss ? '#c084fc' : '#ff7373'}>
             {isFinalBoss ? 'Final Mission // Cyber Citadel' : `Chapter ${chapter.order} Boss Arena`}
           </Eyebrow>
-          <h1 className="display-font text-4xl sm:text-6xl font-extrabold text-[#f3f6fc] mt-2 leading-[1.06]">
+          <h1 className="display-font text-4xl sm:text-6xl font-extrabold text-[var(--text)] mt-2 leading-[1.06]">
             Đối đầu {boss.name}
           </h1>
           <p className="text-sm text-[#a8b5c9] mt-2">
@@ -371,7 +371,7 @@ export const BossBattle: React.FC = () => {
 
         {/* Left Boss Side (flash scoped to Boss Side so quiz & explanation text stays crystal clear!) */}
         <div
-          className={`boss-side p-7 flex flex-col items-center justify-between border-b lg:border-b-0 lg:border-r border-[#ef4444]/25 ${
+          className={`boss-side p-7 flex flex-col items-center justify-between border-b lg:border-b-0 lg:border-r border-[var(--red-border)] ${
             isBossEnraged ? 'is-enraged' : ''
           }`}
         >
@@ -390,15 +390,15 @@ export const BossBattle: React.FC = () => {
           <div className="relative my-4 flex items-center justify-center">
             <div
               className={`w-64 h-64 rounded-full border flex items-center justify-center ${
-                isBossEnraged ? 'enrage-ring' : 'border-[#ef4444]/20'
+                isBossEnraged ? 'enrage-ring' : 'border-[var(--red)]/20'
               }`}
             >
-              <div className="w-52 h-52 rounded-full border border-[#ef4444]/15 flex items-center justify-center">
+              <div className="w-52 h-52 rounded-full border border-[var(--red)]/15 flex items-center justify-center">
                 <img
                   src={boss.avatar}
                   alt={boss.name}
                   className={`w-44 h-44 rounded-2xl object-cover border-2 shadow-[0_18px_36px_rgba(0,0,0,0.55)] ${
-                    isFinalBoss ? 'border-[#c084fc]/70' : 'border-[#ef4444]/60'
+                    isFinalBoss ? 'border-[#c084fc]/70' : 'border-[var(--red)]/60'
                   } ${
                     phase === 'victory'
                       ? 'boss-portrait-defeated'
@@ -424,7 +424,7 @@ export const BossBattle: React.FC = () => {
 
           <div className="relative z-10 w-full text-center space-y-3">
             <div>
-              <h2 className="display-font text-3xl font-extrabold text-[#f3f6fc] leading-none">{boss.name}</h2>
+              <h2 className="display-font text-3xl font-extrabold text-[var(--text)] leading-none">{boss.name}</h2>
               <p className="text-[10px] font-black tracking-[0.16em] uppercase text-[#b47d88] mt-1">
                 {boss.trait} · ATK {effectiveBossAtk}
               </p>
@@ -436,12 +436,12 @@ export const BossBattle: React.FC = () => {
         {/* Right Battle Panel */}
         <div className="relative z-20 p-6 sm:p-8 flex flex-col justify-between gap-6">
           {/* Player Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[#2a3448]">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-5 border-b border-[var(--line)]">
             <div className="flex items-center gap-3">
               <img src={state.hero.avatar} alt={state.hero.name} className="w-12 h-12 object-cover hex-avatar shrink-0" />
               <div>
                 <div className="flex items-center gap-2">
-                  <strong className="text-xs font-extrabold uppercase tracking-wider text-[#f3f6fc]">{state.hero.name}</strong>
+                  <strong className="text-xs font-extrabold uppercase tracking-wider text-[var(--text)]">{state.hero.name}</strong>
                   {combo >= 2 && (
                     <span key={combo} className="combo-pop inline-block">
                       <Badge tone="yellow" icon={<Flame className="w-3 h-3" />}>
@@ -450,7 +450,7 @@ export const BossBattle: React.FC = () => {
                     </span>
                   )}
                 </div>
-                <small className="text-[10px] font-bold uppercase tracking-wider text-[#8292a9]">
+                <small className="text-[10px] font-bold uppercase tracking-wider text-[var(--muted)]">
                   ATK {state.hero.attack + attackBoost} · {phase === 'fighting' ? `Câu ${questionIdx + 1}/${deck.length}` : 'Sẵn sàng'}
                 </small>
               </div>
@@ -462,7 +462,7 @@ export const BossBattle: React.FC = () => {
                 <span
                   key={heroPopup.key}
                   className={`display-font absolute right-2 -top-4 text-xl font-extrabold pointer-events-none damage-float ${
-                    heroPopup.tone === 'heal' ? 'text-[#45d483]' : 'text-[#ff6262]'
+                    heroPopup.tone === 'heal' ? 'text-[var(--green-fg)]' : 'text-[var(--red-fg)]'
                   }`}
                 >
                   {heroPopup.label}
@@ -475,14 +475,14 @@ export const BossBattle: React.FC = () => {
           <div className="flex-1 flex flex-col justify-center">
             {phase === 'intro' && (
               <div className="max-w-xl mx-auto text-center space-y-5 py-4">
-                <Swords className="w-14 h-14 mx-auto text-[#ef5353]" />
-                <h3 className="display-font text-3xl sm:text-4xl font-extrabold text-[#f3f6fc] leading-[1.1]">
+                <Swords className="w-14 h-14 mx-auto text-[var(--red-fg)]" />
+                <h3 className="display-font text-3xl sm:text-4xl font-extrabold text-[var(--text)] leading-[1.1]">
                   {isFinalBoss ? 'Trận quyết chiến cuối cùng' : `Bạn đã sẵn sàng đối đầu ${boss.name}?`}
                 </h3>
-                <p className="text-sm text-[#aab7ca] leading-relaxed">{boss.description}</p>
+                <p className="text-sm text-[var(--text-body)] leading-relaxed">{boss.description}</p>
 
                 {chapterProgress.attempts > 0 && (
-                  <div className="p-3 rounded-xl bg-[#4da3ff]/10 border border-[#4da3ff]/35 text-xs text-[#71b7ff]">
+                  <div className="p-3 rounded-xl bg-[var(--blue-soft)] border border-[var(--blue-border)] text-xs text-[var(--blue-fg)]">
                     <strong>Chế độ Tái đấu (#{chapterProgress.attempts + 1}):</strong>{' '}
                     {chapterProgress.wrongQuestionIds.length > 0
                       ? `Giữ lại ${chapterProgress.wrongQuestionIds.length} câu từng sai để khắc phục; các câu đã vượt qua được thay bằng câu mới cùng mục tiêu kiến thức.`
@@ -491,17 +491,17 @@ export const BossBattle: React.FC = () => {
                 )}
 
                 <div className="grid grid-cols-3 gap-2.5 max-w-md mx-auto">
-                  <div className="p-3 rounded-lg border border-[#303b51] bg-[#0d1421]">
+                  <div className="p-3 rounded-lg border border-[var(--line)] bg-[var(--panel-deep)]">
                     <strong className="display-font text-xl block">{deck.length}</strong>
-                    <span className="text-[9px] font-black uppercase tracking-wider text-[#8291a7]">Câu hỏi</span>
+                    <span className="text-[9px] font-black uppercase tracking-wider text-[var(--muted)]">Câu hỏi</span>
                   </div>
-                  <div className="p-3 rounded-lg border border-[#303b51] bg-[#0d1421]">
-                    <strong className="display-font text-xl block text-[#f4d35e]">{state.hero.attack}</strong>
-                    <span className="text-[9px] font-black uppercase tracking-wider text-[#8291a7]">Sát thương</span>
+                  <div className="p-3 rounded-lg border border-[var(--line)] bg-[var(--panel-deep)]">
+                    <strong className="display-font text-xl block text-[var(--yellow-fg)]">{state.hero.attack}</strong>
+                    <span className="text-[9px] font-black uppercase tracking-wider text-[var(--muted)]">Sát thương</span>
                   </div>
-                  <div className="p-3 rounded-lg border border-[#303b51] bg-[#0d1421]">
-                    <strong className="display-font text-xl block text-[#45d483]">{ownedItems.length}</strong>
-                    <span className="text-[9px] font-black uppercase tracking-wider text-[#8291a7]">Vật phẩm</span>
+                  <div className="p-3 rounded-lg border border-[var(--line)] bg-[var(--panel-deep)]">
+                    <strong className="display-font text-xl block text-[var(--green-fg)]">{ownedItems.length}</strong>
+                    <span className="text-[9px] font-black uppercase tracking-wider text-[var(--muted)]">Vật phẩm</span>
                   </div>
                 </div>
 
@@ -513,7 +513,7 @@ export const BossBattle: React.FC = () => {
 
             {phase === 'fighting' && !currentEntry && (
               <div className="text-center space-y-4 py-8">
-                <p className="text-sm text-[#98a7bd]">Chưa có câu hỏi nào trong ngân hàng đề cho chương này.</p>
+                <p className="text-sm text-[var(--muted)]">Chưa có câu hỏi nào trong ngân hàng đề cho chương này.</p>
                 <Button variant="secondary" onClick={() => navigate('student-dashboard')}>Quay lại Dashboard</Button>
               </div>
             )}
@@ -522,7 +522,7 @@ export const BossBattle: React.FC = () => {
               <div className="space-y-5">
                 <div className="flex flex-wrap items-center justify-between gap-2 text-[10px] font-black uppercase tracking-[0.12em]">
                   <div className="flex flex-wrap items-center gap-2">
-                    <span className="text-[#ff8585]">Mục tiêu: {currentEntry.question.knowledgeObjective}</span>
+                    <span className="text-[var(--red-fg)]">Mục tiêu: {currentEntry.question.knowledgeObjective}</span>
                     {currentEntry.sourceTag === 'retained_wrong' && (
                       <Badge tone="red" icon={<AlertCircle className="w-3 h-3" />}>Câu sai trước đó</Badge>
                     )}
@@ -530,18 +530,18 @@ export const BossBattle: React.FC = () => {
                       <Badge tone="green" icon={<Sparkles className="w-3 h-3" />}>Câu mới cùng mục tiêu</Badge>
                     )}
                   </div>
-                  <span className="mono text-[#8f9eb4]">
+                  <span className="mono text-[var(--muted)]">
                     ROUND {String(questionIdx + 1).padStart(2, '0')} / {String(deck.length).padStart(2, '0')}
                   </span>
                 </div>
 
-                <h3 className="text-lg sm:text-xl font-bold text-[#f3f6fc] leading-snug">
+                <h3 className="text-lg sm:text-xl font-bold text-[var(--text)] leading-snug">
                   {currentEntry.question.prompt}
                 </h3>
 
                 <div className="flex flex-wrap items-center gap-2">
-                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#98a7bd] inline-flex items-center gap-1">
-                    <Backpack className="w-3.5 h-3.5 text-[#f4d35e]" /> Vật phẩm:
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider text-[var(--muted)] inline-flex items-center gap-1">
+                    <Backpack className="w-3.5 h-3.5 text-[var(--yellow-fg)]" /> Vật phẩm:
                   </span>
                   {ownedItems.map((item) => {
                     const used = usedItemIds.includes(item.id);
@@ -554,8 +554,8 @@ export const BossBattle: React.FC = () => {
                         title={item.description}
                         className={`px-2.5 py-1 rounded text-[11px] font-bold border transition-colors ${
                           used
-                            ? 'border-[#26334a] text-[#6f819b] line-through cursor-not-allowed'
-                            : 'border-[#f4d35e]/45 bg-[#f4d35e]/10 text-[#f4d35e] hover:bg-[#f4d35e]/20 cursor-pointer'
+                            ? 'border-[var(--line)] text-[var(--muted)] line-through opacity-50 cursor-not-allowed'
+                            : 'border-[var(--yellow-border)] bg-[var(--yellow-soft)] text-[var(--yellow-fg)] hover:opacity-90 cursor-pointer'
                         }`}
                       >
                         {item.name}
@@ -570,19 +570,19 @@ export const BossBattle: React.FC = () => {
                     const isCorrect = idx === currentEntry.question.correctIndex;
                     const isChosen = selectedOption === idx;
 
-                    let cardCls = 'border-[#344159] bg-[#101827] hover:border-[#f4d35e] hover:bg-[#162136] text-[#dce5f2]';
-                    let badgeCls = 'border-[#465571] text-[#9fb0c8]';
+                    let cardCls = 'border-[var(--line-strong)] bg-[var(--reading-bg)] hover:border-[var(--yellow-fg)] hover:bg-[var(--panel-2)] text-[var(--text)]';
+                    let badgeCls = 'border-[var(--line-strong)] text-[var(--muted)]';
                     if (isEliminated) {
-                      cardCls = 'border-[#26334a] bg-[#0a111e] text-[#4c5b73] line-through opacity-50 cursor-not-allowed';
+                      cardCls = 'border-[var(--line)] bg-[var(--panel-deep)] text-[var(--muted)] line-through opacity-50 cursor-not-allowed';
                     } else if (submitted) {
                       if (isCorrect) {
-                        cardCls = 'border-[#45d483] bg-[#45d483]/12 text-[#f3f6fc]';
-                        badgeCls = 'border-[#45d483] bg-[#45d483] text-[#08120c]';
+                        cardCls = 'border-[var(--green)] bg-[var(--green-soft)] text-[var(--text)]';
+                        badgeCls = 'border-[var(--green)] bg-[var(--green)] text-[var(--green-on)]';
                       } else if (isChosen) {
-                        cardCls = 'border-[#ef5b5b] bg-[#ef4444]/12 text-[#f3f6fc]';
-                        badgeCls = 'border-[#ef5b5b] bg-[#ef5b5b] text-[#190808]';
+                        cardCls = 'border-[var(--red)] bg-[var(--red-soft)] text-[var(--text)]';
+                        badgeCls = 'border-[var(--red)] bg-[var(--red)] text-white';
                       } else {
-                        cardCls = 'border-[#26334a] bg-[#101827] opacity-55';
+                        cardCls = 'border-[var(--line)] bg-[var(--panel-deep)] opacity-55';
                       }
                     }
 
@@ -607,21 +607,21 @@ export const BossBattle: React.FC = () => {
                   <div
                     className={`p-4 rounded-xl border flex flex-col sm:flex-row sm:items-center justify-between gap-4 ${
                       selectedOption === currentEntry.question.correctIndex
-                        ? 'border-[#45d483]/45 bg-[#45d483]/10'
-                        : 'border-[#ef4444]/45 bg-[#ef4444]/10'
+                        ? 'border-[var(--green-border)] bg-[var(--green-soft)]'
+                        : 'border-[var(--red-border)] bg-[var(--red-soft)]'
                     }`}
                   >
                     <div className="space-y-1">
                       <strong
                         className={`text-xs font-extrabold block ${
-                          selectedOption === currentEntry.question.correctIndex ? 'text-[#65e09a]' : 'text-[#ff7b7b]'
+                          selectedOption === currentEntry.question.correctIndex ? 'text-[var(--green-fg)]' : 'text-[var(--red-fg)]'
                         }`}
                       >
                         {selectedOption === currentEntry.question.correctIndex
                           ? `Chính xác! ${lastHpImpact}`
                           : `Sai rồi! ${lastHpImpact} · Đã lưu vào Wrong Answers`}
                       </strong>
-                      <p className="text-sm text-[#e2e8f2] leading-relaxed m-0">
+                      <p className="text-sm text-[var(--text-body)] leading-relaxed m-0">
                         <strong>Giải thích:</strong> {currentEntry.question.explanation}
                       </p>
                     </div>
@@ -638,9 +638,9 @@ export const BossBattle: React.FC = () => {
                 <div
                   className="w-24 h-24 mx-auto grid place-items-center border hex-avatar"
                   style={{
-                    color: phase === 'victory' ? rankInfo.tone : '#ef4444',
-                    borderColor: phase === 'victory' ? rankInfo.tone : 'rgba(239,68,68,0.4)',
-                    background: phase === 'victory' ? 'rgba(244,211,94,0.1)' : 'rgba(239,68,68,0.1)',
+                    color: phase === 'victory' ? rankInfo.tone : 'var(--red-fg)',
+                    borderColor: phase === 'victory' ? rankInfo.tone : 'var(--red-border)',
+                    background: phase === 'victory' ? 'var(--yellow-soft)' : 'var(--red-soft)',
                   }}
                 >
                   {phase === 'victory' ? <Trophy className="w-11 h-11" /> : <XCircle className="w-11 h-11" />}
@@ -655,7 +655,7 @@ export const BossBattle: React.FC = () => {
                   </span>
                 )}
 
-                <h3 className="display-font text-4xl sm:text-5xl font-extrabold text-[#f3f6fc] leading-[1.1]">
+                <h3 className="display-font text-4xl sm:text-5xl font-extrabold text-[var(--text)] leading-[1.1]">
                   {phase === 'victory'
                     ? isFinalBoss
                       ? 'Hoàn Tất Học Phần CN-101!'
@@ -663,7 +663,7 @@ export const BossBattle: React.FC = () => {
                     : 'HP Đã Về 0 — Tạm Dừng'}
                 </h3>
 
-                <p className="text-sm text-[#aab7ca]">
+                <p className="text-sm text-[var(--text-body)]">
                   {phase === 'victory'
                     ? isFinalBoss
                       ? 'Bạn đã đánh bại Trùm cuối Zero-Day Phantom và hoàn thành trọn vẹn lộ trình Computer Networking.'
@@ -672,17 +672,17 @@ export const BossBattle: React.FC = () => {
                 </p>
 
                 <div className="grid grid-cols-3 gap-2.5 max-w-md mx-auto">
-                  <div className="p-3 border border-[#303c52] bg-[#0d1421] rounded-lg">
-                    <strong className="display-font text-2xl block text-[#45d483]">{runAccuracy}%</strong>
-                    <span className="text-[9px] font-black uppercase text-[#8796ac]">Độ chính xác</span>
+                  <div className="p-3 border border-[var(--line)] bg-[var(--panel-deep)] rounded-lg">
+                    <strong className="display-font text-2xl block text-[var(--green-fg)]">{runAccuracy}%</strong>
+                    <span className="text-[9px] font-black uppercase text-[var(--muted)]">Độ chính xác</span>
                   </div>
-                  <div className="p-3 border border-[#303c52] bg-[#0d1421] rounded-lg">
-                    <strong className="display-font text-2xl block text-[#f4d35e]">{heroHp}</strong>
-                    <span className="text-[9px] font-black uppercase text-[#8796ac]">HP còn lại</span>
+                  <div className="p-3 border border-[var(--line)] bg-[var(--panel-deep)] rounded-lg">
+                    <strong className="display-font text-2xl block text-[var(--yellow-fg)]">{heroHp}</strong>
+                    <span className="text-[9px] font-black uppercase text-[var(--muted)]">HP còn lại</span>
                   </div>
-                  <div className="p-3 border border-[#303c52] bg-[#0d1421] rounded-lg">
-                    <strong className="display-font text-2xl block text-[#ff7b7b]">{boss.maxHp - bossHp}</strong>
-                    <span className="text-[9px] font-black uppercase text-[#8796ac]">Sát thương</span>
+                  <div className="p-3 border border-[var(--line)] bg-[var(--panel-deep)] rounded-lg">
+                    <strong className="display-font text-2xl block text-[var(--red-fg)]">{boss.maxHp - bossHp}</strong>
+                    <span className="text-[9px] font-black uppercase text-[var(--muted)]">Sát thương</span>
                   </div>
                 </div>
 

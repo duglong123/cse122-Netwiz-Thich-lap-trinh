@@ -32,11 +32,11 @@ export const Dropdown: React.FC<DropdownProps> = ({ trigger, items, align = 'rig
     <div ref={ref} className="relative inline-block">
       <button type="button" onClick={() => setOpen((o) => !o)} className="inline-flex items-center gap-1.5 cursor-pointer rounded-lg">
         {trigger}
-        <ChevronDown className={`w-3.5 h-3.5 text-[#98a7bd] transition-transform ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-3.5 h-3.5 text-[var(--muted)] transition-transform ${open ? 'rotate-180' : ''}`} />
       </button>
       {open && (
         <div
-          className={`absolute z-40 mt-2 w-72 rounded-xl bg-[#0e1523] border border-[#3b4962] shadow-2xl py-1.5 ${
+          className={`absolute z-40 mt-2 w-72 rounded-xl bg-[var(--panel)] border border-[var(--line-strong)] shadow-2xl py-1.5 ${
             align === 'right' ? 'right-0' : 'left-0'
           }`}
         >
@@ -49,13 +49,13 @@ export const Dropdown: React.FC<DropdownProps> = ({ trigger, items, align = 'rig
                 setOpen(false);
               }}
               className={`w-full px-3.5 py-2.5 text-left flex items-start gap-2.5 transition-colors cursor-pointer ${
-                item.danger ? 'text-[#ff7b7b] hover:bg-[#ef4444]/10' : 'text-[#f3f6fc] hover:bg-[#162136]'
+                item.danger ? 'text-[var(--red-fg)] hover:bg-[var(--red-soft)]' : 'text-[var(--text)] hover:bg-[var(--panel-2)]'
               }`}
             >
               {item.icon && <span className="mt-0.5 shrink-0">{item.icon}</span>}
               <div className="min-w-0">
                 <div className="text-xs font-bold uppercase tracking-wide truncate">{item.label}</div>
-                {item.description && <div className="text-[11px] text-[#98a7bd] truncate mt-0.5">{item.description}</div>}
+                {item.description && <div className="text-[11px] text-[var(--muted)] truncate mt-0.5">{item.description}</div>}
               </div>
             </button>
           ))}

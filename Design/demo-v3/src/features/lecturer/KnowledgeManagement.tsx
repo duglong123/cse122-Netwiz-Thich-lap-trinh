@@ -103,8 +103,8 @@ export const KnowledgeManagement: React.FC = () => {
     <div className="space-y-6">
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
         <div>
-          <Eyebrow color="#45d483">Knowledge Authoring</Eyebrow>
-          <h1 className="display-font text-4xl font-extrabold text-[#f3f6fc] mt-2">Quản lý kiến thức & Ngân hàng đề</h1>
+          <Eyebrow color="var(--green-fg)">Knowledge Authoring</Eyebrow>
+          <h1 className="display-font text-4xl font-extrabold text-[var(--text)] mt-2">Quản lý kiến thức & Ngân hàng đề</h1>
         </div>
         <div className="flex flex-wrap gap-2">
           <Select value={course.id} onChange={(e) => setSelectedCourseId(e.target.value)} className="w-60">
@@ -115,7 +115,7 @@ export const KnowledgeManagement: React.FC = () => {
       </div>
 
       {isSharedCourse && (
-        <div className="p-4 rounded-xl bg-[#4da3ff]/10 border border-[#4da3ff]/35 flex flex-wrap items-center justify-between gap-3 text-xs text-[#71b7ff]">
+        <div className="p-4 rounded-xl bg-[var(--blue-soft)] border border-[var(--blue-border)] flex flex-wrap items-center justify-between gap-3 text-xs text-[var(--blue-fg)]">
           <span><strong>Khóa học chung ({course.collaboratorIds.length} GV):</strong> Sửa bài đã công bố sẽ tạo Đề xuất đồng thuận 100%.</span>
           <Button size="sm" variant="outline" onClick={() => navigate('proposals')}>Xem biểu quyết</Button>
         </div>
@@ -140,17 +140,17 @@ export const KnowledgeManagement: React.FC = () => {
             <Panel key={ch.id}>
               <PanelHeader className="flex flex-wrap items-center justify-between gap-3">
                 <div>
-                  <div className="text-[10px] font-black mono text-[#f4d35e]">CHƯƠNG {ch.order}</div>
+                  <div className="text-[10px] font-black mono text-[var(--yellow-fg)]">CHƯƠNG {ch.order}</div>
                   <PanelTitle>{ch.title}</PanelTitle>
                 </div>
                 <Button size="sm" leftIcon={<Plus className="w-3.5 h-3.5" />} onClick={() => openNewLesson(ch.id)}>Thêm kiến thức</Button>
               </PanelHeader>
               <PanelContent className="space-y-2.5">
                 {ch.lessons.map((les, idx) => (
-                  <div key={les.id} className="p-3.5 rounded-xl bg-[#0a111e] border border-[#26334a] flex flex-col lg:flex-row lg:items-center justify-between gap-3">
+                  <div key={les.id} className="p-3.5 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)] flex flex-col lg:flex-row lg:items-center justify-between gap-3">
                     <div className="space-y-1">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className="font-bold text-sm text-[#f3f6fc]">{ch.order}.{idx + 1} {les.title}</span>
+                        <span className="font-bold text-sm text-[var(--text)]">{ch.order}.{idx + 1} {les.title}</span>
                         <Badge tone={les.status === 'published' ? 'green' : les.status === 'draft' ? 'yellow' : 'muted'}>
                           {les.status === 'published' ? `v${les.version}` : les.status}
                         </Badge>
@@ -165,7 +165,7 @@ export const KnowledgeManagement: React.FC = () => {
                           aria-label="Chuyển chương"
                           value={ch.id}
                           onChange={(e) => moveLessonToChapter(course.id, ch.id, les.id, e.target.value)}
-                          className="h-9 px-2 rounded-lg bg-[#0e1523] border border-[#2b3951] text-xs text-[#f3f6fc]"
+                          className="h-9 px-2 rounded-lg bg-[var(--panel)] border border-[var(--line)] text-xs text-[var(--text)]"
                         >
                           {course.chapters.map((tc) => <option key={tc.id} value={tc.id}>→ Ch.{tc.order}</option>)}
                         </select>
@@ -173,8 +173,8 @@ export const KnowledgeManagement: React.FC = () => {
                       <Button size="sm" variant="secondary" leftIcon={<Edit3 className="w-3.5 h-3.5" />} onClick={() => openEditLesson(ch.id, les)}>
                         {isSharedCourse && les.status === 'published' ? 'Đề xuất' : 'Sửa'}
                       </Button>
-                      <Button size="sm" variant="ghost" onClick={() => archiveOrDeleteLesson(course.id, ch.id, les.id, 'archive')}><Archive className="w-3.5 h-3.5 text-[#f4d35e]" /></Button>
-                      <Button size="sm" variant="ghost" onClick={() => archiveOrDeleteLesson(course.id, ch.id, les.id, 'delete')}><Trash2 className="w-3.5 h-3.5 text-[#ef4444]" /></Button>
+                      <Button size="sm" variant="ghost" onClick={() => archiveOrDeleteLesson(course.id, ch.id, les.id, 'archive')}><Archive className="w-3.5 h-3.5 text-[var(--yellow-fg)]" /></Button>
+                      <Button size="sm" variant="ghost" onClick={() => archiveOrDeleteLesson(course.id, ch.id, les.id, 'delete')}><Trash2 className="w-3.5 h-3.5 text-[var(--red-fg)]" /></Button>
                     </div>
                   </div>
                 ))}
@@ -214,11 +214,11 @@ export const KnowledgeManagement: React.FC = () => {
                       setQOptC(q.options[2] ?? ''); setQOptD(q.options[3] ?? ''); setQCorrectIdx(q.correctIndex);
                       setQExplanation(q.explanation); setQModalOpen(true);
                     }}>Sửa</Button>
-                    <Button size="sm" variant="ghost" onClick={() => deleteQuestion(q.id)}><Trash2 className="w-3.5 h-3.5 text-[#ef4444]" /></Button>
+                    <Button size="sm" variant="ghost" onClick={() => deleteQuestion(q.id)}><Trash2 className="w-3.5 h-3.5 text-[var(--red-fg)]" /></Button>
                   </div>
                 </div>
-                <div className="font-bold text-sm text-[#f3f6fc]">{q.prompt}</div>
-                <div className="text-xs text-[#65e09a]">Đúng: {q.options[q.correctIndex]}</div>
+                <div className="font-bold text-sm text-[var(--text)]">{q.prompt}</div>
+                <div className="text-xs text-[var(--green-fg)]">Đúng: {q.options[q.correctIndex]}</div>
               </PanelContent>
             </Panel>
           ))}
@@ -231,11 +231,11 @@ export const KnowledgeManagement: React.FC = () => {
             <Panel key={ch.id}>
               <PanelContent className="p-5 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <img src={ch.boss.avatar} alt={ch.boss.name} className="w-14 h-14 rounded-xl object-cover border border-[#ef4444]/40" />
+                  <img src={ch.boss.avatar} alt={ch.boss.name} className="w-14 h-14 rounded-xl object-cover border border-[var(--red-border)]" />
                   <div>
-                    <div className="text-[10px] font-black text-[#ff7b7b]">BOSS CH.{ch.order}</div>
-                    <div className="font-bold text-[#f3f6fc]">{ch.boss.name}</div>
-                    <div className="text-xs text-[#98a7bd]">HP {ch.boss.maxHp} · ATK {ch.boss.attackPower}</div>
+                    <div className="text-[10px] font-black text-[var(--red-fg)]">BOSS CH.{ch.order}</div>
+                    <div className="font-bold text-[var(--text)]">{ch.boss.name}</div>
+                    <div className="text-xs text-[var(--muted)]">HP {ch.boss.maxHp} · ATK {ch.boss.attackPower}</div>
                   </div>
                 </div>
                 <Button size="sm" variant="secondary" onClick={() => { setBossChapterId(ch.id); setBName(ch.boss.name); setBHp(ch.boss.maxHp); setBAtk(ch.boss.attackPower); setBTrait(ch.boss.trait); }}>

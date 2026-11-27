@@ -46,8 +46,8 @@ export const ContentModeration: React.FC = () => {
   return (
     <div className="space-y-6">
       <div>
-        <Eyebrow color="#4da3ff">Read-Only Knowledge Policy</Eyebrow>
-        <h1 className="display-font text-4xl font-extrabold text-[#f3f6fc] mt-2">Kiểm duyệt nội dung</h1>
+        <Eyebrow color="var(--blue-fg)">Read-Only Knowledge Policy</Eyebrow>
+        <h1 className="display-font text-4xl font-extrabold text-[var(--text)] mt-2">Kiểm duyệt nội dung</h1>
       </div>
 
       <Tabs
@@ -64,7 +64,7 @@ export const ContentModeration: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
             <div className="md:col-span-8 relative">
               <Input placeholder="Tìm bài học hoặc khóa học..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-10" />
-              <Search className="w-4 h-4 text-[#98a7bd] absolute left-3.5 top-3 pointer-events-none" />
+              <Search className="w-4 h-4 text-[var(--muted)] absolute left-3.5 top-3 pointer-events-none" />
             </div>
             <div className="md:col-span-4">
               <Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value as typeof statusFilter)}>
@@ -81,7 +81,7 @@ export const ContentModeration: React.FC = () => {
               const { course, chapter, lesson } = row;
               const mod = lesson.moderation;
               return (
-                <Panel key={lesson.id} accent={mod.status === 'locked' ? '#ef4444' : mod.status === 'warned' ? '#f4d35e' : undefined}>
+                <Panel key={lesson.id} accent={mod.status === 'locked' ? 'var(--red)' : mod.status === 'warned' ? 'var(--yellow)' : undefined}>
                   <PanelContent className="p-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
                     <div className="space-y-1.5">
                       <div className="flex flex-wrap items-center gap-2">
@@ -91,9 +91,9 @@ export const ContentModeration: React.FC = () => {
                           {mod.status === 'locked' ? 'Đã khóa' : mod.status === 'warned' ? 'Đang cảnh báo' : 'Bình thường'}
                         </Badge>
                       </div>
-                      <div className="text-base font-bold text-[#f3f6fc]">{lesson.title}</div>
+                      <div className="text-base font-bold text-[var(--text)]">{lesson.title}</div>
                       {mod.status === 'locked' && (
-                        <div className="text-xs text-[#ff7b7b]">Lý do: {mod.reason} · {mod.lockedBy} · {mod.lockedAt}</div>
+                        <div className="text-xs text-[var(--red-fg)]">Lý do: {mod.reason} · {mod.lockedBy} · {mod.lockedAt}</div>
                       )}
                     </div>
                     <div className="flex flex-wrap gap-2 shrink-0">
@@ -113,17 +113,17 @@ export const ContentModeration: React.FC = () => {
         </div>
       ) : (
         <Panel>
-          <PanelContent className="divide-y divide-[#26334a] p-0">
+          <PanelContent className="divide-y divide-[var(--line)] p-0">
             {state.moderationLogs.map((log) => (
               <div key={log.id} className="p-4 sm:px-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
                     <Badge tone={log.action === 'lock' ? 'red' : log.action === 'unlock' ? 'green' : 'yellow'}>{log.action.toUpperCase()}</Badge>
-                    <span className="text-sm font-bold text-[#f3f6fc]">{log.targetLabel}</span>
+                    <span className="text-sm font-bold text-[var(--text)]">{log.targetLabel}</span>
                   </div>
-                  <div className="text-xs text-[#98a7bd]">{log.reason} · {log.actorName}</div>
+                  <div className="text-xs text-[var(--muted)]">{log.reason} · {log.actorName}</div>
                 </div>
-                <span className="text-xs mono text-[#98a7bd]">{log.timestamp}</span>
+                <span className="text-xs mono text-[var(--muted)]">{log.timestamp}</span>
               </div>
             ))}
           </PanelContent>
@@ -133,12 +133,12 @@ export const ContentModeration: React.FC = () => {
       <Modal open={Boolean(inspectRow)} onClose={() => setInspectRow(null)} title={inspectRow ? `Chỉ đọc: ${inspectRow.lesson.title}` : ''} size="lg">
         {inspectRow && (
           <div className="space-y-4">
-            <div className="p-4 rounded-xl bg-[#0a111e] border border-[#26334a] text-sm text-[#c5d1e2] whitespace-pre-line">{inspectRow.lesson.content}</div>
+            <div className="p-4 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)] text-sm text-[var(--text-body)] whitespace-pre-line">{inspectRow.lesson.content}</div>
             <div className="space-y-1.5">
-              <div className="text-xs font-bold uppercase text-[#98a7bd]">Lịch sử phiên bản được bảo toàn ({inspectRow.lesson.versionHistory.length})</div>
+              <div className="text-xs font-bold uppercase text-[var(--muted)]">Lịch sử phiên bản được bảo toàn ({inspectRow.lesson.versionHistory.length})</div>
               {inspectRow.lesson.versionHistory.map((v) => (
-                <div key={v.version} className="p-2.5 rounded-lg bg-[#0a111e] border border-[#26334a] text-xs">
-                  <strong className="mono text-[#f4d35e]">v{v.version}</strong> · {v.updatedBy} · {v.updatedAt} — {v.summary}
+                <div key={v.version} className="p-2.5 rounded-lg bg-[var(--panel-deep)] border border-[var(--line)] text-xs">
+                  <strong className="mono text-[var(--yellow-fg)]">v{v.version}</strong> · {v.updatedBy} · {v.updatedAt} — {v.summary}
                 </div>
               ))}
             </div>

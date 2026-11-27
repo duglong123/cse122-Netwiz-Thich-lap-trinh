@@ -110,7 +110,7 @@ export const LearningInterface: React.FC = () => {
           <div className="flex-1 max-w-2xl space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <Badge tone="yellow">{course.code}</Badge>
-              <span className="text-xs mono text-[#98a7bd]">
+              <span className="text-xs mono text-[var(--muted)]">
                 CHƯƠNG {activeChapter.order}: {activeChapter.title}
               </span>
             </div>
@@ -145,7 +145,7 @@ export const LearningInterface: React.FC = () => {
         {!focusReading && (
           <Panel>
             <PanelContent className="p-4 space-y-3">
-              <div className="text-[10px] font-black uppercase tracking-[0.14em] text-[#98a7bd]">
+              <div className="text-[10px] font-black uppercase tracking-[0.14em] text-[var(--muted)]">
                 Mục lục chương
               </div>
               {course.chapters.map((ch) => {
@@ -156,17 +156,17 @@ export const LearningInterface: React.FC = () => {
                     key={ch.id}
                     className="p-3 rounded-xl border space-y-1.5"
                     style={{
-                      background: isCh ? '#0a111e' : 'rgba(10, 17, 30, 0.45)',
-                      borderColor: isCh ? cTheme.color : '#26334a',
+                      background: isCh ? 'var(--panel-deep)' : 'var(--panel)',
+                      borderColor: isCh ? cTheme.color : 'var(--line)',
                     }}
                   >
                     <button
                       type="button"
                       onClick={() => navigate('learning', { courseId: course.id, chapterId: ch.id, lessonId: ch.lessons[0]?.id })}
-                      className="w-full text-left text-xs font-extrabold text-[#f3f6fc] flex items-center justify-between cursor-pointer"
+                      className="w-full text-left text-xs font-extrabold text-[var(--text)] flex items-center justify-between cursor-pointer"
                     >
                       <span>{cTheme.number}. {ch.title}</span>
-                      {state.bossProgress[ch.id]?.defeated && <CheckCircle2 className="w-3.5 h-3.5 text-[#45d483]" />}
+                      {state.bossProgress[ch.id]?.defeated && <CheckCircle2 className="w-3.5 h-3.5 text-[var(--green-fg)]" />}
                     </button>
                     <div className="space-y-1 pl-1">
                       {ch.lessons.filter((l) => l.status === 'published').map((les, idx) => {
@@ -179,7 +179,7 @@ export const LearningInterface: React.FC = () => {
                             title={les.title}
                             onClick={() => navigate('learning', { courseId: course.id, chapterId: ch.id, lessonId: les.id })}
                             className={`w-full px-2.5 py-1.5 rounded-lg text-left text-xs flex items-center justify-between gap-2 cursor-pointer ${
-                              active ? 'bg-[#f4d35e]/15 text-[#f4d35e] font-bold' : 'text-[#b7c3d5] hover:bg-[#121c2d]'
+                              active ? 'bg-[var(--yellow-soft)] text-[var(--yellow-fg)] font-bold' : 'text-[var(--text-body)] hover:bg-[var(--panel-2)]'
                             }`}
                           >
                             <span className="inline-flex items-center gap-1.5 truncate">
@@ -187,9 +187,9 @@ export const LearningInterface: React.FC = () => {
                               <span className="truncate">{ch.order}.{idx + 1} {les.title}</span>
                             </span>
                             {les.moderation.status === 'locked' ? (
-                              <Lock className="w-3 h-3 text-[#ef4444] shrink-0" />
+                              <Lock className="w-3 h-3 text-[var(--red-fg)] shrink-0" />
                             ) : done ? (
-                              <CheckCircle2 className="w-3 h-3 text-[#45d483] shrink-0" />
+                              <CheckCircle2 className="w-3 h-3 text-[var(--green-fg)] shrink-0" />
                             ) : null}
                           </button>
                         );
@@ -198,7 +198,7 @@ export const LearningInterface: React.FC = () => {
                         type="button"
                         onClick={() => navigate('learning', { courseId: course.id, chapterId: ch.id, lessonId: `mission:${ch.id}` })}
                         className={`w-full px-2.5 py-1.5 rounded-lg text-left text-xs flex items-center gap-1.5 cursor-pointer ${
-                          isMissionMode && isCh ? 'bg-[#f4d35e] text-[#080c16] font-extrabold' : 'text-[#f4d35e] hover:bg-[#121c2d]'
+                          isMissionMode && isCh ? 'bg-[var(--yellow)] text-[var(--yellow-on)] font-extrabold' : 'text-[var(--yellow-fg)] hover:bg-[var(--panel-2)]'
                         }`}
                       >
                         <Sparkles className="w-3 h-3 shrink-0" />
@@ -207,7 +207,7 @@ export const LearningInterface: React.FC = () => {
                       <button
                         type="button"
                         onClick={() => navigate('boss-battle', { chapterId: ch.id })}
-                        className="w-full px-2.5 py-1.5 rounded-lg text-left text-xs text-[#ff8585] hover:bg-[#ef4444]/10 flex items-center gap-1.5 cursor-pointer"
+                        className="w-full px-2.5 py-1.5 rounded-lg text-left text-xs text-[var(--red-fg)] hover:bg-[var(--red-soft)] flex items-center gap-1.5 cursor-pointer"
                       >
                         <Swords className="w-3 h-3 shrink-0" />
                         <span className="truncate">Boss: {ch.boss.name}</span>
@@ -226,10 +226,10 @@ export const LearningInterface: React.FC = () => {
             <MissionPanel mission={activeChapter.mission} onGoToBoss={() => navigate('boss-battle', { chapterId: activeChapter.id })} />
           ) : activeLesson ? (
             <article
-              className="overflow-hidden rounded-[20px] border bg-[#0e1523]"
+              className="overflow-hidden rounded-[20px] border bg-[var(--reading-bg)]"
               style={{
                 borderColor: `rgba(${theme.rgb}, 0.28)`,
-                background: `linear-gradient(180deg, rgba(${theme.rgb}, 0.03), transparent 30%), #0e1523`,
+                background: `linear-gradient(180deg, rgba(${theme.rgb}, 0.03), transparent 28%), var(--reading-bg)`,
               }}
             >
               <header
@@ -240,7 +240,7 @@ export const LearningInterface: React.FC = () => {
                 }}
               >
                 <div
-                  className="w-16 h-16 sm:w-22 sm:h-22 grid place-items-center border bg-[#080c16]/55"
+                  className="w-16 h-16 sm:w-22 sm:h-22 grid place-items-center border bg-[var(--panel-deep)]"
                   style={{ color: theme.color, borderColor: `rgba(${theme.rgb}, 0.35)` }}
                 >
                   <Shield className="w-9 h-9 sm:w-11 sm:h-11" />
@@ -249,10 +249,10 @@ export const LearningInterface: React.FC = () => {
                   <span className="text-[10px] font-black tracking-[0.2em] uppercase block" style={{ color: theme.color }}>
                     Mission {theme.number} // {theme.alias}
                   </span>
-                  <h1 className="display-font text-2xl sm:text-4xl font-extrabold text-[#f3f6fc] mt-1 leading-[1.15]">
+                  <h1 className="display-font text-2xl sm:text-4xl font-extrabold text-[var(--text)] mt-1 leading-[1.15]">
                     {activeLesson.title}
                   </h1>
-                  <p className="text-sm text-[#b6c2d4] mt-1.5 m-0">{activeLesson.summary}</p>
+                  <p className="text-sm text-[var(--text-body)] mt-1.5 m-0">{activeLesson.summary}</p>
                 </div>
                 <span className="hidden sm:block display-font text-6xl leading-none" style={{ color: `rgba(${theme.rgb}, 0.24)` }}>
                   {theme.number}
@@ -261,12 +261,12 @@ export const LearningInterface: React.FC = () => {
 
               <div className="p-6 sm:p-8 space-y-6">
                 {activeLesson.moderation.status === 'locked' ? (
-                  <div className="p-5 rounded-xl bg-[#ef4444]/12 border border-[#ef4444]/40 space-y-2">
-                    <div className="flex items-center gap-2 text-[#ff7b7b] font-extrabold text-sm">
+                  <div className="p-5 rounded-xl bg-[var(--red-soft)] border border-[var(--red-border)] space-y-2">
+                    <div className="flex items-center gap-2 text-[var(--red-fg)] font-extrabold text-sm">
                       <Lock className="w-5 h-5" /> Nội dung này đang bị Quản trị viên tạm khóa
                     </div>
-                    <p className="text-sm text-[#f3f6fc]">Lý do: <strong>{activeLesson.moderation.reason}</strong></p>
-                    <p className="text-xs mono text-[#98a7bd]">
+                    <p className="text-sm text-[var(--text)]">Lý do: <strong>{activeLesson.moderation.reason}</strong></p>
+                    <p className="text-xs mono text-[var(--muted)]">
                       {activeLesson.moderation.lockedBy} · {activeLesson.moderation.lockedAt}
                     </p>
                   </div>
@@ -274,15 +274,15 @@ export const LearningInterface: React.FC = () => {
                   <>
                     {/* Comfortable 68ch Reading Column */}
                     <div className="space-y-6">
-                      <div className="max-w-[68ch] text-[15px] sm:text-[16px] text-[#d3dced] whitespace-pre-line leading-[1.82]">
+                      <div className="max-w-[68ch] text-[15px] sm:text-[16px] text-[var(--text-body)] whitespace-pre-line leading-[1.82]">
                         {activeLesson.content}
                       </div>
 
-                      <aside className="max-w-[68ch] p-5 rounded-xl border border-[#293750] bg-[#0a111e] space-y-3">
-                        <h3 className="text-xs font-black tracking-[0.12em] uppercase text-[#f3f6fc]">
+                      <aside className="max-w-[68ch] p-5 rounded-xl border border-[var(--line)] bg-[var(--panel-deep)] space-y-3">
+                        <h3 className="text-xs font-black tracking-[0.12em] uppercase text-[var(--text)]">
                           Năng lực mở khóa
                         </h3>
-                        <ul className="space-y-2 text-sm text-[#c5d1e2] leading-relaxed m-0 p-0 list-none">
+                        <ul className="space-y-2 text-sm text-[var(--text-body)] leading-relaxed m-0 p-0 list-none">
                           {activeLesson.keyTakeaways.map((kt, idx) => (
                             <li key={idx} className="flex gap-2.5">
                               <span className="font-bold" style={{ color: theme.color }}>✓</span>
@@ -296,7 +296,7 @@ export const LearningInterface: React.FC = () => {
                     {/* Interactive 4-Layer Network Inspector */}
                     <NetworkInspector chapterId={activeChapter.id} />
 
-                    <div className="pt-5 border-t border-[#26334a] flex flex-wrap items-center justify-between gap-3">
+                    <div className="pt-5 border-t border-[var(--line)] flex flex-wrap items-center justify-between gap-3">
                       <div className="flex flex-wrap items-center gap-2">
                         {hasPrev && (
                           <Button variant="ghost" leftIcon={<ArrowLeft className="w-4 h-4" />} onClick={handlePrev}>
@@ -328,20 +328,20 @@ export const LearningInterface: React.FC = () => {
 
         {/* Non-blocking Side-by-Side Chapter Notes Panel */}
         {notesSideOpen && (
-          <Panel accent="#f4d35e" className="lg:sticky lg:top-[96px]">
+          <Panel accent="var(--yellow)" className="lg:sticky lg:top-[96px]">
             <PanelContent className="p-4 space-y-4 max-h-[80vh] overflow-y-auto">
-              <div className="flex items-center justify-between gap-2 pb-2 border-b border-[#26334a]">
+              <div className="flex items-center justify-between gap-2 pb-2 border-b border-[var(--line)]">
                 <div>
-                  <div className="text-xs font-extrabold uppercase text-[#f4d35e]">
+                  <div className="text-xs font-extrabold uppercase text-[var(--yellow-fg)]">
                     Ghi chú Chương {activeChapter.order}
                   </div>
-                  <div className="text-[11px] text-[#98a7bd]">Mặc định Riêng tư · Đọc & ghi song song</div>
+                  <div className="text-[11px] text-[var(--muted)]">Mặc định Riêng tư · Đọc & ghi song song</div>
                 </div>
                 <button
                   type="button"
                   onClick={() => setNotesSideOpen(false)}
                   aria-label="Đóng ghi chú"
-                  className="p-1 rounded text-[#98a7bd] hover:text-[#f4d35e] cursor-pointer"
+                  className="p-1 rounded text-[var(--muted)] hover:text-[var(--yellow-fg)] cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -363,9 +363,9 @@ export const LearningInterface: React.FC = () => {
                   setNewTitle('');
                   setNewContent('');
                 }}
-                className="p-3 rounded-xl bg-[#0a111e] border border-[#26334a] space-y-2.5"
+                className="p-3 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)] space-y-2.5"
               >
-                <div className="text-[11px] font-extrabold text-[#f4d35e] flex items-center gap-1">
+                <div className="text-[11px] font-extrabold text-[var(--yellow-fg)] flex items-center gap-1">
                   <Plus className="w-3.5 h-3.5" /> Thêm ghi chú mới
                 </div>
                 <Input placeholder="Tiêu đề..." value={newTitle} onChange={(e) => setNewTitle(e.target.value)} />
@@ -375,9 +375,9 @@ export const LearningInterface: React.FC = () => {
 
               <div className="space-y-3">
                 {chapterNotes.map((note) => (
-                  <div key={note.id} className="p-3 rounded-xl bg-[#0a111e] border border-[#26334a] space-y-2">
+                  <div key={note.id} className="p-3 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)] space-y-2">
                     <div className="flex items-center justify-between gap-2">
-                      <strong className="text-xs text-[#f3f6fc]">{note.title}</strong>
+                      <strong className="text-xs text-[var(--text)]">{note.title}</strong>
                       <Badge tone={note.visibility === 'public' ? 'green' : 'muted'}>
                         {note.visibility === 'public' ? 'Công khai' : 'Riêng tư'}
                       </Badge>

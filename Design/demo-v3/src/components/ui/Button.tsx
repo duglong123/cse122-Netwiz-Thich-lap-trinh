@@ -15,15 +15,15 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 const variantClasses: Record<ButtonVariant, string> = {
   primary: 'btn-comic-primary',
   secondary:
-    'text-[#f3f6fc] bg-white/[0.03] border-2 border-[#3b4962] hover:border-[#f4d35e] hover:text-[#f4d35e] hover:-translate-y-0.5',
+    'text-[var(--text)] bg-[var(--panel-2)] border-2 border-[var(--line-strong)] hover:border-[var(--yellow-fg)] hover:text-[var(--yellow-fg)] hover:-translate-y-0.5',
   outline:
-    'text-[#f4d35e] bg-transparent border border-[#f4d35e]/45 hover:bg-[#f4d35e]/10',
+    'text-[var(--yellow-fg)] bg-transparent border border-[var(--yellow-border)] hover:bg-[var(--yellow-soft)]',
   ghost:
-    'text-[#c8d2e2] bg-transparent border border-transparent hover:text-[#f4d35e] hover:bg-[#f4d35e]/[0.07]',
+    'text-[var(--text-body)] bg-transparent border border-transparent hover:text-[var(--yellow-fg)] hover:bg-[var(--yellow-soft)]',
   danger:
-    'text-white bg-[#ef4444] border-2 border-[#ef4444] shadow-[4px_4px_0_#691818] hover:-translate-x-0.5 hover:-translate-y-0.5',
+    'text-[var(--red-on)] bg-[var(--red)] border-2 border-[var(--red)] shadow-[4px_4px_0_var(--red-shadow)] hover:-translate-x-0.5 hover:-translate-y-0.5',
   success:
-    'text-[#08120c] bg-[#45d483] border-2 border-[#45d483] shadow-[4px_4px_0_#195e37] hover:-translate-x-0.5 hover:-translate-y-0.5',
+    'text-[var(--green-on)] bg-[var(--green)] border-2 border-[var(--green)] shadow-[4px_4px_0_var(--green-shadow)] hover:-translate-x-0.5 hover:-translate-y-0.5',
 };
 
 const sizeClasses: Record<ButtonSize, string> = {

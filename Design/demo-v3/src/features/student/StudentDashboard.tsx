@@ -21,17 +21,17 @@ export const StudentDashboard: React.FC = () => {
   return (
     <div className="space-y-8">
       {/* Hero & Course Banner */}
-      <Panel accent="#f4d35e">
+      <Panel accent="var(--yellow)">
         <PanelContent className="p-6 sm:p-8 grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
           <div className="lg:col-span-7 space-y-4">
             <Eyebrow>Học viên {state.demoStudent.name} // {course.code}</Eyebrow>
-            <h1 className="display-font text-4xl sm:text-5xl font-extrabold text-[#f3f6fc] leading-[1.12]">
+            <h1 className="display-font text-4xl sm:text-5xl font-extrabold text-[var(--text)] leading-[1.12]">
               {course.title}
             </h1>
-            <p className="text-sm text-[#b7c3d5]">
-              Đang học <strong className="text-[#f4d35e]">Chương {currentChapter.order}: {currentChapter.title}</strong> — hoàn thành bài học & Network Inspector để mở khóa toàn bộ sức mạnh trước khi vào Boss Arena.
+            <p className="text-sm text-[var(--text-body)]">
+              Đang học <strong className="text-[var(--yellow-fg)]">Chương {currentChapter.order}: {currentChapter.title}</strong> — hoàn thành bài học & Network Inspector để mở khóa toàn bộ sức mạnh trước khi vào Boss Arena.
             </p>
-            <ProgressBar value={pct} label={`Tiến độ khóa học (${completedCount}/${allLessons.length} bài)`} color="#f4d35e" />
+            <ProgressBar value={pct} label={`Tiến độ khóa học (${completedCount}/${allLessons.length} bài)`} color="var(--yellow-fg)" />
             <div className="flex flex-wrap gap-3 pt-1">
               <Button
                 rightIcon={<ArrowRight className="w-4 h-4" />}
@@ -49,12 +49,12 @@ export const StudentDashboard: React.FC = () => {
           </div>
 
           {/* Single Hero Status Panel */}
-          <div className="lg:col-span-5 p-5 rounded-xl bg-[#0a111e] border border-[#2b3951] space-y-4">
+          <div className="lg:col-span-5 p-5 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)] space-y-4">
             <div className="flex items-center gap-4">
               <img src={state.hero.avatar} alt={state.hero.name} className="w-18 h-18 object-cover hex-avatar shrink-0" />
               <div className="flex-1 min-w-0 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="display-font text-xl font-extrabold text-[#f3f6fc]">{state.hero.name}</span>
+                  <span className="display-font text-xl font-extrabold text-[var(--text)]">{state.hero.name}</span>
                   <Badge tone="yellow">LV.{state.hero.level}</Badge>
                 </div>
                 <HeroHealthBar current={state.hero.hp} max={state.hero.maxHp} />
@@ -62,17 +62,17 @@ export const StudentDashboard: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-3 gap-2 text-center text-xs">
-              <div className="p-2 rounded-lg bg-[#0e1523] border border-[#26334a]">
-                <div className="text-[#98a7bd] text-[10px] uppercase">ATK</div>
-                <div className="mono font-bold text-[#f4d35e] text-base">{state.hero.attack}</div>
+              <div className="p-2 rounded-lg bg-[var(--panel)] border border-[var(--line)]">
+                <div className="text-[var(--muted)] text-[10px] uppercase">ATK</div>
+                <div className="mono font-bold text-[var(--yellow-fg)] text-base">{state.hero.attack}</div>
               </div>
-              <div className="p-2 rounded-lg bg-[#0e1523] border border-[#26334a]">
-                <div className="text-[#98a7bd] text-[10px] uppercase">DEF</div>
-                <div className="mono font-bold text-[#45d483] text-base">{state.hero.defense}</div>
+              <div className="p-2 rounded-lg bg-[var(--panel)] border border-[var(--line)]">
+                <div className="text-[var(--muted)] text-[10px] uppercase">DEF</div>
+                <div className="mono font-bold text-[var(--green-fg)] text-base">{state.hero.defense}</div>
               </div>
-              <div className="p-2 rounded-lg bg-[#0e1523] border border-[#26334a]">
-                <div className="text-[#98a7bd] text-[10px] uppercase">XP</div>
-                <div className="mono font-bold text-[#4da3ff] text-base">{state.hero.xp}</div>
+              <div className="p-2 rounded-lg bg-[var(--panel)] border border-[var(--line)]">
+                <div className="text-[var(--muted)] text-[10px] uppercase">XP</div>
+                <div className="mono font-bold text-[var(--blue-fg)] text-base">{state.hero.xp}</div>
               </div>
             </div>
           </div>
@@ -82,8 +82,8 @@ export const StudentDashboard: React.FC = () => {
       {/* 5-Chapter DC Mission Map */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="display-font text-3xl font-extrabold text-[#f3f6fc]">Bản đồ 5 nhiệm vụ chương</h2>
-          <span className="text-xs text-[#98a7bd]">Chọn bất kỳ chương nào để học, làm nhiệm vụ hoặc tái đấu Boss</span>
+          <h2 className="display-font text-3xl font-extrabold text-[var(--text)]">Bản đồ 5 nhiệm vụ chương</h2>
+          <span className="text-xs text-[var(--muted)]">Chọn bất kỳ chương nào để học, làm nhiệm vụ hoặc tái đấu Boss</span>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3.5">
@@ -106,14 +106,14 @@ export const StudentDashboard: React.FC = () => {
                   <span className="block text-[9px] font-black uppercase tracking-[0.18em]" style={{ color: theme.color }}>
                     Mission {theme.number}
                   </span>
-                  <h3 className="display-font text-xl font-extrabold text-[#f3f6fc] leading-[1.15]">{ch.title}</h3>
-                  <div className="text-[11px] text-[#98a7bd]">
+                  <h3 className="display-font text-xl font-extrabold text-[var(--text)] leading-[1.15]">{ch.title}</h3>
+                  <div className="text-[11px] text-[var(--muted)]">
                     {missionDone ? '✓ Đã xong nhiệm vụ' : '• Chưa làm nhiệm vụ'}
                   </div>
                 </div>
                 <div className="space-y-2 pt-3 relative z-10">
                   <div className="flex items-center justify-between text-[10px] font-bold uppercase">
-                    <span className={bossDone ? 'text-[#45d483]' : 'text-[#98a7bd]'}>
+                    <span className={bossDone ? 'text-[var(--green-fg)]' : 'text-[var(--muted)]'}>
                       {bossDone ? '✓ Boss đã hạ' : `Boss: ${ch.boss.name}`}
                     </span>
                   </div>
@@ -121,14 +121,14 @@ export const StudentDashboard: React.FC = () => {
                     <button
                       type="button"
                       onClick={() => navigate('learning', { courseId: course.id, chapterId: ch.id, lessonId: ch.lessons[0]?.id })}
-                      className="px-2 py-1.5 rounded bg-[#0a111e] border border-[#2b3951] hover:border-[#f4d35e] text-[10px] font-extrabold uppercase text-[#f3f6fc] cursor-pointer"
+                      className="px-2 py-1.5 rounded bg-[var(--panel-deep)] border border-[var(--line)] hover:border-[var(--yellow)] text-[10px] font-extrabold uppercase text-[var(--text)] cursor-pointer"
                     >
                       Học bài
                     </button>
                     <button
                       type="button"
                       onClick={() => navigate('boss-battle', { chapterId: ch.id })}
-                      className="px-2 py-1.5 rounded bg-[#ef4444]/15 border border-[#ef4444]/40 hover:bg-[#ef4444]/30 text-[10px] font-extrabold uppercase text-[#ff8585] cursor-pointer"
+                      className="px-2 py-1.5 rounded bg-[var(--red-soft)] border border-[var(--red-border)] hover:bg-[var(--red)]/30 text-[10px] font-extrabold uppercase text-[var(--red-fg)] cursor-pointer"
                     >
                       Boss
                     </button>
@@ -144,16 +144,16 @@ export const StudentDashboard: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         <Panel>
           <PanelHeader className="flex items-center justify-between">
-            <PanelTitle className="flex items-center gap-2"><Backpack className="w-4 h-4 text-[#f4d35e]" /> Túi đồ ({ownedItems.length})</PanelTitle>
+            <PanelTitle className="flex items-center gap-2"><Backpack className="w-4 h-4 text-[var(--yellow-fg)]" /> Túi đồ ({ownedItems.length})</PanelTitle>
           </PanelHeader>
           <PanelContent className="space-y-2.5">
             {ownedItems.map((item) => (
-              <div key={item.id} className="p-3 rounded-xl bg-[#0a111e] border border-[#26334a]">
+              <div key={item.id} className="p-3 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)]">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-extrabold text-[#f3f6fc]">{item.name}</span>
+                  <span className="text-xs font-extrabold text-[var(--text)]">{item.name}</span>
                   <Badge tone={item.rarity === 'epic' ? 'yellow' : item.rarity === 'rare' ? 'blue' : 'muted'}>{item.rarity}</Badge>
                 </div>
-                <p className="text-[11px] text-[#98a7bd] mt-1">{item.description}</p>
+                <p className="text-[11px] text-[var(--muted)] mt-1">{item.description}</p>
               </div>
             ))}
           </PanelContent>
@@ -161,15 +161,15 @@ export const StudentDashboard: React.FC = () => {
 
         <Panel>
           <PanelHeader className="flex items-center justify-between">
-            <PanelTitle className="flex items-center gap-2"><AlertCircle className="w-4 h-4 text-[#ef4444]" /> Câu sai ({needsReviewWrong.length})</PanelTitle>
+            <PanelTitle className="flex items-center gap-2"><AlertCircle className="w-4 h-4 text-[var(--red-fg)]" /> Câu sai ({needsReviewWrong.length})</PanelTitle>
           </PanelHeader>
           <PanelContent className="space-y-3">
             {needsReviewWrong.slice(0, 2).map((wa) => {
               const q = state.questions.find((item) => item.id === wa.questionId);
               return q ? (
-                <div key={wa.id} className="p-3 rounded-xl bg-[#0a111e] border border-[#ef4444]/30 space-y-1">
-                  <div className="text-[10px] mono text-[#ff7b7b]">{q.knowledgeObjective}</div>
-                  <div className="text-xs text-[#f3f6fc] line-clamp-2">{q.prompt}</div>
+                <div key={wa.id} className="p-3 rounded-xl bg-[var(--panel-deep)] border border-[var(--red-border)] space-y-1">
+                  <div className="text-[10px] mono text-[var(--red-fg)]">{q.knowledgeObjective}</div>
+                  <div className="text-xs text-[var(--text)] line-clamp-2">{q.prompt}</div>
                 </div>
               ) : null;
             })}
@@ -181,16 +181,16 @@ export const StudentDashboard: React.FC = () => {
 
         <Panel>
           <PanelHeader>
-            <PanelTitle className="flex items-center gap-2"><Clock className="w-4 h-4 text-[#4da3ff]" /> Nhật ký chiến đấu & học tập</PanelTitle>
+            <PanelTitle className="flex items-center gap-2"><Clock className="w-4 h-4 text-[var(--blue-fg)]" /> Nhật ký chiến đấu & học tập</PanelTitle>
           </PanelHeader>
           <PanelContent className="space-y-2.5">
             {state.studentHistory.slice(0, 4).map((h) => (
-              <div key={h.id} className="p-3 rounded-xl bg-[#0a111e] border border-[#26334a] flex items-start justify-between gap-2">
+              <div key={h.id} className="p-3 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)] flex items-start justify-between gap-2">
                 <div>
-                  <div className="text-xs font-bold text-[#f3f6fc]">{h.action}</div>
-                  <div className="text-[11px] text-[#98a7bd]">{h.detail}</div>
+                  <div className="text-xs font-bold text-[var(--text)]">{h.action}</div>
+                  <div className="text-[11px] text-[var(--muted)]">{h.detail}</div>
                 </div>
-                <span className="text-[10px] mono text-[#98a7bd] shrink-0">{h.timestamp}</span>
+                <span className="text-[10px] mono text-[var(--muted)] shrink-0">{h.timestamp}</span>
               </div>
             ))}
           </PanelContent>

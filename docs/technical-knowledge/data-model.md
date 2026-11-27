@@ -54,7 +54,7 @@ erDiagram
 | **`PersistedDemoState`** | Gốc state lưu vào `localStorage` | Tổng hợp toàn bộ các mảng/bản đồ dữ liệu trên cùng `role`, `currentUserId`, `activeCourseId`, `activeChapterId`, `activeLessonId`. | Được tuần tự hóa JSON vào `localStorage`. | `AppContext.tsx` |
 
 #### Entity bổ sung riêng cho Demo V3 (`CONFIRMED`)
-- Trong [`Design/demo-v3/src/data/inspectorData.ts`](../../Design/demo-v3/src/data/inspectorData.ts), có thêm `InspectorLayer` (`label`, `name`, `value`, `code`, `note`) và `ChapterVisualTheme` (`CHAPTER_THEMES` cho `ch-1`..`ch-5`) để phục vụ component `NetworkInspector`.
+- Trong [`Design/demo-v3/src/data/inspectorData.ts`](../../Design/demo-v3/src/data/inspectorData.ts), có thêm `TelemetryField` (`key`, `value`), `VisualizerMode` (`'pipeline' | 'topology' | 'encapsulation' | 'handshake-cidr' | 'security-perimeter'`), `InspectorLayer` (`id`, `shortTag`, `label`, `name`, `value`, `protocolPrompt`, `telemetry`, `code`, `note`) và `ChapterVisualTheme` (`mode`, `stageBadge`, `CHAPTER_THEMES` cho `ch-1`..`ch-5`) để phục vụ 5 mô hình trực quan của `NetworkInspector`.
 
 ### 3. Quy mô dữ liệu mẫu khởi tạo (`src/data/mockData.ts`) (`CONFIRMED`)
 - **Khóa học:** 3 khóa công khai (`CN-101` Computer Networking [5 chương], `NS-204` Network Security Operations [1 chương], `RS-202` Enterprise Routing & Switching [1 chương]).

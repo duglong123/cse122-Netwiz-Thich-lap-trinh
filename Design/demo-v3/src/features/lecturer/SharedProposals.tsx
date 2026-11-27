@@ -22,8 +22,8 @@ export const SharedProposals: React.FC = () => {
     <div className="space-y-6">
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-4">
         <div>
-          <Eyebrow color="#45d483">100% Consensus Rule</Eyebrow>
-          <h1 className="display-font text-4xl font-extrabold text-[#f3f6fc] mt-2">Đồng thuận khóa học chung</h1>
+          <Eyebrow color="var(--green-fg)">100% Consensus Rule</Eyebrow>
+          <h1 className="display-font text-4xl font-extrabold text-[var(--text)] mt-2">Đồng thuận khóa học chung</h1>
         </div>
         <div className="flex flex-wrap gap-1.5">
           {collaborators.map((lec) => (
@@ -32,7 +32,7 @@ export const SharedProposals: React.FC = () => {
               type="button"
               onClick={() => switchActiveLecturer(lec.id)}
               className={`px-3 py-1.5 rounded-lg text-xs font-bold border cursor-pointer ${
-                lec.id === activeLecId ? 'bg-[#45d483] text-[#08120c] border-[#45d483]' : 'bg-[#0e1523] text-[#c5d1e2] border-[#26334a]'
+                lec.id === activeLecId ? 'bg-[var(--green)] text-[var(--green-on)] border-[var(--green)]' : 'bg-[var(--panel)] text-[var(--text-body)] border-[var(--line)]'
               }`}
             >
               {lec.name}
@@ -64,7 +64,7 @@ export const SharedProposals: React.FC = () => {
             const approvedCount = courseCollabs.filter((l) => prop.votes[l.id]?.decision === 'approved').length;
 
             return (
-              <Panel key={prop.id} accent={prop.status === 'approved' ? '#45d483' : prop.status === 'rejected' ? '#ef4444' : '#f4d35e'}>
+              <Panel key={prop.id} accent={prop.status === 'approved' ? 'var(--green)' : prop.status === 'rejected' ? 'var(--red)' : 'var(--yellow)'}>
                 <PanelHeader>
                   <div className="flex flex-wrap items-center gap-2 mb-1.5">
                     <Badge tone="blue">{course.code}</Badge>
@@ -73,17 +73,17 @@ export const SharedProposals: React.FC = () => {
                     </Badge>
                   </div>
                   <PanelTitle>{prop.lessonTitle}</PanelTitle>
-                  <div className="text-xs text-[#98a7bd] mt-1">Đề xuất bởi <strong>{proposer?.name}</strong> · {prop.summary}</div>
+                  <div className="text-xs text-[var(--muted)] mt-1">Đề xuất bởi <strong>{proposer?.name}</strong> · {prop.summary}</div>
                 </PanelHeader>
                 <PanelContent className="space-y-5">
                   <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                    <div className="p-4 rounded-xl bg-[#ef4444]/8 border border-[#ef4444]/30 space-y-1.5">
-                      <div className="text-[10px] mono font-bold text-[#ff7b7b]">TRƯỚC KHI SỬA</div>
-                      <div className="text-xs text-[#c5d1e2] whitespace-pre-line max-h-52 overflow-y-auto">{prop.beforeContent}</div>
+                    <div className="p-4 rounded-xl bg-[var(--red-soft)] border border-[var(--red-border)] space-y-1.5">
+                      <div className="text-[10px] mono font-bold text-[var(--red-fg)]">TRƯỚC KHI SỬA</div>
+                      <div className="text-xs text-[var(--text-body)] whitespace-pre-line max-h-52 overflow-y-auto">{prop.beforeContent}</div>
                     </div>
-                    <div className="p-4 rounded-xl bg-[#45d483]/8 border border-[#45d483]/30 space-y-1.5">
-                      <div className="text-[10px] mono font-bold text-[#65e09a]">SAU KHI SỬA</div>
-                      <div className="text-xs text-[#f3f6fc] whitespace-pre-line max-h-52 overflow-y-auto">{prop.afterContent}</div>
+                    <div className="p-4 rounded-xl bg-[var(--green-soft)] border border-[var(--green-border)] space-y-1.5">
+                      <div className="text-[10px] mono font-bold text-[var(--green-fg)]">SAU KHI SỬA</div>
+                      <div className="text-xs text-[var(--text)] whitespace-pre-line max-h-52 overflow-y-auto">{prop.afterContent}</div>
                     </div>
                   </div>
 
@@ -91,12 +91,12 @@ export const SharedProposals: React.FC = () => {
                     {courseCollabs.map((lec) => {
                       const v = prop.votes[lec.id];
                       return (
-                        <div key={lec.id} className="p-3 rounded-xl bg-[#0a111e] border border-[#26334a]">
+                        <div key={lec.id} className="p-3 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)]">
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-bold text-[#f3f6fc]">{lec.name}</span>
-                            {v?.decision === 'approved' ? <CheckCircle2 className="w-4 h-4 text-[#45d483]" /> : v?.decision === 'rejected' ? <XCircle className="w-4 h-4 text-[#ef4444]" /> : <Clock className="w-4 h-4 text-[#f4d35e]" />}
+                            <span className="text-xs font-bold text-[var(--text)]">{lec.name}</span>
+                            {v?.decision === 'approved' ? <CheckCircle2 className="w-4 h-4 text-[var(--green-fg)]" /> : v?.decision === 'rejected' ? <XCircle className="w-4 h-4 text-[var(--red-fg)]" /> : <Clock className="w-4 h-4 text-[var(--yellow-fg)]" />}
                           </div>
-                          <div className="text-[11px] text-[#98a7bd] mt-1">
+                          <div className="text-[11px] text-[var(--muted)] mt-1">
                             {v ? (v.decision === 'approved' ? 'Đã đồng ý' : 'Từ chối') : 'Chưa biểu quyết'}
                           </div>
                         </div>
@@ -105,7 +105,7 @@ export const SharedProposals: React.FC = () => {
                   </div>
 
                   {prop.status === 'pending' && (
-                    <div className="pt-4 border-t border-[#26334a] flex flex-col sm:flex-row sm:items-end gap-3">
+                    <div className="pt-4 border-t border-[var(--line)] flex flex-col sm:flex-row sm:items-end gap-3">
                       <div className="flex-1">
                         <Input label={`Góp ý (${currentUser?.name})`} value={comments[prop.id] ?? ''} onChange={(e) => setComments((p) => ({ ...p, [prop.id]: e.target.value }))} />
                       </div>

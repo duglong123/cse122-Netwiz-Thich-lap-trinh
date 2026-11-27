@@ -44,17 +44,17 @@ Repository **NetWiz** hiện chứa **3 bản UI/UX Demo sử dụng 3 Design Sy
 - **Cơ chế chống chớp giao diện:** Inline `<script>` trong `Design/demo-v2/index.html` đọc `netwiz_v2_theme` từ `localStorage` trước khi React mount.
 
 ### C. Demo V3 — Cyber Academy / Comic-Tactical (`Design/demo-v3/src/index.css`)
-- **Bảng màu & Token:**
-  - Nền `--bg: #080c16`, `--panel: #0e1523`, `--panel-2: #121c2d`, `--panel-deep: #0a111e`, viền `--line: #26334a`
-  - Chữ `--text: #f3f6fc`, `--text-body: #c5d1e2`, `--muted: #98a7bd`
-  - Nhấn: `--yellow: #f4d35e` (bóng cứng `--yellow-shadow: #6e5c1e`), `--red: #ef4444`, `--blue: #4da3ff`, `--green: #45d483`.
+- **Bảng màu & Token (hai chế độ Sáng / Tối dịu mắt):**
+  - **Tối (`[data-theme="dark"]` — Soft Slate Midnight, mặc định):** Nền `--bg: #111824`, thẻ `--panel: #172030`, vùng đọc `--reading-bg: #151e2c`, chữ `--text: #e4eaf4`, chữ thân `--text-body: #c7d2e2`, nhấn `--yellow: #e8c65a`, `--red: #e55353`, `--blue: #58a6ff`, `--green: #3ecf8e`.
+  - **Sáng (`[data-theme="light"]` — Daylight Academy Paper):** Nền giấy ấm `--bg: #f2efe9`, thẻ `--panel: #faf8f4`, vùng đọc `--reading-bg: #fdfbf7`, chữ navy đậm `--text: #1a2232`, nhấn điều chỉnh tương phản `--yellow-fg: #946500`, `--blue-fg: #1d4ed8`, `--green-fg: #117a46`, `--red-fg: #b91c1c`.
+  - Lưu lựa chọn Sáng/Tối tại `netwiz_v3_theme` và áp dụng bằng inline `<script>` trước khi render trong `Design/demo-v3/index.html`.
 - **Thành phần & Tương tác đặc trưng:**
-  - `NetworkInspector.tsx`: Mô hình hộp lồng 4 lớp tương tác cho 5 chương (`CHAPTER_THEMES`).
+  - `NetworkInspector.tsx`: Bộ mô phỏng Mạng máy tính chuyên biệt theo 5 chương (`pipeline`, `topology`, `encapsulation` + Wire Frame Dissector, `handshake-cidr`, `security-perimeter`) kết hợp Protocol Telemetry & CLI Console.
   - `BossBattle.tsx`: Thanh máu vát chéo 5 phân đoạn (`BossHealthBar`), `HeroHealthBar`, `Combo ×N`, `Phase 2 Enrage` dưới 50% HP (`+25% ATK`, `.enrage-ring`), `Boss` Chương 5 (`Zero-Day Phantom`) có hào quang riêng và bộ 6 câu tổng hợp, bảng xếp hạng `S / A / B` theo độ chính xác & HP.
   - **Khả năng đọc lâu & Tiếp cận:**
-    - Chế độ **Dịu mắt (`[data-calm="true"]`, key `netwiz_v3_calm_mode`)**: tắt lớp grain `body::before`, dịu `--text: #e6ecf5`, vô hiệu hóa flash/shake/confetti/hover-tilt.
-    - Hỗ trợ `@media (prefers-reduced-motion: reduce)` và vòng focus `3px solid var(--yellow)`.
-    - `LearningInterface.tsx` hỗ trợ thu gọn mục lục (`max-w-[68ch]`) và panel ghi chú song song không che bài đọc.
+    - Chế độ **Dịu mắt (`[data-calm="true"]`, key `netwiz_v3_calm_mode`)**: hoạt động độc lập với cả hai chế độ Sáng/Tối — tắt lớp grain `body::before`, nền phẳng không radial glow, vô hiệu hóa flash/shake/confetti/hover-tilt và chuyển động packet.
+    - Hỗ trợ `@media (prefers-reduced-motion: reduce)` và vòng focus `3px solid var(--yellow-fg)`.
+    - `LearningInterface.tsx` hỗ trợ thu gọn mục lục (`max-w-[68ch]`) và panel ghi chú song song trên nền `--reading-bg`.
 
 ---
 

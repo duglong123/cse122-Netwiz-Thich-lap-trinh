@@ -76,6 +76,8 @@
 - Hoàn thành và commit `Design/demo-v1` (`42a390c`), `Design/demo-v2` (`f6f8a2b`) và đặc tả `docs/Prompt/Prompt UI.txt` (`81ed09b`).
 - Xây dựng `Design/demo-v3` (trích xuất phong cách `Design/css-dc-academy.html`), chạy đánh giá workflow về **tính tiện dụng dài hạn** và **hiệu ứng Boss cuối**, và áp dụng các tinh chỉnh (Calm Mode toàn diện, thu gọn mục lục, panel ghi chú song song, cô lập `.arena-flash`, Phase-2 Enrage & cao trào Boss Chương 5 `Zero-Day Phantom`).
 - Xây dựng hệ thống tài liệu dự án tại `docs/README.md`, `docs/project-experience/*`, `docs/technical-knowledge/*`, `PROJECT_PROGRESS.md` và chuẩn hóa `README.md`.
+- Thiết kế lại `NetworkInspector.tsx` và `inspectorData.ts` (cùng chip telemetry trên `LandingPage.tsx`) của `Design/demo-v3` từ mô hình hộp CSS lồng nhau sang 5 mô hình trực quan chuyên biệt cho Mạng máy tính (`pipeline`, `topology`, `encapsulation` + Wire Frame Dissector, `handshake-cidr`, `security-perimeter`) kèm Protocol Telemetry & CLI Console.
+- Nâng cấp bảng màu dịu mắt cho đọc bài/ghi chú và bổ sung tùy chỉnh **Sáng (`Daylight Paper`) / Tối (`Soft Slate Midnight`)** cho toàn bộ `Design/demo-v3` (`netwiz_v3_theme` + CSS tokens).
 
 ### Modified Files
 - `README.md`, `PROJECT_PROGRESS.md`, `docs/README.md`

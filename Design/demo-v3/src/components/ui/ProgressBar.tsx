@@ -12,19 +12,19 @@ export const ProgressBar: React.FC<ProgressBarProps> = ({
   value,
   max = 100,
   label,
-  color = '#f4d35e',
+  color = 'var(--yellow)',
   size = 'md',
 }) => {
   const pct = max > 0 ? Math.min(100, Math.max(0, Math.round((value / max) * 100))) : 0;
   return (
     <div className="w-full">
       {label && (
-        <div className="flex items-center justify-between text-[11px] font-extrabold uppercase tracking-[0.1em] text-[#98a7bd] mb-1.5">
+        <div className="flex items-center justify-between text-[11px] font-extrabold uppercase tracking-[0.1em] text-[var(--muted)] mb-1.5">
           <span>{label}</span>
-          <strong className="mono text-[#f3f6fc]">{pct}%</strong>
+          <strong className="mono text-[var(--text)]">{pct}%</strong>
         </div>
       )}
-      <div className={`w-full overflow-hidden rounded-full bg-[#253047] ${size === 'sm' ? 'h-1.5' : 'h-2.5'}`}>
+      <div className={`w-full overflow-hidden rounded-full bg-[var(--track)] ${size === 'sm' ? 'h-1.5' : 'h-2.5'}`}>
         <div
           className="h-full rounded-full transition-all duration-400"
           style={{ width: `${pct}%`, background: color }}
@@ -43,7 +43,7 @@ export const BossHealthBar: React.FC<{ current: number; max: number; label?: str
   const pct = max > 0 ? Math.min(100, Math.max(0, Math.round((safe / max) * 100))) : 0;
   return (
     <div className="w-full">
-      <div className="flex justify-between mb-2 text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#b9a4ac]">
+      <div className="flex justify-between mb-2 text-[10px] font-extrabold uppercase tracking-[0.12em] text-[#c7b3ba]">
         <span>{label}</span>
         <strong className="mono text-[#ff8585]">
           {safe} / {max}
@@ -70,6 +70,6 @@ export const HeroHealthBar: React.FC<{ current: number; max: number; label?: str
 }) => {
   const safe = Math.max(0, current);
   const pct = max > 0 ? Math.min(100, Math.max(0, Math.round((safe / max) * 100))) : 0;
-  const color = pct <= 25 ? '#f4d35e' : '#45d483';
+  const color = pct <= 25 ? 'var(--yellow)' : 'var(--green)';
   return <ProgressBar value={safe} max={max} label={`${label} (${safe}/${max})`} color={color} />;
 };

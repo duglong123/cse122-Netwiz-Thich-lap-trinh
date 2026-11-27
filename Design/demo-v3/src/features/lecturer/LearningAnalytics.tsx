@@ -21,16 +21,16 @@ export const LearningAnalytics: React.FC = () => {
     <div className="space-y-6">
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
-          <Eyebrow color="#45d483">Learning Telemetry</Eyebrow>
-          <h1 className="display-font text-4xl font-extrabold text-[#f3f6fc] mt-2">Thống kê học tập</h1>
+          <Eyebrow color="var(--green-fg)">Learning Telemetry</Eyebrow>
+          <h1 className="display-font text-4xl font-extrabold text-[var(--text)] mt-2">Thống kê học tập</h1>
         </div>
         <Badge tone="green" icon={<ShieldCheck className="w-3.5 h-3.5" />}>Ẩn hoàn toàn ghi chú cá nhân SV</Badge>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Panel><PanelContent className="p-5 flex items-center justify-between"><div><div className="text-xs text-[#98a7bd]">Tỷ lệ đúng TB</div><div className="display-font text-3xl text-[#45d483]">{avgAccuracy}%</div></div><BarChart3 className="w-6 h-6 text-[#45d483]" /></PanelContent></Panel>
-        <Panel><PanelContent className="p-5 flex items-center justify-between"><div><div className="text-xs text-[#98a7bd]">Sinh viên theo dõi</div><div className="display-font text-3xl text-[#f3f6fc]">{allStudents.length}</div></div><Users className="w-6 h-6 text-[#4da3ff]" /></PanelContent></Panel>
-        <Panel><PanelContent className="p-5 flex items-center justify-between"><div><div className="text-xs text-[#98a7bd]">Tổng Boss đã hạ</div><div className="display-font text-3xl text-[#f4d35e]">{allStudents.reduce((s, st) => s + st.bossesDefeated, 0)}</div></div><Swords className="w-6 h-6 text-[#ef4444]" /></PanelContent></Panel>
+        <Panel><PanelContent className="p-5 flex items-center justify-between"><div><div className="text-xs text-[var(--muted)]">Tỷ lệ đúng TB</div><div className="display-font text-3xl text-[var(--green-fg)]">{avgAccuracy}%</div></div><BarChart3 className="w-6 h-6 text-[var(--green-fg)]" /></PanelContent></Panel>
+        <Panel><PanelContent className="p-5 flex items-center justify-between"><div><div className="text-xs text-[var(--muted)]">Sinh viên theo dõi</div><div className="display-font text-3xl text-[var(--text)]">{allStudents.length}</div></div><Users className="w-6 h-6 text-[var(--blue-fg)]" /></PanelContent></Panel>
+        <Panel><PanelContent className="p-5 flex items-center justify-between"><div><div className="text-xs text-[var(--muted)]">Tổng Boss đã hạ</div><div className="display-font text-3xl text-[var(--yellow-fg)]">{allStudents.reduce((s, st) => s + st.bossesDefeated, 0)}</div></div><Swords className="w-6 h-6 text-[var(--red-fg)]" /></PanelContent></Panel>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5">
@@ -44,10 +44,10 @@ export const LearningAnalytics: React.FC = () => {
               return (
                 <div key={ch.id} className="space-y-1">
                   <div className="flex justify-between text-xs">
-                    <span className="font-bold text-[#f3f6fc]">Ch.{ch.order}: {ch.title}</span>
-                    <span className="mono text-[#98a7bd]">Hạ Boss: {bossDone}/{allStudents.length}</span>
+                    <span className="font-bold text-[var(--text)]">Ch.{ch.order}: {ch.title}</span>
+                    <span className="mono text-[var(--muted)]">Hạ Boss: {bossDone}/{allStudents.length}</span>
                   </div>
-                  <ProgressBar value={pct} color={pct >= 70 ? '#45d483' : '#f4d35e'} />
+                  <ProgressBar value={pct} color={pct >= 70 ? 'var(--green)' : 'var(--yellow)'} />
                 </div>
               );
             })}
@@ -55,11 +55,11 @@ export const LearningAnalytics: React.FC = () => {
         </Panel>
 
         <Panel className="lg:col-span-5">
-          <PanelHeader><PanelTitle className="flex items-center gap-2"><AlertCircle className="w-4 h-4 text-[#ef4444]" /> Kiến thức khó</PanelTitle></PanelHeader>
+          <PanelHeader><PanelTitle className="flex items-center gap-2"><AlertCircle className="w-4 h-4 text-[var(--red-fg)]" /> Kiến thức khó</PanelTitle></PanelHeader>
           <PanelContent className="space-y-2.5">
             {topDifficult.map(([topic, count]) => (
-              <div key={topic} className="p-3 rounded-xl bg-[#0a111e] border border-[#26334a] flex items-center justify-between text-xs">
-                <span className="text-[#f3f6fc]">{topic}</span>
+              <div key={topic} className="p-3 rounded-xl bg-[var(--panel-deep)] border border-[var(--line)] flex items-center justify-between text-xs">
+                <span className="text-[var(--text)]">{topic}</span>
                 <Badge tone="red">{count} SV</Badge>
               </div>
             ))}

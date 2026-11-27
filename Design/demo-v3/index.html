@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="vi" data-calm="false">
+<html lang="vi" data-theme="dark" data-calm="false">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#080c16" />
+    <meta name="theme-color" content="#111824" />
     <title>NetWiz // Superhero Academy — Demo V3</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -14,6 +14,12 @@
     <script>
       (function () {
         try {
+          var t = localStorage.getItem('netwiz_v3_theme');
+          if (t === 'light' || t === 'dark') {
+            document.documentElement.setAttribute('data-theme', t);
+            var meta = document.querySelector('meta[name="theme-color"]');
+            if (meta) meta.setAttribute('content', t === 'light' ? '#f2efe9' : '#111824');
+          }
           if (localStorage.getItem('netwiz_v3_calm_mode') === 'true') {
             document.documentElement.setAttribute('data-calm', 'true');
           }

@@ -32,7 +32,7 @@ export const SharedNoteView: React.FC = () => {
                 type="button"
                 onClick={() => navigate('shared-note', { noteId: pn.id })}
                 className={`px-3 py-1.5 rounded-lg text-xs font-bold border cursor-pointer ${
-                  note?.id === pn.id ? 'bg-[#f4d35e] text-[#080c16] border-[#f4d35e]' : 'bg-[#0e1523] text-[#c5d1e2] border-[#26334a]'
+                  note?.id === pn.id ? 'bg-[var(--yellow)] text-[var(--yellow-on)] border-[var(--yellow)]' : 'bg-[var(--panel)] text-[var(--text-body)] border-[var(--line)]'
                 }`}
               >
                 {pn.title}
@@ -50,18 +50,18 @@ export const SharedNoteView: React.FC = () => {
           action={<Button onClick={() => navigate('landing')}>Về trang chủ</Button>}
         />
       ) : (
-        <Panel accent="#45d483">
+        <Panel accent="var(--green)" className="bg-[var(--reading-bg)]">
           <PanelContent className="p-7 sm:p-9 space-y-6">
-            <div className="flex flex-wrap items-start justify-between gap-4 pb-5 border-b border-[#26334a]">
+            <div className="flex flex-wrap items-start justify-between gap-4 pb-5 border-b border-[var(--line)]">
               <div className="space-y-2">
-                <Eyebrow color="#45d483">Public Community Note</Eyebrow>
+                <Eyebrow color="var(--green-fg)">Public Community Note</Eyebrow>
                 <div className="flex flex-wrap items-center gap-2">
                   <Badge tone="green" icon={<Globe className="w-3 h-3" />}>Công khai</Badge>
                   <Badge tone="blue">{note.scope === 'global' ? 'Global Notes' : 'Chapter Notes'}</Badge>
                 </div>
-                <h1 className="display-font text-3xl sm:text-4xl font-extrabold text-[#f3f6fc]">{note.title}</h1>
-                <div className="text-xs text-[#98a7bd]">
-                  Tác giả: <strong className="text-[#f3f6fc]">{note.authorName}</strong> · {note.updatedAt}
+                <h1 className="display-font text-3xl sm:text-4xl font-extrabold text-[var(--text)]">{note.title}</h1>
+                <div className="text-xs text-[var(--muted)]">
+                  Tác giả: <strong className="text-[var(--text)]">{note.authorName}</strong> · {note.updatedAt}
                 </div>
               </div>
 
@@ -78,7 +78,7 @@ export const SharedNoteView: React.FC = () => {
               </Button>
             </div>
 
-            <div className="text-[15px] sm:text-base text-[#d8e1ef] whitespace-pre-line leading-[1.8]">
+            <div className="text-[15px] sm:text-base text-[var(--text-body)] whitespace-pre-line leading-[1.8]">
               {note.content}
             </div>
           </PanelContent>

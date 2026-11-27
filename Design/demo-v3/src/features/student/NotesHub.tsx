@@ -135,11 +135,11 @@ export const NotesHub: React.FC = () => {
                     </Badge>
                     {ch && <Badge tone="yellow">Ch.{ch.order}</Badge>}
                   </div>
-                  <span className="text-[11px] mono text-[#98a7bd]">{note.updatedAt}</span>
+                  <span className="text-[11px] mono text-[var(--muted)]">{note.updatedAt}</span>
                 </div>
-                <h3 className="text-lg font-extrabold text-[#f3f6fc] leading-snug">{note.title}</h3>
-                <p className="text-sm text-[#c5d1e2] whitespace-pre-line line-clamp-5 leading-relaxed">{note.content}</p>
-                <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[#26334a]">
+                <h3 className="text-lg font-extrabold text-[var(--text)] leading-snug">{note.title}</h3>
+                <p className="text-sm text-[var(--text-body)] whitespace-pre-line line-clamp-5 leading-relaxed">{note.content}</p>
+                <div className="flex flex-wrap items-center justify-between gap-2 pt-3 border-t border-[var(--line)]">
                   <div className="flex gap-1.5">
                     <Button size="sm" variant="secondary" onClick={() => openEdit(note)}>Sửa</Button>
                     <Button size="sm" variant="outline" onClick={() => toggleVis(note)}>
@@ -153,7 +153,7 @@ export const NotesHub: React.FC = () => {
                       </Button>
                     )}
                     <Button size="sm" variant="ghost" onClick={() => setDeleteId(note.id)} aria-label="Xóa">
-                      <Trash2 className="w-3.5 h-3.5 text-[#ef4444]" />
+                      <Trash2 className="w-3.5 h-3.5 text-[var(--red-fg)]" />
                     </Button>
                   </div>
                 </div>
@@ -172,7 +172,7 @@ export const NotesHub: React.FC = () => {
       <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
         <div>
           <Eyebrow>Knowledge Vault // Privacy Protected</Eyebrow>
-          <h1 className="display-font text-4xl font-extrabold text-[#f3f6fc] mt-2">Sổ tay & Câu hỏi sai</h1>
+          <h1 className="display-font text-4xl font-extrabold text-[var(--text)] mt-2">Sổ tay & Câu hỏi sai</h1>
         </div>
         {activeTab !== 'wrong' && (
           <Button leftIcon={<Plus className="w-4 h-4" />} onClick={openNew}>
@@ -201,7 +201,7 @@ export const NotesHub: React.FC = () => {
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="pl-9"
               />
-              <Search className="w-3.5 h-3.5 text-[#98a7bd] absolute left-3 top-3 pointer-events-none" />
+              <Search className="w-3.5 h-3.5 text-[var(--muted)] absolute left-3 top-3 pointer-events-none" />
             </div>
           )}
           {activeTab !== 'global' && (
@@ -226,7 +226,7 @@ export const NotesHub: React.FC = () => {
       {activeTab === 'wrong' && (
         <div className="space-y-4">
           {wrongAnswers.length === 0 ? (
-            <EmptyState icon={<CheckCircle2 className="w-6 h-6 text-[#45d483]" />} title="Không có câu sai ở bộ lọc này" description="Các câu trả lời sai trong Boss Battle sẽ được lưu tại đây kèm lời giải thích." />
+            <EmptyState icon={<CheckCircle2 className="w-6 h-6 text-[var(--green-fg)]" />} title="Không có câu sai ở bộ lọc này" description="Các câu trả lời sai trong Boss Battle sẽ được lưu tại đây kèm lời giải thích." />
           ) : (
             wrongAnswers.map((wa) => {
               const q = state.questions.find((item) => item.id === wa.questionId);
@@ -242,19 +242,19 @@ export const NotesHub: React.FC = () => {
                           {wa.status === 'resolved' ? 'Đã khắc phục' : 'Cần ôn lại'}
                         </Badge>
                       </div>
-                      <span className="text-xs mono text-[#98a7bd]">{wa.lastAttemptAt}</span>
+                      <span className="text-xs mono text-[var(--muted)]">{wa.lastAttemptAt}</span>
                     </div>
-                    <div className="text-base font-bold text-[#f3f6fc]">{q.prompt}</div>
+                    <div className="text-base font-bold text-[var(--text)]">{q.prompt}</div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm leading-relaxed">
-                      <div className="p-3.5 rounded-lg bg-[#ef4444]/10 border border-[#ef4444]/35 text-[#ff9494]">
+                      <div className="p-3.5 rounded-lg bg-[var(--red-soft)] border border-[var(--red-border)] text-[#ff9494]">
                         <strong>Bạn chọn sai:</strong> {q.options[wa.selectedIndex]}
                       </div>
-                      <div className="p-3.5 rounded-lg bg-[#45d483]/10 border border-[#45d483]/35 text-[#75e6a5]">
+                      <div className="p-3.5 rounded-lg bg-[var(--green-soft)] border border-[var(--green-border)] text-[#75e6a5]">
                         <strong>Đáp án đúng:</strong> {q.options[q.correctIndex]}
                       </div>
                     </div>
-                    <div className="p-4 rounded-lg bg-[#0a111e] border border-[#26334a] text-sm text-[#c5d1e2] leading-relaxed">
-                      <strong className="text-[#f4d35e]">Giải thích:</strong> {q.explanation}
+                    <div className="p-4 rounded-lg bg-[var(--panel-deep)] border border-[var(--line)] text-sm text-[var(--text-body)] leading-relaxed">
+                      <strong className="text-[var(--yellow-fg)]">Giải thích:</strong> {q.explanation}
                     </div>
                     <div className="flex justify-end">
                       <Button size="sm" variant="secondary" leftIcon={<RotateCcw className="w-3.5 h-3.5" />} onClick={() => { setPracticing(wa); setChoice(null); setChecked(false); }}>
@@ -286,7 +286,7 @@ export const NotesHub: React.FC = () => {
       <Modal open={Boolean(practicing && practiceQ)} onClose={() => setPracticing(null)} title="Khắc phục câu sai" size="lg">
         {practicing && practiceQ && (
           <div className="space-y-4">
-            <div className="text-base font-bold text-[#f3f6fc]">{practiceQ.prompt}</div>
+            <div className="text-base font-bold text-[var(--text)]">{practiceQ.prompt}</div>
             <div className="space-y-2">
               {practiceQ.options.map((opt, idx) => (
                 <button
@@ -296,19 +296,19 @@ export const NotesHub: React.FC = () => {
                   onClick={() => setChoice(idx)}
                   className={`w-full p-3.5 rounded-lg border text-left text-sm cursor-pointer ${
                     checked && idx === practiceQ.correctIndex
-                      ? 'border-[#45d483] bg-[#45d483]/15 text-[#75e6a5]'
+                      ? 'border-[var(--green)] bg-[var(--green-soft)] text-[#75e6a5]'
                       : checked && choice === idx
-                        ? 'border-[#ef4444] bg-[#ef4444]/15 text-[#ff9494]'
+                        ? 'border-[var(--red)] bg-[var(--red-soft)] text-[#ff9494]'
                         : choice === idx
-                          ? 'border-[#f4d35e] bg-[#f4d35e]/15 text-[#f4d35e]'
-                          : 'border-[#26334a] bg-[#0a111e] text-[#c5d1e2]'
+                          ? 'border-[var(--yellow)] bg-[var(--yellow-soft)] text-[var(--yellow-fg)]'
+                          : 'border-[var(--line)] bg-[var(--panel-deep)] text-[var(--text-body)]'
                   }`}
                 >
                   {opt}
                 </button>
               ))}
             </div>
-            {checked && <div className="p-4 rounded-lg bg-[#0a111e] border border-[#26334a] text-sm text-[#c5d1e2] leading-relaxed"><strong>Giải thích:</strong> {practiceQ.explanation}</div>}
+            {checked && <div className="p-4 rounded-lg bg-[var(--panel-deep)] border border-[var(--line)] text-sm text-[var(--text-body)] leading-relaxed"><strong>Giải thích:</strong> {practiceQ.explanation}</div>}
             <div className="flex justify-end gap-2">
               <Button variant="ghost" onClick={() => setPracticing(null)}>Đóng</Button>
               {!checked ? (

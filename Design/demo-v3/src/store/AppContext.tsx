@@ -19,8 +19,11 @@ import {
 } from '../types';
 import { createInitialDemoState } from '../data/mockData';
 
+export type ThemeMode = 'dark' | 'light';
+
 const STORAGE_KEY = 'netwiz_superhero_demo_v3_state';
 const CALM_KEY = 'netwiz_v3_calm_mode';
+const THEME_KEY = 'netwiz_v3_theme';
 
 function nowFormatted(): string {
   const d = new Date();
@@ -39,6 +42,15 @@ function loadInitialCalm(): boolean {
     return localStorage.getItem(CALM_KEY) === 'true';
   } catch {
     return false;
+  }
+}
+
+function loadInitialTheme(): ThemeMode {
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    return saved === 'light' || saved === 'dark' ? saved : 'dark';
+  } catch {
+    return 'dark';
   }
 }
 
@@ -65,6 +77,8 @@ interface NavigateOptions {
 
 interface AppContextValue {
   state: PersistedDemoState;
+  theme: ThemeMode;
+  toggleTheme: () => void;
   calmMode: boolean;
   toggleCalmMode: () => void;
   page: RoutePage;
@@ -157,6 +171,7 @@ function defaultPageForRole(role: Role): RoutePage {
 
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, setState] = useState<PersistedDemoState>(() => loadPersistedState());
+  const [theme, setTheme] = useState<ThemeMode>(() => loadInitialTheme());
   const [calmMode, setCalmMode] = useState<boolean>(() => loadInitialCalm());
   const [page, setPage] = useState<RoutePage>(() => {
     const hash = window.location.hash.replace(/^#\/?/, '');
@@ -170,6 +185,28 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   });
   const [toasts, setToasts] = useState<ToastItem[]>([]);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', theme === 'light' ? '#f2efe9' : '#111824');
+    try {
+      localStorage.setItem(THEME_KEY, theme);
+    } catch {
+      // ignore
+    }
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => {
+      const next: ThemeMode = prev === 'dark' ? 'light' : 'dark';
+      addToast({
+        type: 'info',
+        title: next === 'light' ? 'Đã chuyển sang Giao diện Sáng (Daylight Paper)' : 'Đã chuyển sang Giao diện Tối (Soft Slate)',
+      });
+      return next;
+    });
+  };
 
   useEffect(() => {
     document.documentElement.setAttribute('data-calm', calmMode ? 'true' : 'false');
@@ -1022,6 +1059,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     <AppContext.Provider
       value={{
         state,
+        theme,
+        toggleTheme,
         calmMode,
         toggleCalmMode,
         page,

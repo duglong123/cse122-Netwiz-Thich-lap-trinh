@@ -17,12 +17,12 @@ export const CoursePreview: React.FC = () => {
         Quay lại danh mục
       </Button>
 
-      <Panel accent="#f4d35e">
+      <Panel accent="var(--yellow)">
         <PanelContent className="p-6 sm:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
           <div className="space-y-3">
             <Eyebrow>{course.code} · {course.category}</Eyebrow>
-            <h1 className="display-font text-4xl sm:text-5xl font-extrabold text-[#f3f6fc]">{course.title}</h1>
-            <p className="text-sm sm:text-base text-[#b7c3d5] max-w-2xl">{course.subtitle}</p>
+            <h1 className="display-font text-4xl sm:text-5xl font-extrabold text-[var(--text)]">{course.title}</h1>
+            <p className="text-sm sm:text-base text-[var(--text-body)] max-w-2xl">{course.subtitle}</p>
             <div className="flex flex-wrap gap-2">
               <Badge tone="green">{course.level}</Badge>
               {lecturers.map((l) => (
@@ -57,29 +57,29 @@ export const CoursePreview: React.FC = () => {
                 className="w-full p-5 text-left flex items-center justify-between gap-4 cursor-pointer"
               >
                 <div>
-                  <div className="text-[10px] font-black mono text-[#f4d35e]">CHƯƠNG {ch.order}</div>
-                  <div className="display-font text-2xl font-extrabold text-[#f3f6fc]">{ch.title}</div>
-                  <div className="text-xs text-[#98a7bd] mt-0.5">{ch.summary}</div>
+                  <div className="text-[10px] font-black mono text-[var(--yellow-fg)]">CHƯƠNG {ch.order}</div>
+                  <div className="display-font text-2xl font-extrabold text-[var(--text)]">{ch.title}</div>
+                  <div className="text-xs text-[var(--muted)] mt-0.5">{ch.summary}</div>
                 </div>
-                {open ? <ChevronUp className="w-5 h-5 text-[#98a7bd]" /> : <ChevronDown className="w-5 h-5 text-[#98a7bd]" />}
+                {open ? <ChevronUp className="w-5 h-5 text-[var(--muted)]" /> : <ChevronDown className="w-5 h-5 text-[var(--muted)]" />}
               </button>
               {open && (
-                <div className="px-5 pb-5 pt-2 border-t border-[#26334a] space-y-2">
+                <div className="px-5 pb-5 pt-2 border-t border-[var(--line)] space-y-2">
                   {ch.lessons.map((l, idx) => (
-                    <div key={l.id} className="p-3 rounded-lg bg-[#0a111e] border border-[#26334a] flex items-center justify-between text-xs">
-                      <span className="inline-flex items-center gap-2 text-[#f3f6fc]">
-                        <BookOpen className="w-4 h-4 text-[#f4d35e]" /> {ch.order}.{idx + 1} {l.title}
+                    <div key={l.id} className="p-3 rounded-lg bg-[var(--panel-deep)] border border-[var(--line)] flex items-center justify-between text-xs">
+                      <span className="inline-flex items-center gap-2 text-[var(--text)]">
+                        <BookOpen className="w-4 h-4 text-[var(--yellow-fg)]" /> {ch.order}.{idx + 1} {l.title}
                       </span>
-                      <span className="mono text-[#98a7bd]">{l.durationMinutes}m</span>
+                      <span className="mono text-[var(--muted)]">{l.durationMinutes}m</span>
                     </div>
                   ))}
-                  <div className="p-3 rounded-lg bg-[#ef4444]/10 border border-[#ef4444]/30 flex items-center gap-3">
+                  <div className="p-3 rounded-lg bg-[var(--red-soft)] border border-[var(--red-border)] flex items-center gap-3">
                     <img src={ch.boss.avatar} alt={ch.boss.name} className="w-11 h-11 rounded-lg object-cover" />
                     <div>
-                      <div className="text-xs font-extrabold text-[#ff7b7b] inline-flex items-center gap-1.5">
+                      <div className="text-xs font-extrabold text-[var(--red-fg)] inline-flex items-center gap-1.5">
                         <Swords className="w-3.5 h-3.5" /> Boss: {ch.boss.name}
                       </div>
-                      <div className="text-xs text-[#c5d1e2]">{ch.boss.trait}</div>
+                      <div className="text-xs text-[var(--text-body)]">{ch.boss.trait}</div>
                     </div>
                   </div>
                 </div>

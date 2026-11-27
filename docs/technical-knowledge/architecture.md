@@ -74,6 +74,6 @@ flowchart TD
 |---|---|---|
 | **Demo V1** | `netwiz_superhero_demo_v1_state` | *(Không có)* |
 | **Demo V2** | `netwiz_superhero_demo_v2_state` | `netwiz_v2_theme` (`'light'` \| `'dark'`) |
-| **Demo V3** | `netwiz_superhero_demo_v3_state` | `netwiz_v3_calm_mode` (`'true'` \| `'false'`) |
+| **Demo V3** | `netwiz_superhero_demo_v3_state` | `netwiz_v3_theme` (`'dark'` \| `'light'`), `netwiz_v3_calm_mode` (`'true'` \| `'false'`) |
 
 Các key tách biệt giúp chạy đồng thời V1 (`:5173`), V2 (`:5174`), V3 (`:5175`) trên `localhost` mà không ghi đè trạng thái dữ liệu của nhau.
