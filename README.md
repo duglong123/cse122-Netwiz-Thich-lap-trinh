@@ -4,7 +4,7 @@
 
 **NetWiz (Project: Superhero)** là nền tảng hỗ trợ giảng dạy và học tập môn **Mạng máy tính (Computer Networking)**, kết hợp hệ thống quản lý học liệu theo chương, lớp học và cộng tác giảng viên với các hoạt động học tập được **game hóa**.
 
-> **Trạng thái hiện tại:** Repository hiện chứa **3 bản UI/UX Demo Frontend** (`Design/demo-v1`, `Design/demo-v2`, `Design/demo-v3`) chạy hoàn toàn bằng Mock Data và `localStorage`. **Chưa có Backend, Database, API hoặc xác thực thực tế.** Vui lòng xem [`PROJECT_PROGRESS.md`](./PROJECT_PROGRESS.md) để theo dõi trạng thái chi tiết.
+> **Trạng thái hiện tại:** Repository hiện chứa bản giao diện chính thức đã chốt [**`Design/UI-final/`**](./Design/UI-final) kèm bộ CSS chuẩn [**`Design/Style/`**](./Design/Style/README.md), chạy mô phỏng bằng Mock Data và `localStorage`. **Chưa có Backend, Database, API hoặc xác thực thực tế.** Vui lòng xem [`PROJECT_PROGRESS.md`](./PROJECT_PROGRESS.md) để theo dõi trạng thái chi tiết.
 
 ---
 
@@ -27,7 +27,7 @@ NetWiz giúp sinh viên tiếp cận kiến thức Mạng máy tính thông qua 
 
 ## 4. Tính năng cốt lõi (Core Features)
 
-- **Đã triển khai dưới dạng Frontend Demo (`IMPLEMENTED` trong `Design/demo-v1..v3`):**
+- **Đã triển khai dưới dạng Frontend (`IMPLEMENTED` trong `Design/UI-final/`):**
   - Đầy đủ 15 màn hình mô phỏng cho 4 vai trò với dữ liệu chủ đề *Computer Networking* (`CN-101`, 5 chương, 32 câu hỏi, 1 Hero, 7 Boss, 1 lớp học 10 SV, 3 giảng viên).
   - Nhiệm vụ tương tác giữa chương (ghép cặp, sắp xếp, tình huống) và đấu trường Boss Battle (dùng vật phẩm, đổi câu đúng sang câu mới cùng mục tiêu kiến thức khi tái đấu, giữ lại câu sai kèm giải thích).
   - Hệ thống ghi chú 3 khu vực (`Chapter Notes`, `Global Notes`, `Wrong Answers`) và trang xem ghi chú công khai `#/shared-note/:noteId`.
@@ -48,13 +48,14 @@ Chi tiết đầy đủ và các câu hỏi mở xem tại [`docs/technical-know
 
 ---
 
-## 6. Các phiên bản UI/UX Demo hiện tại
+## 6. Giao diện Chính thức & Bộ Style Đã chốt
 
-| Phiên bản | Thư mục | Định hướng thiết kế | Cổng dev mặc định |
+| Thành phần | Thư mục | Mô tả | Cổng dev |
 |---|---|---|---|
-| **Demo V1** | [`Design/demo-v1/`](./Design/demo-v1) | *Dark Command Cobalt* — Sidebar cố định, TopNav, Breadcrumbs, dashboard đa khối | `5173` |
-| **Demo V2** | [`Design/demo-v2/`](./Design/demo-v2) | *Focus Studio* — Tối giản widget, dùng `SlideDrawer`, hỗ trợ Sáng (*Warm Paper*) / Tối (*Warm Charcoal*) | `5174` |
-| **Demo V3** | [`Design/demo-v3/`](./Design/demo-v3) | *Cyber Academy* — Trích xuất từ [`Design/css-dc-academy.html`](./Design/css-dc-academy.html), có Network Lab trực quan theo từng chương, Boss Arena, chuyển đổi **Sáng / Tối** và chế độ **Dịu mắt** | `5175` |
+| **UI Final** | [`Design/UI-final/`](./Design/UI-final) | *Cyber Academy* — Giao diện chính thức đã chốt (header đóng khung, nút icon gộp Sáng/Tối + Dịu mắt, Network Lab 5 mô hình theo chương, Boss Arena) | `5175` |
+| **Style Package** | [`Design/Style/`](./Design/Style/README.md) | Bộ CSS tách riêng (`tokens.css` & `cyber-academy.css`) để tích hợp vào ứng dụng Production | — |
+
+*(Các bản thử nghiệm `demo-v1`, `demo-v2` và `css-dc-academy.html` đã được dọn khỏi thư mục làm việc sau khi chốt style; lịch sử vẫn lưu trong Git.)*
 
 ---
 
@@ -63,10 +64,8 @@ Chi tiết đầy đủ và các câu hỏi mở xem tại [`docs/technical-know
 - **Yêu cầu môi trường:** Node.js (đã xác minh trên `v26.13.1`) và npm (`11.20.0`).
 - **Lưu ý trên Windows PowerShell:** Chính sách thực thi có thể chặn `npm.ps1` / `npx.ps1`; hãy dùng `npm.cmd` và `npx.cmd` thay thế, và dùng dấu `;` để nối lệnh.
 
-Cài đặt dependencies cho phiên bản muốn chạy (ví dụ Demo V3):
-
 ```powershell
-cd Design/demo-v3
+cd Design/UI-final
 npm.cmd install
 ```
 
@@ -75,17 +74,10 @@ npm.cmd install
 ## 8. Chạy và kiểm tra dự án (Running the Project)
 
 ```powershell
-# Demo V1 (mặc định http://localhost:5173)
-cd Design/demo-v1; npm.cmd install; npm.cmd run dev
-
-# Demo V2 (http://localhost:5174)
-cd Design/demo-v2; npm.cmd install; npm.cmd run dev -- --port 5174
-
-# Demo V3 (http://localhost:5175)
-cd Design/demo-v3; npm.cmd install; npm.cmd run dev -- --port 5175
+cd Design/UI-final; npm.cmd install; npm.cmd run dev -- --port 5175
 ```
 
-Kiểm tra TypeScript và build production trong từng thư mục demo:
+Kiểm tra TypeScript và build production:
 
 ```powershell
 npx.cmd tsc --noEmit; if ($LASTEXITCODE -eq 0) { npm.cmd run build }
@@ -106,15 +98,13 @@ NetWiz/
 ├── Pages/                                 # Thư mục placeholder rỗng từ commit khởi tạo
 ├── assets/images/                         # Tài nguyên ảnh gốc (Boss demo.jpg)
 ├── Design/
-│   ├── css-dc-academy.html                # Bản mẫu CSS/HTML tham chiếu cho Demo V3
-│   ├── demo-v1/                           # UI/UX Demo V1 (Dark Command Cobalt)
-│   ├── demo-v2/                           # UI/UX Demo V2 (Focus Studio)
-│   └── demo-v3/                           # UI/UX Demo V3 (Cyber Academy)
+│   ├── UI-final/                          # Giao diện chính thức đã chốt (Cyber Academy)
+│   └── Style/                             # Bộ CSS tokens & cyber-academy tách riêng
 └── docs/
     ├── README.md                          # Chỉ mục hệ thống tài liệu
     ├── Prompt/Prompt UI.txt               # Đặc tả yêu cầu gốc cho UI Demo V1
     ├── project-experience/                # Kinh nghiệm triển khai, bug log, lessons, checklist
-    └── technical-knowledge/               # Sản phẩm, nghiệp vụ, kiến trúc, data model, stack, UI
+    └── technical-knowledge/               # Sản phẩm, nghiệp vụ, kiến trúc, data model, stack, ui-style-final
 ```
 
 ---

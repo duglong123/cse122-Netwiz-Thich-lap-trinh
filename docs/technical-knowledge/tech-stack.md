@@ -4,9 +4,9 @@ Thông tin dưới đây được xác minh trực tiếp từ `package.json`, `
 
 ---
 
-## 1. Tech Stack Hiện tại của các bản UI/UX Demo (`CONFIRMED`)
+## 1. Tech Stack Hiện tại của `Design/UI-final` (`CONFIRMED`)
 
-Cả ba bản demo (`Design/demo-v1`, `Design/demo-v2`, `Design/demo-v3`) sử dụng **cùng một nền tảng công nghệ**:
+Ứng dụng giao diện chính thức (`Design/UI-final/`) sử dụng nền tảng công nghệ sau:
 
 | Nhóm | Công nghệ | Khai báo (`package.json`) | Phiên bản cài thực tế (`package-lock.json`) |
 |---|---|---|---|
@@ -22,13 +22,13 @@ Cả ba bản demo (`Design/demo-v1`, `Design/demo-v2`, `Design/demo-v3`) sử d
 
 ## 2. Cấu hình Trình biên dịch & Build (`CONFIRMED`)
 
-- **TypeScript (`tsconfig.json` — giống hệt ở V1, V2, V3):**
+- **TypeScript (`Design/UI-final/tsconfig.json`):**
   - `target: "ES2020"`, `module: "ESNext"`, `moduleResolution: "bundler"`, `jsx: "react-jsx"`
   - Bật kiểm tra nghiêm ngặt: `strict: true`, `noUnusedLocals: true`, `noUnusedParameters: true`, `noFallthroughCasesInSwitch: true`, `noEmit: true`.
-- **Vite (`vite.config.ts` — giống hệt ở V1, V2, V3):**
+- **Vite (`Design/UI-final/vite.config.ts`):**
   - Sử dụng hai plugin: `react()` và `tailwindcss()`.
 - **Scripts trong `package.json`:**
-  - `dev`: `vite` (cổng mặc định `5173` cho V1; truyền `-- --port 5174` cho V2 và `-- --port 5175` cho V3)
+  - `dev`: `vite` (chạy trên cổng `5175` với `-- --port 5175`)
   - `build`: `tsc && vite build`
   - `preview`: `vite preview`
 

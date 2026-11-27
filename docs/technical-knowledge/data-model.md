@@ -1,12 +1,12 @@
 # Mô hình Dữ liệu (Data Model)
 
-Tài liệu này phân tách rõ **Existing Data Model** (đã xác minh trực tiếp từ `src/types/index.ts` và `src/data/mockData.ts`, đồng nhất giữa `demo-v1`, `demo-v2`, `demo-v3`) và **Proposed Data Model** (định hướng cho Backend/Database tương lai, `PLANNED / NOT IMPLEMENTED`).
+Tài liệu này phân tách rõ **Existing Data Model** (đã xác minh trực tiếp từ `Design/UI-final/src/types/index.ts` và `src/data/mockData.ts`) và **Proposed Data Model** (định hướng cho Backend/Database tương lai, `PLANNED / NOT IMPLEMENTED`).
 
 ---
 
 ## Phần A: Existing Data Model (`CONFIRMED` / `IMPLEMENTED` Frontend)
 
-> Nguồn xác minh chính: `Design/demo-v3/src/types/index.ts` (SHA256 khớp hoàn toàn với `demo-v1` và `demo-v2`).
+> Nguồn xác minh chính: `Design/UI-final/src/types/index.ts`.
 
 ### 1. Sơ đồ quan hệ thực thể hiện có (Frontend State)
 
@@ -53,8 +53,8 @@ erDiagram
 | **`ModerationLogEntry`** | Nhật ký hành động quản trị của Admin | `id`, `action: 'warning'\|'reminder'\|'lock'\|'unlock'`, `targetLabel`, `courseId`, `chapterId`, `lessonId`, `reason`, `actorName`, `timestamp` | Lưu vết toàn bộ cảnh báo, nhắc nhở, khóa và mở khóa. | `ContentModeration`, `AdminDashboard` |
 | **`PersistedDemoState`** | Gốc state lưu vào `localStorage` | Tổng hợp toàn bộ các mảng/bản đồ dữ liệu trên cùng `role`, `currentUserId`, `activeCourseId`, `activeChapterId`, `activeLessonId`. | Được tuần tự hóa JSON vào `localStorage`. | `AppContext.tsx` |
 
-#### Entity bổ sung riêng cho Demo V3 (`CONFIRMED`)
-- Trong [`Design/demo-v3/src/data/inspectorData.ts`](../../Design/demo-v3/src/data/inspectorData.ts), có thêm `TelemetryField` (`key`, `value`), `VisualizerMode` (`'pipeline' | 'topology' | 'encapsulation' | 'handshake-cidr' | 'security-perimeter'`), `InspectorLayer` (`id`, `shortTag`, `label`, `name`, `value`, `protocolPrompt`, `telemetry`, `code`, `note`) và `ChapterVisualTheme` (`mode`, `stageBadge`, `CHAPTER_THEMES` cho `ch-1`..`ch-5`) để phục vụ 5 mô hình trực quan của `NetworkInspector`.
+#### Entity bổ sung cho Network Lab (`CONFIRMED`)
+- Trong [`Design/UI-final/src/data/inspectorData.ts`](../../Design/UI-final/src/data/inspectorData.ts), có thêm `TelemetryField` (`key`, `value`), `VisualizerMode` (`'pipeline' | 'topology' | 'encapsulation' | 'handshake-cidr' | 'security-perimeter'`), `InspectorLayer` (`id`, `shortTag`, `label`, `name`, `value`, `protocolPrompt`, `telemetry`, `code`, `note`) và `ChapterVisualTheme` (`mode`, `stageBadge`, `CHAPTER_THEMES` cho `ch-1`..`ch-5`) để phục vụ 5 mô hình trực quan của `NetworkInspector`.
 
 ### 3. Quy mô dữ liệu mẫu khởi tạo (`src/data/mockData.ts`) (`CONFIRMED`)
 - **Khóa học:** 3 khóa công khai (`CN-101` Computer Networking [5 chương], `NS-204` Network Security Operations [1 chương], `RS-202` Enterprise Routing & Switching [1 chương]).

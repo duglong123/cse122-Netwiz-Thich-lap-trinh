@@ -24,11 +24,11 @@
 |---|---|---|---|---|
 | `TASK-001` | Khởi tạo repository & placeholder gốc | `COMPLETED` | Commit `eeea5f1` (`2026-11-25`), `assets/images/Boss demo.jpg`, `.gitignore` | `2026-11-25` |
 | `TASK-002` | Đặc tả yêu cầu gốc UI/UX Demo V1 | `COMPLETED` | Commit `81ed09b` (`2026-11-27`), [`docs/Prompt/Prompt UI.txt`](./docs/Prompt/Prompt%20UI.txt) (428 dòng) | `2026-11-27` |
-| `TASK-003` | UI/UX Demo V1 (`Dark Command Cobalt`) | `COMPLETED` | Commit `42a390c`, [`Design/demo-v1/`](./Design/demo-v1); `npx.cmd tsc --noEmit` thoát mã `0` (`2026-11-27`) | `2026-11-27` |
-| `TASK-004` | UI/UX Demo V2 (`Focus Studio`) | `COMPLETED` | Commit `f6f8a2b`, [`Design/demo-v2/`](./Design/demo-v2); `npx.cmd tsc --noEmit` thoát mã `0` (`2026-11-27`) | `2026-11-27` |
-| `TASK-005` | UI/UX Demo V3 (`Cyber Academy`) + Audit Ergonomics & Boss Effects | `REVIEW` | [`Design/demo-v3/`](./Design/demo-v3); `npx.cmd tsc --noEmit` & `npm.cmd run build` thoát mã `0` (`1.63s`), HTTP `200` trên `:5175`; chưa commit Git và chưa kiểm tra trực quan bằng Chrome DevTools | `2026-11-27` |
-| `TASK-006` | Hệ thống Tài liệu Dự án & Theo dõi Tiến trình (`docs/`, `README.md`, `PROJECT_PROGRESS.md`) | `COMPLETED` | Đã tạo & cập nhật 15/15 file bắt buộc; kiểm tra tự động 104/104 liên kết nội bộ hợp lệ, 0 lỗi (`2026-11-27`) | `2026-11-27` |
-| `TASK-007` | Chốt Design System Production & viết ADR kiến trúc chính thức | `NOT_STARTED` | Chưa có quyết định chọn V1/V2/V3 hoặc kết hợp cho bản chính thức | `2026-11-27` |
+| `TASK-003` | UI/UX Demo V1 (`Dark Command Cobalt`) | `COMPLETED` | Commit `42a390c` (đã lưu trong Git, dọn khỏi `Design/` sau khi chốt V3) | `2026-11-27` |
+| `TASK-004` | UI/UX Demo V2 (`Focus Studio`) | `COMPLETED` | Commit `f6f8a2b` (đã lưu trong Git, dọn khỏi `Design/` sau khi chốt V3) | `2026-11-27` |
+| `TASK-005` | Chốt UI/UX V3 -> [`Design/UI-final/`](./Design/UI-final) + [`Design/Style/`](./Design/Style/README.md) | `REVIEW` | Đổi tên `demo-v3` -> `UI-final`, đóng khung nav + gộp icon hiển thị, trích xuất `Design/Style/`; `tsc` & `build` xanh (chưa commit Git, chưa test trình duyệt thật) | `2026-11-27` |
+| `TASK-006` | Hệ thống Tài liệu Dự án & Theo dõi Tiến trình (`docs/`, `README.md`, `PROJECT_PROGRESS.md`) | `COMPLETED` | Đã tạo & cập nhật đầy đủ bao gồm [`ui-style-final.md`](./docs/technical-knowledge/ui-style-final.md); kiểm tra liên kết nội bộ đạt 0 lỗi (`2026-11-27`) | `2026-11-27` |
+| `TASK-007` | Chốt Design System & Style chính thức (`Cyber Academy · UI-final`) | `COMPLETED` | Đã chốt style tại `Design/Style/` và [`docs/technical-knowledge/ui-style-final.md`](./docs/technical-knowledge/ui-style-final.md) | `2026-11-27` |
 | `TASK-008` | Khởi tạo ứng dụng Frontend Production tại gốc (hoặc workspace thống nhất) | `NOT_STARTED` | `index.html`, `js/main.js`, `style/Style.css` hiện 0 byte | `2026-11-27` |
 | `TASK-009` | Xây dựng Backend API, Database & Real Authentication / RBAC | `NOT_STARTED` | Chưa có thư mục server, API hay database schema | `2026-11-27` |
 | `TASK-010` | Thiết lập Linter, Automated Tests (Unit/E2E) & CI/CD | `NOT_STARTED` | `package.json` hiện chưa có `lint` hoặc `test` scripts | `2026-11-27` |
@@ -77,7 +77,8 @@
 - Xây dựng `Design/demo-v3` (trích xuất phong cách `Design/css-dc-academy.html`), chạy đánh giá workflow về **tính tiện dụng dài hạn** và **hiệu ứng Boss cuối**, và áp dụng các tinh chỉnh (Calm Mode toàn diện, thu gọn mục lục, panel ghi chú song song, cô lập `.arena-flash`, Phase-2 Enrage & cao trào Boss Chương 5 `Zero-Day Phantom`).
 - Xây dựng hệ thống tài liệu dự án tại `docs/README.md`, `docs/project-experience/*`, `docs/technical-knowledge/*`, `PROJECT_PROGRESS.md` và chuẩn hóa `README.md`.
 - Thiết kế lại `NetworkInspector.tsx` và `inspectorData.ts` (cùng chip telemetry trên `LandingPage.tsx`) của `Design/demo-v3` từ mô hình hộp CSS lồng nhau sang 5 mô hình trực quan chuyên biệt cho Mạng máy tính (`pipeline`, `topology`, `encapsulation` + Wire Frame Dissector, `handshake-cidr`, `security-perimeter`) kèm Protocol Telemetry & CLI Console.
-- Nâng cấp bảng màu dịu mắt cho đọc bài/ghi chú và bổ sung tùy chỉnh **Sáng (`Daylight Paper`) / Tối (`Soft Slate Midnight`)** cho toàn bộ `Design/demo-v3` (`netwiz_v3_theme` + CSS tokens).
+- Nâng cấp bảng màu dịu mắt cho đọc bài/ghi chú và bổ sung tùy chỉnh **Sáng (`Daylight Paper`) / Tối (`Soft Slate Midnight`)** cho toàn bộ `Design/UI-final` (`netwiz_v3_theme` + CSS tokens).
+- Chốt style chính thức: gộp nút Sáng/Tối & Hiệu ứng/Dịu mắt thành 1 icon duy nhất trên `AcademyShell.tsx`, đóng khung thanh điều hướng web, xóa `demo-v1`, `demo-v2`, `css-dc-academy.html`, đổi tên `demo-v3` -> `Design/UI-final`, tạo `Design/Style/` (`tokens.css`, `cyber-academy.css`) và thêm `docs/technical-knowledge/ui-style-final.md`.
 
 ### Modified Files
 - `README.md`, `PROJECT_PROGRESS.md`, `docs/README.md`

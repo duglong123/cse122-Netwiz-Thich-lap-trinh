@@ -149,7 +149,7 @@ Mọi hiệu ứng dựa trên `setTimeout` trong React component phải đăng 
 - Status: Open
 - Date: 2026-11-27
 - Severity: High
-- Affected modules: `Design/demo-v1`, `Design/demo-v2`, `Design/demo-v3` (`src/store/AppContext.tsx`)
+- Affected modules: `Design/UI-final/src/store/AppContext.tsx` (tồn tại từ `demo-v1..v3`)
 
 ### Symptoms
 Trên khóa học dùng chung (`collaboratorIds.length > 1`, ví dụ `CN-101` có 3 giảng viên), khi một giảng viên thực hiện các thao tác như: thêm bài học mới ở trạng thái `published`, xóa/lưu trữ bài học, đổi thứ tự bài học, chuyển chương, thêm chương, chỉnh sửa câu hỏi hoặc cấu hình Boss — hệ thống cập nhật trực tiếp vào khóa học mà không tạo `ChangeProposal` chờ đồng thuận 100%.
@@ -175,18 +175,16 @@ Chưa sửa (giữ nguyên mã nguồn demo trong phạm vi nhiệm vụ tài li
 Khi chuyển sang Backend hoặc hoàn thiện logic sản phẩm, cần thiết kế lớp kiểm tra quyền và quy trình đề xuất tập trung cho mọi thao tác làm thay đổi nội dung dùng chung đã công bố.
 
 ### Related Files
-- `Design/demo-v1/src/store/AppContext.tsx`
-- `Design/demo-v2/src/store/AppContext.tsx`
-- `Design/demo-v3/src/store/AppContext.tsx`
+- `Design/UI-final/src/store/AppContext.tsx`
 
 ---
 
-## BUG-005: Sai lệch nhỏ ở `.gitignore` và lệnh `cd` trong `Design/demo-v1/README.md`
+## BUG-005: `.gitignore` tự liệt kê chính `.gitignore`
 
 - Status: Open
 - Date: 2026-11-27
 - Severity: Low
-- Affected modules: `.gitignore`, `Design/demo-v1/README.md`
+- Affected modules: `.gitignore` *(Ghi chú lịch sử: `Design/demo-v1/README.md` trước đây có lỗi `cd demo-v1`, đã được dọn cùng thư mục `demo-v1` khi chốt `UI-final`)*
 
 ### Symptoms
 1. File `.gitignore` (5 dòng) liệt kê chính `.gitignore` ở dòng 5.

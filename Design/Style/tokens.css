@@ -1,0 +1,131 @@
+/* NetWiz // Superhero Academy — Finalized Design Tokens
+   Themes: Soft Slate Midnight (dark, default) & Daylight Academy Paper (light) */
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #111824;
+  --panel: #172030;
+  --panel-2: #1f2b3e;
+  --panel-deep: #131b29;
+  --reading-bg: #151e2c;
+  --header-bg: rgba(17, 24, 36, 0.9);
+  --footer-bg: #0e1520;
+  --stage-bg: #101724;
+  --stage-node: #172235;
+  --code-bg: #0e1522;
+  --code-text: #d6e2f2;
+  --backdrop: rgba(8, 12, 20, 0.78);
+  --line: #2a374d;
+  --line-strong: #3b4c68;
+  --track: #253047;
+  --text: #e4eaf4;
+  --text-body: #c7d2e2;
+  --muted: #94a4ba;
+  --placeholder: #72829a;
+
+  --yellow: #e8c65a;
+  --yellow-fg: #f0d372;
+  --yellow-on: #111824;
+  --yellow-soft: rgba(232, 198, 90, 0.13);
+  --yellow-border: rgba(232, 198, 90, 0.36);
+  --yellow-shadow: #756122;
+
+  --blue: #58a6ff;
+  --blue-fg: #7cc0ff;
+  --blue-on: #09182c;
+  --blue-soft: rgba(88, 166, 255, 0.13);
+  --blue-border: rgba(88, 166, 255, 0.36);
+
+  --green: #3ecf8e;
+  --green-fg: #66dfa8;
+  --green-on: #092216;
+  --green-soft: rgba(62, 207, 142, 0.13);
+  --green-border: rgba(62, 207, 142, 0.36);
+  --green-shadow: #175c3a;
+
+  --red: #e55353;
+  --red-fg: #ff8b8b;
+  --red-on: #ffffff;
+  --red-soft: rgba(229, 83, 83, 0.14);
+  --red-border: rgba(229, 83, 83, 0.4);
+  --red-shadow: #752020;
+
+  --ch-1: #e8c65a;
+  --ch-1-rgb: 232, 198, 90;
+  --ch-2: #58a6ff;
+  --ch-2-rgb: 88, 166, 255;
+  --ch-3: #3fd0b8;
+  --ch-3-rgb: 63, 208, 184;
+  --ch-4: #f06868;
+  --ch-4-rgb: 240, 104, 104;
+  --ch-5: #42ce7d;
+  --ch-5-rgb: 66, 206, 125;
+
+  --shadow-panel: 0 18px 42px rgba(0, 0, 0, 0.24);
+  --header-h: 78px;
+  --radius: 16px;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f2efe9;
+  --panel: #faf8f4;
+  --panel-2: #ebe6dc;
+  --panel-deep: #ece7dd;
+  --reading-bg: #fdfbf7;
+  --header-bg: rgba(242, 239, 233, 0.92);
+  --footer-bg: #e6e0d5;
+  --stage-bg: #f5f2eb;
+  --stage-node: #ffffff;
+  --code-bg: #182234;
+  --code-text: #dce6f5;
+  --backdrop: rgba(26, 34, 50, 0.55);
+  --line: #d6cfc2;
+  --line-strong: #b4aa98;
+  --track: #dcd6ca;
+  --text: #1a2232;
+  --text-body: #2d394d;
+  --muted: #596579;
+  --placeholder: #7c8799;
+
+  --yellow: #eab938;
+  --yellow-fg: #946500;
+  --yellow-on: #1a2232;
+  --yellow-soft: rgba(234, 185, 56, 0.18);
+  --yellow-border: rgba(181, 127, 0, 0.36);
+  --yellow-shadow: #9c7615;
+
+  --blue: #2563eb;
+  --blue-fg: #1d4ed8;
+  --blue-on: #ffffff;
+  --blue-soft: rgba(37, 99, 235, 0.1);
+  --blue-border: rgba(37, 99, 235, 0.32);
+
+  --green: #169959;
+  --green-fg: #117a46;
+  --green-on: #ffffff;
+  --green-soft: rgba(22, 153, 89, 0.11);
+  --green-border: rgba(22, 153, 89, 0.34);
+  --green-shadow: #0f5c35;
+
+  --red: #dc2626;
+  --red-fg: #b91c1c;
+  --red-on: #ffffff;
+  --red-soft: rgba(220, 38, 38, 0.1);
+  --red-border: rgba(220, 38, 38, 0.32);
+  --red-shadow: #881c1c;
+
+  --ch-1: #b57f00;
+  --ch-1-rgb: 181, 127, 0;
+  --ch-2: #1d64d8;
+  --ch-2-rgb: 29, 100, 216;
+  --ch-3: #0f8776;
+  --ch-3-rgb: 15, 135, 118;
+  --ch-4: #cc3434;
+  --ch-4-rgb: 204, 52, 52;
+  --ch-5: #168449;
+  --ch-5-rgb: 22, 132, 73;
+
+  --shadow-panel: 0 2px 6px rgba(26, 34, 50, 0.05), 0 12px 28px rgba(26, 34, 50, 0.06);
+}

@@ -6,13 +6,11 @@ Tài liệu này mô tả **kiến trúc thực tế** đang tồn tại trong r
 
 ## 1. Tổng quan thực tế (`CONFIRMED`)
 
-Hiện tại repository **chưa có ứng dụng Production** ở thư mục gốc (`index.html`, `js/main.js`, `style/Style.css` đều 0 byte; `Pages/` trống). Toàn bộ mã nguồn đang chạy là **3 ứng dụng Frontend SPA độc lập** nằm trong `Design/`:
+Hiện tại repository **chưa có ứng dụng Production** ở thư mục gốc (`index.html`, `js/main.js`, `style/Style.css` đều 0 byte; `Pages/` trống). Toàn bộ mã nguồn đang chạy là **ứng dụng Frontend SPA `Design/UI-final/`** (được chốt chính thức từ Demo V3, kèm gói CSS tách riêng tại [`Design/Style/`](../../Design/Style/README.md)):
 
-- [`Design/demo-v1/`](../../Design/demo-v1) — UI/UX Demo V1 (`Dark Command Cobalt`)
-- [`Design/demo-v2/`](../../Design/demo-v2) — UI/UX Demo V2 (`Focus Studio`)
-- [`Design/demo-v3/`](../../Design/demo-v3) — UI/UX Demo V3 (`Cyber Academy`)
+- [`Design/UI-final/`](../../Design/UI-final) — Giao diện chính thức đã chốt (`Cyber Academy · UI Final`)
 
-Cả 3 bản Demo dùng chung mô hình kiến trúc Frontend giống nhau nhưng **không chia sẻ package hoặc thư mục code chung** tại runtime.
+*(Các bản thử nghiệm trước đó `demo-v1` và `demo-v2` đã được xóa khỏi `Design/` sau khi chốt style chính thức; lịch sử vẫn lưu trong Git ở commit `42a390c` và `f6f8a2b`.)*
 
 ---
 
@@ -20,16 +18,16 @@ Cả 3 bản Demo dùng chung mô hình kiến trúc Frontend giống nhau nhưn
 
 | Thành phần | Trạng thái | Mô tả thực tế đã xác minh |
 |---|---|---|
-| **Frontend** | `IMPLEMENTED` (Demo V1–V3) | React 18 + TypeScript + Vite + Tailwind CSS v4. Mỗi bản demo là một SPA tự chứa trong `Design/demo-v*/src/`. |
+| **Frontend** | `IMPLEMENTED` (`Design/UI-final`) | React 18 + TypeScript + Vite + Tailwind CSS v4. Toàn bộ ứng dụng SPA nằm trong `Design/UI-final/src/`. |
 | **Backend** | `NOT IMPLEMENTED` / `PLANNED` | Không có thư mục server, controller, middleware hay runtime backend nào trong repository. |
 | **API** | `NOT IMPLEMENTED` / `PLANNED` | Không có REST API, GraphQL hay WebSocket. Mọi thao tác CRUD đều chạy đồng bộ trên state phía trình duyệt. |
 | **Database** | `NOT IMPLEMENTED` / `PLANNED` | Không có database thực tế. Dữ liệu khởi tạo từ `src/data/mockData.ts` và lưu tạm vào `localStorage` của trình duyệt. |
 | **Authentication** | `IMPLEMENTED` (Mô phỏng) / `PLANNED` (Thực tế) | `LoginModal` và `AppContext.tsx` cho phép chuyển đổi tức thì giữa Guest, Student, 3 tài khoản Lecturer và Admin không cần mật khẩu/token thật. |
-| **State Management** | `IMPLEMENTED` | React Context API (`AppProvider` / `useApp()` trong `src/store/AppContext.tsx`) quản lý toàn bộ `PersistedDemoState`, UI state và `ToastItem[]`, tự động đồng bộ `localStorage`. |
+| **State Management** | `IMPLEMENTED` | React Context API (`AppProvider` / `useApp()` trong `src/store/AppContext.tsx`) quản lý toàn bộ `PersistedDemoState`, UI state, `theme`, `calmMode` và `ToastItem[]`, tự động đồng bộ `localStorage`. |
 | **Routing** | `IMPLEMENTED` | Điều hướng nội bộ bằng React state `page: RoutePage` (15 route) trong `AppContext.tsx`, kết hợp lắng nghe `window.location.hash` riêng cho đường dẫn chia sẻ ghi chú `#/shared-note/:noteId`. Không dùng React Router. |
-| **Component Structure** | `IMPLEMENTED` | `main.tsx` -> `App.tsx` (`AppProvider` -> Shell -> `PageRouter` + `LoginModal` + `ToastContainer`). UI nguyên thủy ở `src/components/ui/`, màn hình nghiệp vụ ở `src/features/{guest,student,lecturer,admin}/`. |
-| **External Services** | `CONFIRMED` (Tối thiểu) | Chỉ tải Google Fonts CDN qua `<link>` trong `index.html` của mỗi bản demo. Không gọi API bên thứ ba nào khác. |
-| **Module Dependencies** | `CONFIRMED` | `src/types/index.ts` và `src/data/mockData.ts` giống hệt nhau giữa V1, V2, V3 (cùng SHA256). V3 có thêm `src/data/inspectorData.ts` và `NetworkInspector.tsx`. Không có phụ thuộc chéo giữa 3 thư mục demo. |
+| **Component Structure** | `IMPLEMENTED` | `main.tsx` -> `App.tsx` (`AppProvider` -> `AcademyShell` -> `PageRouter` + `LoginModal` + `ToastContainer`). UI nguyên thủy ở `src/components/ui/`, màn hình nghiệp vụ ở `src/features/{guest,student,lecturer,admin}/`. |
+| **External Services** | `CONFIRMED` (Tối thiểu) | Chỉ tải Google Fonts CDN qua `<link>` trong `index.html`. Không gọi API bên thứ ba nào khác. |
+| **Module Dependencies** | `CONFIRMED` | Dữ liệu tách riêng khỏi UI trong `src/types/index.ts`, `src/data/mockData.ts` và `src/data/inspectorData.ts`. Bộ CSS token chuẩn cũng được xuất sang `Design/Style/`. |
 
 ---
 
@@ -40,12 +38,12 @@ flowchart TD
     User["Người dùng (Trình duyệt)"] --> Entry["index.html + src/main.tsx"]
     Entry --> App["App.tsx (AppProvider)"]
 
-    subgraph IMPLEMENTED["IMPLEMENTED: Frontend Demo SPA (Design/demo-v1, v2, v3)"]
+    subgraph IMPLEMENTED["IMPLEMENTED: Frontend SPA (Design/UI-final)"]
         App --> Store["AppContext.tsx (State + Business Simulation)"]
         Store --> LocalStorage[("Browser localStorage")]
-        Mock["src/data/mockData.ts (+ inspectorData.ts ở V3)"] --> Store
+        Mock["src/data/mockData.ts + inspectorData.ts"] --> Store
         Types["src/types/index.ts"] -.-> Store
-        App --> Shell["Shell (AppShell V1 / TopShell V2 / AcademyShell V3)"]
+        App --> Shell["AcademyShell.tsx"]
         Shell --> Router["PageRouter (15 RoutePage views)"]
         Router --> Guest["features/guest/"]
         Router --> Student["features/student/"]
@@ -68,12 +66,12 @@ flowchart TD
 
 ---
 
-## 4. Khóa `localStorage` theo từng phiên bản Demo (`CONFIRMED`)
+## 4. Khóa `localStorage` của `Design/UI-final` (`CONFIRMED`)
 
-| Phiên bản | Key dữ liệu nghiệp vụ (`PersistedDemoState`) | Key tùy chọn giao diện |
+| Key | Mục đích | Giá trị |
 |---|---|---|
-| **Demo V1** | `netwiz_superhero_demo_v1_state` | *(Không có)* |
-| **Demo V2** | `netwiz_superhero_demo_v2_state` | `netwiz_v2_theme` (`'light'` \| `'dark'`) |
-| **Demo V3** | `netwiz_superhero_demo_v3_state` | `netwiz_v3_theme` (`'dark'` \| `'light'`), `netwiz_v3_calm_mode` (`'true'` \| `'false'`) |
+| `netwiz_superhero_demo_v3_state` | Lưu `PersistedDemoState` (tiến độ, ghi chú, lớp học, kiểm duyệt) | JSON |
+| `netwiz_v3_theme` | Lưu lựa chọn giao diện Sáng / Tối | `'dark'` \| `'light'` |
+| `netwiz_v3_calm_mode` | Lưu trạng thái chế độ Dịu mắt | `'true'` \| `'false'` |
 
-Các key tách biệt giúp chạy đồng thời V1 (`:5173`), V2 (`:5174`), V3 (`:5175`) trên `localhost` mà không ghi đè trạng thái dữ liệu của nhau.
+*(Giữ nguyên tên key từ V3 để bảo toàn trạng thái trình duyệt sau khi đổi tên thư mục sang `UI-final`.)*

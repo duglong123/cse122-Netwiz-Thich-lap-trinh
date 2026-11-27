@@ -25,7 +25,8 @@ Hệ thống tài liệu này là **bộ nhớ dài hạn** của dự án **Net
 - [`technical-knowledge/architecture.md`](./technical-knowledge/architecture.md) — Kiến trúc thực tế của 3 bản Demo SPA và các thành phần Backend/API/DB chưa triển khai.
 - [`technical-knowledge/data-model.md`](./technical-knowledge/data-model.md) — Mô hình dữ liệu hiện có (`src/types/index.ts`, `inspectorData.ts`) và đề xuất mô hình Backend tương lai.
 - [`technical-knowledge/tech-stack.md`](./technical-knowledge/tech-stack.md) — Công nghệ, phiên bản gói và môi trường build thực tế từ `package.json` / `package-lock.json`.
-- [`technical-knowledge/ui-ux-design-system.md`](./technical-knowledge/ui-ux-design-system.md) — Đặc tả riêng biệt 3 hệ thống thiết kế: Demo V1 (Dark Command Cobalt), Demo V2 (Focus Studio) và Demo V3 (Cyber Academy).
+- [`technical-knowledge/ui-ux-design-system.md`](./technical-knowledge/ui-ux-design-system.md) — Tổng quan hệ thống thiết kế đã chốt (`UI-final` & `Design/Style/`).
+- [`technical-knowledge/ui-style-final.md`](./technical-knowledge/ui-style-final.md) — Quy chuẩn style chính thức đã chốt: tokens Sáng/Tối dịu mắt, header đóng khung, Calm Mode, Network Lab và Boss Arena.
 
 ### Nhóm Kinh nghiệm Dự án (`project-experience/`)
 - [`project-experience/README.md`](./project-experience/README.md) — Hướng dẫn sử dụng thư mục kinh nghiệm dự án.

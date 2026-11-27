@@ -22,7 +22,7 @@
 
 ## 3. Các module & Luồng hoạt động chính (`IMPLEMENTED` dưới dạng Frontend Demo)
 
-Dựa trên đặc tả [`docs/Prompt/Prompt UI.txt`](../Prompt/Prompt%20UI.txt) và mã nguồn `Design/demo-v1`, `Design/demo-v2`, `Design/demo-v3`, nền tảng gồm 4 khu vực tương ứng 15 màn hình (`RoutePage`):
+Dựa trên đặc tả [`docs/Prompt/Prompt UI.txt`](../Prompt/Prompt%20UI.txt) và mã nguồn [`Design/UI-final/`](../../Design/UI-final), nền tảng gồm 4 khu vực tương ứng 15 màn hình (`RoutePage`):
 
 1. **Khu vực Guest:**
    - `landing` (Landing Page giới thiệu nền tảng & 4 vai trò)
@@ -50,7 +50,7 @@ Dựa trên đặc tả [`docs/Prompt/Prompt UI.txt`](../Prompt/Prompt%20UI.txt)
 
 | Hạng mục | Trạng thái hiện tại | Chi tiết xác minh |
 |---|---|---|
-| **3 bản UI/UX Prototype (`demo-v1`, `demo-v2`, `demo-v3`)** | `IMPLEMENTED` (Frontend Simulation) | Chạy đầy đủ luồng tương tác bằng React state, Mock Data (`src/data/mockData.ts`) và `localStorage`. |
+| **Giao diện chính thức `Design/UI-final` (+ `Design/Style/`)** | `IMPLEMENTED` (Frontend Simulation) | Chạy đầy đủ luồng tương tác bằng React state, Mock Data (`src/data/mockData.ts`) và `localStorage`; chốt style Cyber Academy. |
 | **Bộ dữ liệu mẫu Mạng máy tính** | `IMPLEMENTED` (Mock Data) | 3 khóa học (`CN-101` 5 chương, `NS-204`, `RS-202`), 13 bài học, 32 câu hỏi, 1 Hero (`Aegis-01`), 7 Boss, 1 lớp học 10 SV, 3 giảng viên, 1 admin. |
 | **Ứng dụng Production tại thư mục gốc** | `PLANNED` | Các file gốc (`index.html`, `js/main.js`, `style/Style.css`, `Pages/`) hiện đều rỗng (0 byte từ `init commit`). |
 | **Backend API, Database & Auth thực tế** | `PLANNED` (Not Implemented) | Chưa có máy chủ, cơ sở dữ liệu, JWT/OAuth hay kiểm soát quyền phía server. |

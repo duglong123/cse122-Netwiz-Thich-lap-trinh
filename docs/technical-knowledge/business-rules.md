@@ -1,6 +1,6 @@
 # Quy tắc Nghiệp vụ (Business Rules)
 
-Tài liệu này là nguồn tham chiếu chính về quy tắc nghiệp vụ của dự án **NetWiz**, tổng hợp từ đặc tả gốc [`docs/Prompt/Prompt UI.txt`](../Prompt/Prompt%20UI.txt) và đối chiếu trực tiếp với mã nguồn thực tế trong `Design/demo-v1`, `Design/demo-v2`, `Design/demo-v3`.
+Tài liệu này là nguồn tham chiếu chính về quy tắc nghiệp vụ của dự án **NetWiz**, tổng hợp từ đặc tả gốc [`docs/Prompt/Prompt UI.txt`](../Prompt/Prompt%20UI.txt) và đối chiếu trực tiếp với mã nguồn thực tế trong `Design/UI-final/`.
 
 ---
 
