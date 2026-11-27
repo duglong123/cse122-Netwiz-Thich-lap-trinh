@@ -1,0 +1,428 @@
+# PROJECT: SUPERHERO – GAMIFIED LEARNING PLATFORM
+## UI/UX DEMO V1
+
+### 1. VAI TRÒ
+
+Bạn là một Senior UI/UX Designer và Frontend Developer. Hãy thiết kế và xây dựng phiên bản giao diện Demo V1 cho một nền tảng hỗ trợ giảng dạy và học tập, kết hợp Gamification với hệ thống quản lý kiến thức và lớp học.
+
+Mục tiêu không chỉ là tạo ra một trang web học tập có giao diện đẹp, mà phải thể hiện rõ quy trình sử dụng của sinh viên, giảng viên và quản trị viên.
+
+**Ưu tiên:** UI/UX, tính nhất quán, khả năng tương tác và trải nghiệm sử dụng thực tế.
+
+Chưa cần xây dựng Backend, Database hoặc hệ thống xác thực thực tế. Sử dụng Mock Data và trạng thái phía Frontend để mô phỏng các chức năng.
+
+---
+
+# 2. Ý TƯỞNG VÀ PHONG CÁCH
+
+### Chủ đề: Superhero
+
+Người học sẽ vào vai một anh hùng thực hiện nhiệm vụ giải cứu thế giới mạng thông qua việc học kiến thức, giải quyết các thử thách và chiến đấu với những Boss đại diện cho từng chương học.
+
+Tuy nhiên, đây là một nền tảng giáo dục, không phải một trò chơi thuần túy.
+
+Yêu cầu phong cách:
+
+- Modern Educational Platform kết hợp Game UI.
+- Giao diện hiện đại, chuyên nghiệp, không quá trẻ con.
+- Có yếu tố Fantasy/Sci-fi nhẹ.
+- Sử dụng màu sắc có phân cấp rõ ràng.
+- Typography dễ đọc, ưu tiên khả năng tiếp cận.
+- Có thể sử dụng Dark Theme làm giao diện chính.
+- Responsive trên Desktop, Tablet và Mobile.
+
+Không lạm dụng hiệu ứng, animation hoặc các thành phần trang trí khiến người học mất tập trung.
+
+---
+
+# 3. PHÂN QUYỀN VÀ CÁC KHU VỰC
+
+Thiết kế 4 khu vực tương ứng với 4 nhóm người dùng.
+
+## A. Guest – Khách
+
+Mục tiêu: Giới thiệu nền tảng và cho phép người dùng khám phá nội dung công khai.
+
+Các trang:
+
+1. Landing Page:
+   - Giới thiệu nền tảng.
+   - Giới thiệu cách học thông qua Superhero.
+   - Giới thiệu các tính năng.
+   - Nút đăng nhập và đăng ký.
+2. Course Discovery:
+   - Danh sách khóa học được công khai.
+   - Tìm kiếm và lọc khóa học.
+3. Course Preview:
+   - Thông tin khóa học.
+   - Danh sách chương.
+   - Nội dung giới thiệu.
+   - Giảng viên phụ trách.
+
+## B. Student – Sinh viên
+
+Đây là khu vực quan trọng nhất về trải nghiệm học tập.
+
+### Student Dashboard
+
+Hiển thị:
+
+- Khóa học đang tham gia.
+- Tiến độ học tập.
+- Chương đang học.
+- Nhiệm vụ cần hoàn thành.
+- Lịch sử học tập.
+- Các câu hỏi đã trả lời sai.
+- Vật phẩm đang sở hữu.
+- Lối tắt đến Global Notes.
+
+### Learning Interface
+
+Thiết kế giao diện học tập gồm:
+
+- Sidebar hiển thị danh sách chương và bài học.
+- Khu vực hiển thị nội dung kiến thức.
+- Thanh tiến độ chương.
+- Khu vực nhiệm vụ.
+- Nút mở ghi chú.
+- Nút chuyển sang nhiệm vụ tiếp theo.
+
+Mỗi chương có thể bao gồm:
+- Nhiều nội dung kiến thức.
+- Các nhiệm vụ giữa chương.
+- Một Boss Battle ở cuối chương.
+
+### Game System
+
+Người học chỉ có một nhân vật chính.
+
+Không xây dựng hệ thống chọn nhiều Hero.
+
+Nhân vật có:
+- HP.
+- Các chỉ số cần thiết cho chiến đấu.
+- Inventory.
+- Vật phẩm nhận được khi hoàn thành nhiệm vụ.
+
+Nhiệm vụ giữa chương:
+- Có thể là câu đố, kéo thả, ghép nối, sắp xếp hoặc tương tác trực quan.
+- Hoàn thành nhiệm vụ sẽ nhận được vật phẩm đặc biệt.
+
+Boss Battle:
+- Mỗi chương có một Boss riêng.
+- Boss có hình ảnh, tên, HP và đặc điểm riêng.
+- Người học phải trả lời câu hỏi để gây sát thương.
+- Trả lời đúng: ghi nhận câu hỏi đã vượt qua.
+- Trả lời sai: ghi nhận câu hỏi sai.
+- Khi HP của người học về 0: kết thúc trận đấu và yêu cầu quay lại luyện tập.
+- Sau đó, người học có thể quay lại đánh Boss.
+
+Cơ chế câu hỏi khi đánh lại:
+- Câu hỏi đã trả lời đúng được thay bằng câu hỏi mới cùng mục tiêu kiến thức.
+- Câu hỏi đã trả lời sai được giữ lại.
+- Các câu sai phải có lời giải thích và được lưu trong danh sách Wrong Answers.
+- Khi câu hỏi sai được khắc phục, cập nhật trạng thái tương ứng.
+
+Không để giao diện chỉ hiển thị đúng/sai. Cần có giải thích để hỗ trợ việc học.
+
+### Note System
+
+Thiết kế 3 khu vực:
+
+1. Chapter Notes:
+   - Ghi chú riêng theo từng chương.
+   - Nội dung có thể chỉnh sửa.
+2. Global Notes:
+   - Ghi chú tổng hợp, không phụ thuộc chương.
+3. Wrong Answers:
+   - Danh sách câu hỏi đã trả lời sai.
+   - Phân loại theo khóa học và chương.
+   - Xem lại câu trả lời và lời giải thích.
+
+Quyền riêng tư:
+- Ghi chú mặc định chỉ chủ sở hữu nhìn thấy.
+- Sinh viên có thể chọn công khai từng ghi chú.
+- Ghi chú công khai có trang hiển thị riêng hoặc đường dẫn chia sẻ.
+- Có thể chuyển một ghi chú từ công khai về riêng tư.
+- Giảng viên không được xem ghi chú riêng tư của sinh viên.
+
+---
+
+## C. Lecturer – Giảng viên
+
+Đây là khu vực quản lý và xây dựng nội dung học tập.
+
+### Lecturer Dashboard
+
+Hiển thị:
+- Các lớp học đang quản lý.
+- Các khóa học đang tham gia.
+- Số lượng sinh viên.
+- Tiến độ học tập tổng quan.
+- Các yêu cầu biểu quyết đang chờ.
+- Các cảnh báo từ quản trị viên.
+
+### Classroom Management
+
+Cho phép:
+- Tạo lớp học.
+- Chỉnh sửa thông tin lớp.
+- Thêm sinh viên thông qua mã tham gia.
+- Xem danh sách sinh viên.
+- Xem tiến độ từng sinh viên.
+- Xem thống kê của lớp.
+
+### Knowledge Management
+
+Giảng viên là người duy nhất được phép thêm và sửa nội dung kiến thức.
+
+Cấu trúc:
+
+Course → Chapter → Lesson → Knowledge Content.
+
+Các chức năng:
+- Tạo khóa học.
+- Tạo chương.
+- Thêm kiến thức vào chương.
+- Chỉnh sửa kiến thức.
+- Xóa hoặc lưu trữ nội dung.
+- Sắp xếp thứ tự bài học.
+- Chuyển kiến thức sang chương khác.
+- Tạo câu hỏi và đáp án.
+- Tạo nhiệm vụ tương tác.
+- Tạo Boss cho từng chương.
+- Lưu nội dung nháp trước khi công bố.
+
+Tách ngân hàng câu hỏi khỏi nội dung kiến thức để có thể tái sử dụng câu hỏi.
+
+### Shared Course & Collaborative Approval
+
+Một khóa học có thể được sử dụng bởi nhiều giảng viên.
+
+Các giảng viên cùng sử dụng khóa học có quyền đề xuất thay đổi nội dung.
+
+Quy tắc bắt buộc:
+- Mọi thay đổi phải được tất cả giảng viên đang sử dụng khóa học đồng ý.
+- Không áp dụng thay đổi khi vẫn còn người chưa đồng ý.
+- Hiển thị danh sách giảng viên tham gia.
+- Hiển thị nội dung thay đổi trước và sau khi chỉnh sửa.
+- Có trạng thái Pending, Approved, Rejected.
+- Hiển thị người đã biểu quyết và người chưa biểu quyết.
+- Chỉ khi đạt 100% đồng thuận mới công bố phiên bản mới.
+
+Không cho phép một giảng viên tự ý thay đổi nội dung chung mà không có sự đồng thuận.
+
+### Learning Analytics
+
+Giảng viên có thể xem:
+- Tiến độ từng sinh viên.
+- Tỷ lệ hoàn thành chương.
+- Kết quả Boss Battle.
+- Tỷ lệ trả lời đúng/sai.
+- Những kiến thức sinh viên thường gặp khó khăn.
+- Lịch sử học tập của sinh viên.
+
+Không hiển thị ghi chú cá nhân của sinh viên trong khu vực thống kê.
+
+---
+
+## D. Admin – Quản trị viên
+
+Quản trị viên chịu trách nhiệm giám sát hoạt động nền tảng và nội dung.
+
+Không có quyền trực tiếp thêm hoặc sửa kiến thức.
+
+### Admin Dashboard
+
+Hiển thị:
+- Tổng số người dùng.
+- Tổng số khóa học.
+- Tổng số lớp học.
+- Các nội dung đang bị cảnh báo.
+- Các yêu cầu xử lý.
+- Hoạt động gần đây.
+
+### Content Moderation
+
+Quản trị viên có thể:
+- Gửi cảnh báo cho giảng viên.
+- Gửi lời nhắc chỉnh sửa hoặc kiểm tra nội dung.
+- Khóa một phần kiến thức.
+- Mở khóa nội dung sau khi vấn đề được xử lý.
+- Xem lịch sử cảnh báo và hành động quản trị.
+
+Khi khóa kiến thức:
+- Hiển thị lý do khóa.
+- Hiển thị người thực hiện.
+- Lưu thời gian khóa.
+- Giữ nguyên dữ liệu và lịch sử phiên bản.
+- Thông báo cho giảng viên liên quan.
+
+Quản trị viên không được tự ý thay đổi nội dung kiến thức.
+
+---
+
+# 4. THIẾT KẾ COMPONENT VÀ UI
+
+Xây dựng Design System nhất quán gồm:
+
+- Sidebar Navigation.
+- Top Navigation.
+- Breadcrumbs.
+- Cards.
+- Modal Dialogs.
+- Dropdowns.
+- Tabs.
+- Progress Bars.
+- Health Bars.
+- Tables.
+- Badges.
+- Toast Notifications.
+- Empty States.
+- Loading States.
+- Confirmation Dialogs.
+
+Đảm bảo tất cả component có:
+- Hover State.
+- Active State.
+- Disabled State.
+- Focus State.
+- Error State khi cần thiết.
+
+Sử dụng các icon nhất quán, tránh phối hợp quá nhiều bộ icon khác nhau.
+
+Ưu tiên bố cục rõ ràng, khoảng trắng hợp lý, hạn chế các Dashboard chứa quá nhiều thông tin cùng lúc.
+
+---
+
+# 5. YÊU CẦU TƯƠNG TÁC DEMO
+
+Không xây dựng một giao diện tĩnh chỉ để chụp ảnh.
+
+Các thao tác chính phải hoạt động thông qua Mock Data và Frontend State.
+
+Các luồng cần mô phỏng:
+
+### Student Flow
+1. Đăng nhập bằng tài khoản sinh viên demo.
+2. Mở Dashboard.
+3. Chọn khóa học.
+4. Vào một chương.
+5. Xem kiến thức.
+6. Làm nhiệm vụ tương tác.
+7. Nhận vật phẩm.
+8. Đánh Boss.
+9. Trả lời đúng hoặc sai.
+10. Thất bại và chuyển sang luyện tập.
+11. Xem lại câu sai.
+12. Đánh Boss lần nữa.
+13. Mở và chỉnh sửa ghi chú.
+14. Công khai một ghi chú và xem trang chia sẻ.
+
+### Lecturer Flow
+1. Đăng nhập bằng tài khoản giảng viên demo.
+2. Tạo lớp.
+3. Xem danh sách sinh viên.
+4. Tạo hoặc mở khóa học.
+5. Thêm chương và kiến thức.
+6. Tạo câu hỏi.
+7. Xem thống kê.
+8. Đề xuất chỉnh sửa khóa học chung.
+9. Biểu quyết và theo dõi kết quả đồng thuận.
+
+### Admin Flow
+1. Đăng nhập bằng tài khoản quản trị.
+2. Xem Dashboard.
+3. Xem nội dung bị cảnh báo.
+4. Gửi cảnh báo.
+5. Khóa một phần kiến thức.
+6. Theo dõi trạng thái xử lý.
+7. Mở khóa nội dung.
+
+### Guest Flow
+1. Truy cập Landing Page.
+2. Xem các khóa học.
+3. Xem thông tin khóa học.
+4. Xem một ghi chú công khai.
+
+---
+
+# 6. DỮ LIỆU DEMO
+
+Sử dụng chủ đề mẫu: Mạng máy tính.
+
+Tạo dữ liệu giả lập có tính nhất quán.
+
+Khóa học:
+Computer Networking.
+
+Các chương:
+1. Introduction to Computer Networks.
+2. Network Topologies.
+3. OSI Model.
+4. TCP/IP.
+5. Network Security.
+
+Tạo dữ liệu:
+- 1 nhân vật Hero.
+- 5 Boss tương ứng với 5 chương.
+- Một số nhiệm vụ tương tác.
+- Một số vật phẩm.
+- Các câu hỏi trắc nghiệm.
+- Một lớp học.
+- Khoảng 8–12 sinh viên.
+- 2–3 giảng viên cùng sử dụng khóa học.
+- Một số câu hỏi trả lời sai.
+- Một số ghi chú riêng tư và ghi chú công khai.
+- Một yêu cầu chỉnh sửa khóa học đang chờ biểu quyết.
+- Một nội dung đang bị quản trị viên cảnh báo.
+
+Nội dung phải có dữ liệu thực tế, không sử dụng Lorem Ipsum.
+
+---
+
+# 7. YÊU CẦU KỸ THUẬT
+
+Trước khi bắt đầu:
+1. Kiểm tra cấu trúc và công nghệ hiện có trong dự án.
+2. Nếu dự án đã có framework và Design System, hãy tái sử dụng.
+3. Nếu dự án chưa có nền tảng, đề xuất và sử dụng React + TypeScript + Tailwind CSS.
+4. Có thể sử dụng thư viện component phù hợp như shadcn/ui.
+5. Tổ chức code thành các component có khả năng tái sử dụng.
+6. Tách Mock Data khỏi UI Components.
+7. Sử dụng Frontend State để mô phỏng thao tác.
+8. Lưu trạng thái demo bằng LocalStorage khi phù hợp để tránh mất dữ liệu sau khi tải lại trang.
+
+Không xây dựng Backend trong phiên bản này.
+
+Không tạo các nút bấm giả chỉ có hình thức mà không có hành động.
+
+Không triển khai mọi chức năng phức tạp nếu chưa cần thiết. Ưu tiên các luồng quan trọng nhất và thể hiện chúng một cách hoàn chỉnh.
+
+---
+
+# 8. DELIVERABLES
+
+Hoàn thành các sản phẩm:
+
+1. Một giao diện web Demo V1 có thể chạy được.
+2. Design System và bộ UI Components cơ bản.
+3. Bốn khu vực Guest, Student, Lecturer và Admin.
+4. Mock Data đầy đủ.
+5. Các luồng thao tác quan trọng có thể tương tác.
+6. Responsive Layout.
+7. Cấu trúc code rõ ràng, dễ mở rộng.
+8. README hướng dẫn cài đặt và chạy dự án.
+
+### TIÊU CHÍ NGHIỆM THU
+
+- Giao diện có tính nhất quán giữa các khu vực.
+- Không có lỗi điều hướng cơ bản.
+- Những chức năng được đưa vào demo phải có tương tác thực tế.
+- Phân biệt rõ quyền hạn của từng nhóm người dùng.
+- Thể hiện đúng cơ chế đồng thuận khi chỉnh sửa khóa học chung.
+- Ghi chú mặc định là riêng tư và có thể công khai.
+- Admin không thể sửa nội dung kiến thức.
+- Trải nghiệm học tập là trọng tâm, Game System chỉ đóng vai trò hỗ trợ.
+
+**Mục tiêu cuối cùng:** Tạo ra một UI Demo V1 đủ hoàn chỉnh để người khác có thể trải nghiệm, hiểu cách nền tảng hoạt động và đánh giá ý tưởng trước khi bước vào giai đoạn phát triển Backend và hệ thống dữ liệu thực tế.
